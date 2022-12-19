@@ -7,6 +7,7 @@ object ApiConstants {
     private const val BASE_POSTER_PATH =
         "https://image.tmdb.org/t/p/w342" // https://image.tmdb.org/t/p/w342/5hoS3nEkGGXUfmnu39yw1k52JX5.jpg
     private const val BASE_BACKDROP_PATH = "https://image.tmdb.org/t/p/w780"
+    const val NETWORK_PAGE_SIZE = 10
 
     object Endpoints {
         const val GENRES = "3/genre/movie/list"
