@@ -14,10 +14,12 @@ import com.herdal.moviehouse.R
 import com.herdal.moviehouse.common.Resource
 import com.herdal.moviehouse.databinding.FragmentHomeBinding
 import com.herdal.moviehouse.ui.home.adapter.genre.GenreAdapter
+import com.herdal.moviehouse.ui.home.adapter.movie.MovieAdapter
 import com.herdal.moviehouse.utils.extensions.hide
 import com.herdal.moviehouse.utils.extensions.show
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -29,6 +31,10 @@ class HomeFragment : Fragment() {
         GenreAdapter()
     }
 
+    private val popularMoviesAdapter: MovieAdapter by lazy {
+        MovieAdapter()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -37,11 +43,13 @@ class HomeFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         setupRecyclerViews()
         collectApiRequest()
+        collectPopularMovies()
         return binding.root
     }
 
     private fun setupRecyclerViews() = binding.apply {
         rvGenres.adapter = genreAdapter
+        rvPopularMovies.adapter = popularMoviesAdapter
     }
 
     private fun collectApiRequest() = binding.apply {
@@ -69,6 +77,17 @@ class HomeFragment : Fragment() {
                             }
                         }
                     }
+                }
+            }
+        }
+    }
+
+    private fun collectPopularMovies() = lifecycleScope.launch {
+        repeatOnLifecycle(Lifecycle.State.STARTED) {
+            binding.apply {
+                viewModel.getPopularMovies().observe(viewLifecycleOwner) {
+                    popularMoviesAdapter.submitData(lifecycle, it)
+                    Timber.d("$it")
                 }
             }
         }

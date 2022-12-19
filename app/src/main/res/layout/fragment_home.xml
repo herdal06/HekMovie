@@ -60,16 +60,14 @@
                 style="?android:attr/progressBarStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center|top"
-                android:visibility="gone" />
+                android:layout_gravity="center|top" />
 
             <TextView
                 android:id="@+id/tvGenreErrorMessage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center|top"
-                android:text="@string/error_message"
-                android:visibility="gone" />
+                android:text="@string/error_message" />
 
             <LinearLayout
                 android:id="@+id/layout_popular_movies"
@@ -107,6 +105,22 @@
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/item_movie" />
+
+            <ProgressBar
+                android:id="@+id/pbPopular"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvPopularErrorMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center|top"
+                android:text="@string/error_message"
+                android:visibility="gone" />
 
             <LinearLayout
                 android:id="@+id/layout_top_rated_movies"
