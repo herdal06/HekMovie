@@ -8,6 +8,7 @@ import com.herdal.moviehouse.common.enums.MoviesEnum
 import com.herdal.moviehouse.data.remote.model.movies.MovieDto
 import com.herdal.moviehouse.data.remote.paging_source.MoviePagingSource
 import com.herdal.moviehouse.data.remote.service.MovieService
+import com.herdal.moviehouse.utils.ApiConstants.NETWORK_PAGE_SIZE
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
@@ -61,8 +62,4 @@ class MovieRemoteDataSource @Inject constructor(
             ),
             pagingSourceFactory = { MoviePagingSource(movieService, MoviesEnum.NOW_PLAYING_MOVIES) }
         ).flow
-
-    companion object {
-        const val NETWORK_PAGE_SIZE = 10
-    }
 }
