@@ -111,6 +111,10 @@ class HomeFragment : Fragment() {
                 upcomingMoviesAdapter.submitData(lifecycle, it)
                 Timber.d("$it")
             }
+            viewModel.getNowPlayingMovies().observe(viewLifecycleOwner) {
+                nowPlayingMoviesAdapter.submitData(lifecycle, it)
+                Timber.d("$it")
+            }
         }
     }
 }

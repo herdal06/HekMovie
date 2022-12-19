@@ -7,6 +7,7 @@ import com.herdal.moviehouse.common.Resource
 import com.herdal.moviehouse.domain.uimodel.GenreUiModel
 import com.herdal.moviehouse.domain.uimodel.MovieUiModel
 import com.herdal.moviehouse.domain.use_case.genre.GetGenresUseCase
+import com.herdal.moviehouse.domain.use_case.movie.GetNowPlayingMoviesUseCase
 import com.herdal.moviehouse.domain.use_case.movie.GetPopularMoviesUseCase
 import com.herdal.moviehouse.domain.use_case.movie.GetTopRatedMoviesUseCase
 import com.herdal.moviehouse.domain.use_case.movie.GetUpcomingMoviesUseCase
@@ -24,6 +25,7 @@ class HomeViewModel @Inject constructor(
     private val getPopularMoviesUseCase: GetPopularMoviesUseCase,
     private val getTopRatedMoviesUseCase: GetTopRatedMoviesUseCase,
     private val getUpcomingMoviesUseCase: GetUpcomingMoviesUseCase,
+    private val getNowPlayingMoviesUseCase: GetNowPlayingMoviesUseCase
 ) : ViewModel() {
     private val _genres =
         MutableStateFlow<Resource<List<GenreUiModel>>>(Resource.Loading())
@@ -36,6 +38,9 @@ class HomeViewModel @Inject constructor(
         MutableLiveData<PagingData<MovieUiModel>>()
 
     private val _upcomingMovies =
+        MutableLiveData<PagingData<MovieUiModel>>()
+
+    private val _nowPlayingMovies =
         MutableLiveData<PagingData<MovieUiModel>>()
 
     fun getAllGenres() {
@@ -74,6 +79,13 @@ class HomeViewModel @Inject constructor(
     fun getUpcomingMovies(): LiveData<PagingData<MovieUiModel>> {
         val response = getUpcomingMoviesUseCase.invoke().cachedIn(viewModelScope).asLiveData()
         _upcomingMovies.value = response.value
+        Timber.d("$response")
+        return response
+    }
+
+    fun getNowPlayingMovies(): LiveData<PagingData<MovieUiModel>> {
+        val response = getNowPlayingMoviesUseCase.invoke().cachedIn(viewModelScope).asLiveData()
+        _nowPlayingMovies.value = response.value
         Timber.d("$response")
         return response
     }
