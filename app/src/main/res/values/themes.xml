@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.MovieHouse" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
@@ -12,5 +12,18 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+    </style>
+
+    <!-- home see all text -->
+    <style name="SeeAllText" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/showAllTextColor</item>
+        <item name="android:textSize">@dimen/extra_large_size</item>
+    </style>
+
+    <!-- home title text -->
+    <style name="TitleText" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/yellow</item>
+        <item name="android:textSize">@dimen/double_extra_large_size</item>
+        <item name="android:textStyle">bold</item>
     </style>
 </resources>
