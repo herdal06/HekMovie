@@ -6,9 +6,9 @@ import kotlinx.coroutines.flow.Flow
 
 interface MovieDataSource {
     interface Remote {
-        suspend fun getPopularMovies(page: Int): Flow<PagingData<MovieDto>>
-        suspend fun getTopRatedMovies(page: Int): Flow<PagingData<MovieDto>>
-        suspend fun getUpcomingMovies(page: Int): Flow<PagingData<MovieDto>>
-        suspend fun getNowPlayingMovies(page: Int): Flow<PagingData<MovieDto>>
+        suspend fun getPopularMovies(): Flow<PagingData<MovieDto>>
+        suspend fun getTopRatedMovies(): Flow<PagingData<MovieDto>>
+        suspend fun getUpcomingMovies(): Flow<PagingData<MovieDto>>
+        suspend fun getNowPlayingMovies(): Flow<PagingData<MovieDto>>
     }
 }

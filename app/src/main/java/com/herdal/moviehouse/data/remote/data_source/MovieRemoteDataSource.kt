@@ -14,7 +14,7 @@ import javax.inject.Inject
 class MovieRemoteDataSource @Inject constructor(
     private val movieService: MovieService,
 ) : MovieDataSource.Remote {
-    override suspend fun getPopularMovies(page: Int): Flow<PagingData<MovieDto>> =
+    override suspend fun getPopularMovies(): Flow<PagingData<MovieDto>> =
         Pager(
             config = PagingConfig(
                 pageSize = NETWORK_PAGE_SIZE,
@@ -26,7 +26,7 @@ class MovieRemoteDataSource @Inject constructor(
             pagingSourceFactory = { MoviePagingSource(movieService, MoviesEnum.POPULAR_MOVIES) }
         ).flow
 
-    override suspend fun getTopRatedMovies(page: Int): Flow<PagingData<MovieDto>> =
+    override suspend fun getTopRatedMovies(): Flow<PagingData<MovieDto>> =
         Pager(
             config = PagingConfig(
                 pageSize = NETWORK_PAGE_SIZE,
@@ -38,7 +38,7 @@ class MovieRemoteDataSource @Inject constructor(
             pagingSourceFactory = { MoviePagingSource(movieService, MoviesEnum.TOP_RATED_MOVIES) }
         ).flow
 
-    override suspend fun getUpcomingMovies(page: Int): Flow<PagingData<MovieDto>> =
+    override suspend fun getUpcomingMovies(): Flow<PagingData<MovieDto>> =
         Pager(
             config = PagingConfig(
                 pageSize = NETWORK_PAGE_SIZE,
@@ -50,7 +50,7 @@ class MovieRemoteDataSource @Inject constructor(
             pagingSourceFactory = { MoviePagingSource(movieService, MoviesEnum.UPCOMING) }
         ).flow
 
-    override suspend fun getNowPlayingMovies(page: Int): Flow<PagingData<MovieDto>> =
+    override suspend fun getNowPlayingMovies(): Flow<PagingData<MovieDto>> =
         Pager(
             config = PagingConfig(
                 pageSize = NETWORK_PAGE_SIZE,
