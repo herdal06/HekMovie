@@ -1,7 +1,9 @@
 package com.herdal.moviehouse.di
 
 import com.herdal.moviehouse.common.data_source.GenreDataSource
+import com.herdal.moviehouse.common.data_source.MovieDataSource
 import com.herdal.moviehouse.data.remote.data_source.GenreRemoteDataSource
+import com.herdal.moviehouse.data.remote.data_source.MovieRemoteDataSource
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -12,4 +14,7 @@ abstract class DataSourceModule {
 
     @Binds
     abstract fun bindGenreRemoteDataSource(genreRemoteDataSource: GenreRemoteDataSource): GenreDataSource.Remote
+
+    @Binds
+    abstract fun bindMovieRemoteDataSource(movieRemoteDataSource: MovieRemoteDataSource): MovieDataSource.Remote
 }

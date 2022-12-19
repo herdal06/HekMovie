@@ -1,24 +1,47 @@
 package com.herdal.moviehouse.ui.home
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.herdal.moviehouse.common.Resource
 import com.herdal.moviehouse.domain.uimodel.GenreUiModel
+import com.herdal.moviehouse.domain.uimodel.MovieUiModel
 import com.herdal.moviehouse.domain.use_case.genre.GetGenresUseCase
+import com.herdal.moviehouse.domain.use_case.movie.GetNowPlayingMoviesUseCase
+import com.herdal.moviehouse.domain.use_case.movie.GetPopularMoviesUseCase
+import com.herdal.moviehouse.domain.use_case.movie.GetTopRatedMoviesUseCase
+import com.herdal.moviehouse.domain.use_case.movie.GetUpcomingMoviesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val getGenresUseCase: GetGenresUseCase
+    private val getGenresUseCase: GetGenresUseCase,
+    private val getPopularMoviesUseCase: GetPopularMoviesUseCase,
+    private val getTopRatedMoviesUseCase: GetTopRatedMoviesUseCase,
+    private val getUpcomingMoviesUseCase: GetUpcomingMoviesUseCase,
+    private val getNowPlayingMoviesUseCase: GetNowPlayingMoviesUseCase
 ) : ViewModel() {
     private val _genres =
         MutableStateFlow<Resource<List<GenreUiModel>>>(Resource.Loading())
     val genres: StateFlow<Resource<List<GenreUiModel>>> = _genres
+
+    private val _popularMovies =
+        MutableLiveData<PagingData<MovieUiModel>>()
+
+    private val _topRatedMovies =
+        MutableLiveData<PagingData<MovieUiModel>>()
+
+    private val _upcomingMovies =
+        MutableLiveData<PagingData<MovieUiModel>>()
+
+    private val _nowPlayingMovies =
+        MutableLiveData<PagingData<MovieUiModel>>()
 
     fun getAllGenres() {
         getGenresUseCase.invoke()
@@ -37,5 +60,33 @@ class HomeViewModel @Inject constructor(
                     }
                 }
             }.launchIn(viewModelScope)
+    }
+
+    fun getPopularMovies(): LiveData<PagingData<MovieUiModel>> {
+        val response = getPopularMoviesUseCase.invoke().cachedIn(viewModelScope).asLiveData()
+        _popularMovies.value = response.value
+        Timber.d("$response")
+        return response
+    }
+
+    fun getTopRatedMovies(): LiveData<PagingData<MovieUiModel>> {
+        val response = getTopRatedMoviesUseCase.invoke().cachedIn(viewModelScope).asLiveData()
+        _topRatedMovies.value = response.value
+        Timber.d("$response")
+        return response
+    }
+
+    fun getUpcomingMovies(): LiveData<PagingData<MovieUiModel>> {
+        val response = getUpcomingMoviesUseCase.invoke().cachedIn(viewModelScope).asLiveData()
+        _upcomingMovies.value = response.value
+        Timber.d("$response")
+        return response
+    }
+
+    fun getNowPlayingMovies(): LiveData<PagingData<MovieUiModel>> {
+        val response = getNowPlayingMoviesUseCase.invoke().cachedIn(viewModelScope).asLiveData()
+        _nowPlayingMovies.value = response.value
+        Timber.d("$response")
+        return response
     }
 }

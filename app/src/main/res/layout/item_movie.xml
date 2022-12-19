@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="movie"
+            type="com.herdal.moviehouse.domain.uimodel.MovieUiModel" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="wrap_content"
+        android:layout_height="270dp"
+        android:layout_margin="@dimen/double_extra_small_margin"
+        android:layout_marginVertical="@dimen/double_extra_small_margin">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_movie"
+                android:layout_width="0dp"
+                android:layout_height="180dp"
+                android:loadImage="@{movie.poster_path}"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ImageContrastCheck"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <View
+                android:id="@+id/ic_star"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="@dimen/double_extra_small_margin"
+                android:layout_marginTop="@dimen/double_extra_small_margin"
+                android:background="@drawable/ic_star"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_movie" />
+
+            <TextView
+                android:id="@+id/tv_vote_average"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/double_extra_small_margin"
+                android:layout_marginTop="@dimen/double_extra_small_margin"
+                android:text="@{Double.toString(movie.vote_average)}"
+                app:layout_constraintStart_toEndOf="@+id/ic_star"
+                app:layout_constraintTop_toBottomOf="@+id/iv_movie" />
+
+            <TextView
+                android:id="@+id/tv_original_title"
+                android:layout_width="128dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/double_extra_small_margin"
+                android:layout_marginTop="@dimen/double_extra_small_margin"
+                android:ellipsize="end"
+                android:scrollHorizontally="true"
+                android:text="@{movie.title}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ic_star" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

@@ -3,4 +3,8 @@
     <string name="genres">Genres</string>
     <string name="see_all">See All</string>
     <string name="error_message">Error While Loading Data.</string>
+    <string name="popular">Popular</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="top_rated">Top Rated</string>
+    <string name="now_playing">Now Playing</string>
 </resources>

@@ -3,6 +3,7 @@ package com.herdal.moviehouse.di
 import androidx.viewbinding.BuildConfig
 import com.google.gson.Gson
 import com.herdal.moviehouse.data.remote.service.GenreService
+import com.herdal.moviehouse.data.remote.service.MovieService
 import com.herdal.moviehouse.utils.ApiConstants.BASE_URL
 import com.squareup.moshi.Moshi
 import dagger.Module
@@ -68,7 +69,7 @@ object NetworkModule {
     @Singleton
     fun provideRetrofit(
         okHttpClient: OkHttpClient,
-        moshiConverterFactory: GsonConverterFactory,
+        moshiConverterFactory: MoshiConverterFactory,
         baseUrl: String
     ): Retrofit =
         Retrofit.Builder()
@@ -81,4 +82,9 @@ object NetworkModule {
     @Singleton
     fun provideGenreService(retrofit: Retrofit): GenreService =
         retrofit.create(GenreService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideMovieService(retrofit: Retrofit): MovieService =
+        retrofit.create(MovieService::class.java)
 }

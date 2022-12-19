@@ -14,10 +14,12 @@ import com.herdal.moviehouse.R
 import com.herdal.moviehouse.common.Resource
 import com.herdal.moviehouse.databinding.FragmentHomeBinding
 import com.herdal.moviehouse.ui.home.adapter.genre.GenreAdapter
+import com.herdal.moviehouse.ui.home.adapter.movie.MovieAdapter
 import com.herdal.moviehouse.utils.extensions.hide
 import com.herdal.moviehouse.utils.extensions.show
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -29,6 +31,22 @@ class HomeFragment : Fragment() {
         GenreAdapter()
     }
 
+    private val popularMoviesAdapter: MovieAdapter by lazy {
+        MovieAdapter()
+    }
+
+    private val topRatedMoviesAdapter: MovieAdapter by lazy {
+        MovieAdapter()
+    }
+
+    private val nowPlayingMoviesAdapter: MovieAdapter by lazy {
+        MovieAdapter()
+    }
+
+    private val upcomingMoviesAdapter: MovieAdapter by lazy {
+        MovieAdapter()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -36,12 +54,17 @@ class HomeFragment : Fragment() {
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         setupRecyclerViews()
+        observeMovies()
         collectApiRequest()
         return binding.root
     }
 
     private fun setupRecyclerViews() = binding.apply {
         rvGenres.adapter = genreAdapter
+        rvPopularMovies.adapter = popularMoviesAdapter
+        rvUpcomingMovies.adapter = upcomingMoviesAdapter
+        rvNowPlayingMovies.adapter = nowPlayingMoviesAdapter
+        rvTopRatedMovies.adapter = topRatedMoviesAdapter
     }
 
     private fun collectApiRequest() = binding.apply {
@@ -70,6 +93,27 @@ class HomeFragment : Fragment() {
                         }
                     }
                 }
+            }
+        }
+    }
+
+    private fun observeMovies() = lifecycleScope.launch {
+        repeatOnLifecycle(Lifecycle.State.STARTED) {
+            viewModel.getPopularMovies().observe(viewLifecycleOwner) {
+                popularMoviesAdapter.submitData(lifecycle, it)
+                Timber.d("$it")
+            }
+            viewModel.getTopRatedMovies().observe(viewLifecycleOwner) {
+                topRatedMoviesAdapter.submitData(lifecycle, it)
+                Timber.d("$it")
+            }
+            viewModel.getUpcomingMovies().observe(viewLifecycleOwner) {
+                upcomingMoviesAdapter.submitData(lifecycle, it)
+                Timber.d("$it")
+            }
+            viewModel.getNowPlayingMovies().observe(viewLifecycleOwner) {
+                nowPlayingMoviesAdapter.submitData(lifecycle, it)
+                Timber.d("$it")
             }
         }
     }
