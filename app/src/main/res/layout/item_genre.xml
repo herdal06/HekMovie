@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="genre"
+            type="com.herdal.moviehouse.domain.uimodel.GenreUiModel" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/double_extra_small_margin">
+
+        <TextView
+            android:id="@+id/tvGenreName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:padding="@dimen/extra_small_padding"
+            android:text="@{genre.name}" />
+    </com.google.android.material.card.MaterialCardView>
+</layout>
