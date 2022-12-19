@@ -26,4 +26,9 @@
         <item name="android:textSize">@dimen/double_extra_large_size</item>
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="GenreText" parent="@android:style/TextAppearance">
+        <item name="android:textSize">@dimen/extra_large_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

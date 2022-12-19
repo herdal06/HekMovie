@@ -11,14 +11,17 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/double_extra_small_margin">
+        android:layout_margin="@dimen/double_extra_small_margin"
+        android:clickable="true"
+        android:focusable="true">
 
         <TextView
             android:id="@+id/tvGenreName"
+            style="@style/GenreText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/border"
-            android:padding="@dimen/extra_small_padding"
+            android:padding="@dimen/medium_padding"
             android:text="@{genre.name}" />
     </com.google.android.material.card.MaterialCardView>
 </layout>

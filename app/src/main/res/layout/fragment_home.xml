@@ -25,7 +25,8 @@
                 android:layout_height="match_parent"
                 android:clickable="true"
                 android:focusable="true"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                tools:ignore="TouchTargetSizeCheck">
 
                 <TextView
                     android:id="@+id/tvGenreText"
@@ -52,6 +53,22 @@
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/item_genre" />
+
+            <ProgressBar
+                android:id="@+id/pbGenres"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvGenreErrorMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center|top"
+                android:text="@string/error_message"
+                android:visibility="gone" />
         </LinearLayout>
     </ScrollView>
 </layout>
