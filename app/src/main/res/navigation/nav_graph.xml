@@ -9,5 +9,18 @@
         android:id="@+id/homeFragment"
         android:name="com.herdal.moviehouse.ui.home.HomeFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_genresFragment"
+            app:destination="@id/genresFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/genresFragment"
+        android:name="com.herdal.moviehouse.ui.genres.GenresFragment"
+        android:label="GenresFragment"
+        tools:layout="@layout/fragment_genres" >
+        <argument
+            android:name="genre"
+            app:argType="com.herdal.moviehouse.domain.uimodel.GenreUiModel" />
+    </fragment>
 </navigation>

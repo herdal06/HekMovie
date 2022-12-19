@@ -10,9 +10,11 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.herdal.moviehouse.R
 import com.herdal.moviehouse.common.Resource
 import com.herdal.moviehouse.databinding.FragmentHomeBinding
+import com.herdal.moviehouse.domain.uimodel.GenreUiModel
 import com.herdal.moviehouse.ui.home.adapter.genre.GenreAdapter
 import com.herdal.moviehouse.utils.extensions.hide
 import com.herdal.moviehouse.utils.extensions.show
@@ -26,7 +28,7 @@ class HomeFragment : Fragment() {
     private val viewModel: HomeViewModel by viewModels()
 
     private val genreAdapter: GenreAdapter by lazy {
-        GenreAdapter()
+        GenreAdapter(::onGenreClick)
     }
 
     override fun onCreateView(
@@ -72,5 +74,10 @@ class HomeFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun onGenreClick(genre: GenreUiModel) {
+        val action = HomeFragmentDirections.actionHomeFragmentToGenresFragment(genre = genre)
+        findNavController().navigate(action)
     }
 }

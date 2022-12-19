@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.ListAdapter
 import com.herdal.moviehouse.databinding.ItemGenreBinding
 import com.herdal.moviehouse.domain.uimodel.GenreUiModel
 
-class GenreAdapter : ListAdapter<GenreUiModel, GenreViewHolder>(DiffCallBack) {
+class GenreAdapter(
+    private val onGenreClick: ((genre: GenreUiModel) -> Unit)?
+) : ListAdapter<GenreUiModel, GenreViewHolder>(DiffCallBack) {
 
     companion object {
         val DiffCallBack = object : DiffUtil.ItemCallback<GenreUiModel>() {
@@ -26,7 +28,7 @@ class GenreAdapter : ListAdapter<GenreUiModel, GenreViewHolder>(DiffCallBack) {
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-            )
+            ), onGenreClick
         )
 
     override fun onBindViewHolder(holder: GenreViewHolder, position: Int) {
