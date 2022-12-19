@@ -15,7 +15,7 @@ class MovieRepositoryImpl @Inject constructor(
     private val movieMapper: MovieMapper,
     private val remote: MovieDataSource.Remote
 ) : MovieRepository {
-    override suspend fun getPopularMovies(): Flow<PagingData<MovieUiModel>> {
+    override fun getPopularMovies(): Flow<PagingData<MovieUiModel>> {
         val domainProduct = remote.getPopularMovies().map { pagingData ->
             pagingData.map { remoteProduct ->
                 movieMapper.toDomain(remoteProduct)
@@ -25,7 +25,7 @@ class MovieRepositoryImpl @Inject constructor(
         return domainProduct
     }
 
-    override suspend fun getTopRatedMovies(): Flow<PagingData<MovieUiModel>> {
+    override fun getTopRatedMovies(): Flow<PagingData<MovieUiModel>> {
         val domainProduct = remote.getTopRatedMovies().map { pagingData ->
             pagingData.map { remoteProduct ->
                 movieMapper.toDomain(remoteProduct)
@@ -35,7 +35,7 @@ class MovieRepositoryImpl @Inject constructor(
         return domainProduct
     }
 
-    override suspend fun getUpcomingMovies(): Flow<PagingData<MovieUiModel>> {
+    override fun getUpcomingMovies(): Flow<PagingData<MovieUiModel>> {
         val domainProduct = remote.getUpcomingMovies().map { pagingData ->
             pagingData.map { remoteProduct ->
                 movieMapper.toDomain(remoteProduct)
@@ -45,7 +45,7 @@ class MovieRepositoryImpl @Inject constructor(
         return domainProduct
     }
 
-    override suspend fun getNowPlayingMovies(): Flow<PagingData<MovieUiModel>> {
+    override fun getNowPlayingMovies(): Flow<PagingData<MovieUiModel>> {
         val domainProduct = remote.getNowPlayingMovies().map { pagingData ->
             pagingData.map { remoteProduct ->
                 movieMapper.toDomain(remoteProduct)

@@ -5,8 +5,8 @@ import com.herdal.moviehouse.domain.uimodel.MovieUiModel
 import kotlinx.coroutines.flow.Flow
 
 interface MovieRepository {
-    suspend fun getPopularMovies(): Flow<PagingData<MovieUiModel>>
-    suspend fun getTopRatedMovies(): Flow<PagingData<MovieUiModel>>
-    suspend fun getUpcomingMovies(): Flow<PagingData<MovieUiModel>>
-    suspend fun getNowPlayingMovies(): Flow<PagingData<MovieUiModel>>
+    fun getPopularMovies(): Flow<PagingData<MovieUiModel>>
+    fun getTopRatedMovies(): Flow<PagingData<MovieUiModel>>
+    fun getUpcomingMovies(): Flow<PagingData<MovieUiModel>>
+    fun getNowPlayingMovies(): Flow<PagingData<MovieUiModel>>
 }
