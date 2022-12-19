@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/double_extra_small_margin"
                 android:layout_marginTop="@dimen/double_extra_small_margin"
-                android:text="@{String.format(movie.vote_average)}"
+                android:text="@{Double.toString(movie.vote_average)}"
                 app:layout_constraintStart_toEndOf="@+id/ic_star"
                 app:layout_constraintTop_toBottomOf="@+id/iv_movie" />
 
