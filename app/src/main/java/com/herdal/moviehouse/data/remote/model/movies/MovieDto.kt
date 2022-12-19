@@ -8,7 +8,7 @@ data class MovieDto(
     @Json(name ="adult")
     val adult: Boolean,
     @Json(name ="backdrop_path")
-    val backdrop_path: String,
+    val backdrop_path: String?,
     @Json(name ="genre_ids")
     val genre_ids: List<Int>,
     @Json(name ="id")
@@ -22,7 +22,7 @@ data class MovieDto(
     @Json(name ="popularity")
     val popularity: Double,
     @Json(name ="poster_path")
-    val poster_path: String,
+    val poster_path: String?,
     @Json(name ="release_date")
     val release_date: String,
     @Json(name ="title")

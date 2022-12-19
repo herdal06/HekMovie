@@ -44,7 +44,7 @@ class MoviePagingSource(
                 }
             }
             LoadResult.Page(
-                data = response.movies,
+                data = response.results,
                 prevKey = if (nextPage == 1) null else nextPage - 1,
                 nextKey = if (nextPage < response.total_pages)
                     response.page.plus(1) else null
