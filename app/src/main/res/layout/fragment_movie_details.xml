@@ -49,6 +49,7 @@
             android:layout_height="@dimen/star_size"
             android:layout_marginTop="@dimen/extra_small_margin"
             android:background="@drawable/ic_star"
+            android:visibility="gone"
             app:layout_constraintStart_toEndOf="@+id/ivPosterDetails"
             app:layout_constraintTop_toBottomOf="@+id/tvTitleDetails" />
 
@@ -76,13 +77,12 @@
             android:id="@+id/rvGenresDetails"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/large_margin"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ivPosterDetails"
+            app:layout_constraintTop_toBottomOf="@+id/tvGenres"
             tools:listitem="@layout/item_genre" />
 
         <TextView
@@ -186,5 +186,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView"
             tools:listitem="@layout/item_movie" />
+
+        <TextView
+            android:id="@+id/tvGenres"
+            style="@style/TitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/genres"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivPosterDetails" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
