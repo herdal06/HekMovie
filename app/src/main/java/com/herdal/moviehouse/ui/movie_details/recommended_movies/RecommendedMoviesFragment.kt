@@ -1,4 +1,4 @@
-package com.herdal.moviehouse.ui.recommended_movies
+package com.herdal.moviehouse.ui.movie_details.recommended_movies
 
 import android.os.Bundle
 import android.view.LayoutInflater

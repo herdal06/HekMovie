@@ -1,4 +1,4 @@
-package com.herdal.moviehouse.ui.recommended_movies
+package com.herdal.moviehouse.ui.movie_details.recommended_movies
 
 import androidx.lifecycle.*
 import androidx.paging.PagingData
