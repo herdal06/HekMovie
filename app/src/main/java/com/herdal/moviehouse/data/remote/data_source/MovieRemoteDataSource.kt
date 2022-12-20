@@ -5,9 +5,11 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.herdal.moviehouse.common.data_source.MovieDataSource
 import com.herdal.moviehouse.common.enums.MoviesEnum
+import com.herdal.moviehouse.common.enums.MovieDetailEnum
 import com.herdal.moviehouse.data.remote.model.movie_detail.MovieDetailDto
 import com.herdal.moviehouse.data.remote.model.movies.MovieDto
 import com.herdal.moviehouse.data.remote.paging_source.MoviePagingSource
+import com.herdal.moviehouse.data.remote.paging_source.MovieDetailPagingSource
 import com.herdal.moviehouse.data.remote.service.MovieService
 import com.herdal.moviehouse.utils.ApiConstants.NETWORK_PAGE_SIZE
 import kotlinx.coroutines.flow.Flow
@@ -66,4 +68,22 @@ class MovieRemoteDataSource @Inject constructor(
 
     override suspend fun getMovieDetails(id: Int): MovieDetailDto =
         movieService.getMovieDetails(id)
+
+    override fun getSimilarMovies(id: Int): Flow<PagingData<MovieDto>> =
+        Pager(
+            config = PagingConfig(
+                pageSize = NETWORK_PAGE_SIZE,
+                prefetchDistance = 2,
+                maxSize = PagingConfig.MAX_SIZE_UNBOUNDED,
+                jumpThreshold = Int.MIN_VALUE,
+                enablePlaceholders = true
+            ),
+            pagingSourceFactory = {
+                MovieDetailPagingSource(
+                    movieService,
+                    MovieDetailEnum.MovieDetail,
+                    id
+                )
+            }
+        ).flow
 }

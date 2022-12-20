@@ -1,25 +1,33 @@
 package com.herdal.moviehouse.ui.movie_details
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.herdal.moviehouse.common.Resource
 import com.herdal.moviehouse.domain.uimodel.MovieDetailUiModel
+import com.herdal.moviehouse.domain.uimodel.MovieUiModel
 import com.herdal.moviehouse.domain.use_case.movie.GetMovieDetailsUseCase
+import com.herdal.moviehouse.domain.use_case.movie.GetSimilarMoviesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
 class MovieDetailsViewModel @Inject constructor(
-    private val getMovieDetailsUseCase: GetMovieDetailsUseCase
+    private val getMovieDetailsUseCase: GetMovieDetailsUseCase,
+    private val getSimilarMoviesUseCase: GetSimilarMoviesUseCase
 ) : ViewModel() {
 
     private val _movieDetail =
         MutableStateFlow<Resource<MovieDetailUiModel>>(Resource.Loading())
     val movieDetail: StateFlow<Resource<MovieDetailUiModel>> = _movieDetail
+
+    private val _similarMovies =
+        MutableLiveData<PagingData<MovieUiModel>>()
 
     fun getMovieDetails(id: Int) {
         getMovieDetailsUseCase.invoke(id)
@@ -38,5 +46,12 @@ class MovieDetailsViewModel @Inject constructor(
                     }
                 }
             }.launchIn(viewModelScope)
+    }
+
+    fun getSimilarMovies(movieId: Int): LiveData<PagingData<MovieUiModel>> {
+        val response = getSimilarMoviesUseCase.invoke(movieId).cachedIn(viewModelScope).asLiveData()
+        _similarMovies.value = response.value
+        Timber.d("$response")
+        return response
     }
 }

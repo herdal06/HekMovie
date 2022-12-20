@@ -22,6 +22,7 @@ import com.herdal.moviehouse.utils.extensions.show
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @AndroidEntryPoint
 class MovieDetailsFragment : Fragment() {
@@ -51,6 +52,7 @@ class MovieDetailsFragment : Fragment() {
     ): View {
         _binding = FragmentMovieDetailsBinding.inflate(inflater, container, false)
         val view = binding.root
+        observeMovies(getArgs())
         collectProductDetailRequest()
         setupRecyclerViews()
         return view
@@ -103,6 +105,15 @@ class MovieDetailsFragment : Fragment() {
                 getPlaceHolder(requireContext())
             )
             viewStar.show()
+        }
+    }
+
+    private fun observeMovies(movieId: Int) = lifecycleScope.launch {
+        repeatOnLifecycle(Lifecycle.State.STARTED) {
+            viewModel.getSimilarMovies(movieId).observe(viewLifecycleOwner) {
+                similarMovieAdapter.submitData(lifecycle, it)
+                Timber.d("$it")
+            }
         }
     }
 

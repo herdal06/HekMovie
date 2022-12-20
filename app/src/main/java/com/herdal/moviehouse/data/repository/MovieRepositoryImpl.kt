@@ -62,4 +62,14 @@ class MovieRepositoryImpl @Inject constructor(
         val movieDetailDto = remote.getMovieDetails(id)
         return movieDetailMapper.toDomain(movieDetailDto)
     }
+
+    override fun getSimilarMovies(movieId: Int): Flow<PagingData<MovieUiModel>> {
+        val domainMovie = remote.getSimilarMovies(movieId).map { pagingData ->
+            pagingData.map { remoteProduct ->
+                movieMapper.toDomain(remoteProduct)
+            }
+        }
+        Timber.d("popular: $domainMovie")
+        return domainMovie
+    }
 }
