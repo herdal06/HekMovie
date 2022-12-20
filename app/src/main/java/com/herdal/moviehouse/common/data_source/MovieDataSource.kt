@@ -13,5 +13,6 @@ interface MovieDataSource {
         fun getNowPlayingMovies(): Flow<PagingData<MovieDto>>
         suspend fun getMovieDetails(id: Int): MovieDetailDto
         fun getSimilarMovies(id: Int): Flow<PagingData<MovieDto>>
+        fun getRecommendedMovies(id: Int): Flow<PagingData<MovieDto>>
     }
 }

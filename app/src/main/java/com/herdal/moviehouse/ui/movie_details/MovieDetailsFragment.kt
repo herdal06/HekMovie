@@ -45,6 +45,10 @@ class MovieDetailsFragment : Fragment() {
         MovieAdapter(::onClickMovie)
     }
 
+    private val recommendedMovieAdapter: MovieAdapter by lazy {
+        MovieAdapter(::onClickMovie)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -61,6 +65,7 @@ class MovieDetailsFragment : Fragment() {
     private fun setupRecyclerViews() = binding.apply {
         rvGenresDetails.adapter = genreAdapter
         rvSimilarMovies.adapter = similarMovieAdapter
+        rvRecommendedMovies.adapter = recommendedMovieAdapter
     }
 
     private fun collectProductDetailRequest() = binding.apply {
@@ -110,8 +115,14 @@ class MovieDetailsFragment : Fragment() {
 
     private fun observeMovies(movieId: Int) = lifecycleScope.launch {
         repeatOnLifecycle(Lifecycle.State.STARTED) {
+            // similar movies
             viewModel.getSimilarMovies(movieId).observe(viewLifecycleOwner) {
                 similarMovieAdapter.submitData(lifecycle, it)
+                Timber.d("$it")
+            }
+            // recommended movies
+            viewModel.getRecommendedMovies(movieId).observe(viewLifecycleOwner) {
+                recommendedMovieAdapter.submitData(lifecycle, it)
                 Timber.d("$it")
             }
         }

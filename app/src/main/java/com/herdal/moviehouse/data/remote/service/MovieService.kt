@@ -50,4 +50,11 @@ interface MovieService {
         @Query("page") page: Int,
         @Query("api_key") api_key: String = API_KEY
     ): MovieResponse
+
+    @GET(ApiConstants.Endpoints.RECOMMENDED)
+    suspend fun getRecommendedMovies(
+        @Path("id") id: Int,
+        @Query("page") page: Int,
+        @Query("api_key") api_key: String = API_KEY
+    ): MovieResponse
 }

@@ -86,4 +86,22 @@ class MovieRemoteDataSource @Inject constructor(
                 )
             }
         ).flow
+
+    override fun getRecommendedMovies(id: Int): Flow<PagingData<MovieDto>> =
+        Pager(
+            config = PagingConfig(
+                pageSize = NETWORK_PAGE_SIZE,
+                prefetchDistance = 2,
+                maxSize = PagingConfig.MAX_SIZE_UNBOUNDED,
+                jumpThreshold = Int.MIN_VALUE,
+                enablePlaceholders = true
+            ),
+            pagingSourceFactory = {
+                MovieDetailPagingSource(
+                    movieService,
+                    MovieDetailEnum.RECOMMENDATIONS,
+                    id
+                )
+            }
+        ).flow
 }

@@ -12,4 +12,5 @@ interface MovieRepository {
     fun getNowPlayingMovies(): Flow<PagingData<MovieUiModel>>
     suspend fun getMovieDetails(id: Int): MovieDetailUiModel
     fun getSimilarMovies(movieId: Int): Flow<PagingData<MovieUiModel>>
+    fun getRecommendedMovies(movieId: Int): Flow<PagingData<MovieUiModel>>
 }

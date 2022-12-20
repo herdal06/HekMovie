@@ -72,4 +72,14 @@ class MovieRepositoryImpl @Inject constructor(
         Timber.d("popular: $domainMovie")
         return domainMovie
     }
+
+    override fun getRecommendedMovies(movieId: Int): Flow<PagingData<MovieUiModel>> {
+        val domainMovie = remote.getRecommendedMovies(movieId).map { pagingData ->
+            pagingData.map { remoteProduct ->
+                movieMapper.toDomain(remoteProduct)
+            }
+        }
+        Timber.d("popular: $domainMovie")
+        return domainMovie
+    }
 }

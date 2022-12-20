@@ -29,6 +29,12 @@ class MovieDetailPagingSource(
                         page = nextPage
                     )
                 }
+                MovieDetailEnum.RECOMMENDATIONS -> {
+                    movieService.getRecommendedMovies(
+                        id = movieId,
+                        page = nextPage
+                    )
+                }
             }
             LoadResult.Page(
                 data = response.results,
