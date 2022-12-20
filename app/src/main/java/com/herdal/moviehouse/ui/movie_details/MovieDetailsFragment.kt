@@ -80,7 +80,7 @@ class MovieDetailsFragment : Fragment() {
             tvMovieTaglineDetails.text = movieDetail.tagline
             tvOverViewDetails.text = movieDetail.overview
             tvReleaseDateDetails.text = movieDetail.release_date
-            ivLogoDetails.downloadImage(movieDetail.poster_path, getPlaceHolder(requireContext()))
+            ivPosterDetails.downloadImage(movieDetail.poster_path, getPlaceHolder(requireContext()))
             ivBackdropDetails.downloadImage(
                 movieDetail.backdrop_path,
                 getPlaceHolder(requireContext())
