@@ -2,7 +2,7 @@ package com.herdal.moviehouse.domain.uimodel
 
 data class MovieDetailUiModel(
     val adult: Boolean,
-    val backdrop_path: String,
+    val backdrop_path: String?,
     val budget: Int,
     val genres: List<GenreUiModel>,
     val homepage: String,
@@ -12,7 +12,7 @@ data class MovieDetailUiModel(
     val original_title: String,
     val overview: String,
     val popularity: Double,
-    val poster_path: String,
+    val poster_path: String?,
     val production_companies: List<CompanyUiModel>,
     val release_date: String,
     val revenue: Int,
