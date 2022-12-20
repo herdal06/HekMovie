@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.DiffUtil
 import com.herdal.moviehouse.databinding.ItemMovieBinding
 import com.herdal.moviehouse.domain.uimodel.MovieUiModel
 
-class MovieAdapter : PagingDataAdapter<MovieUiModel, MovieViewHolder>(DiffCallback) {
+class MovieAdapter(
+    private val onClickMovie: ((movieId: Int) -> Unit)?
+) : PagingDataAdapter<MovieUiModel, MovieViewHolder>(DiffCallback) {
 
     companion object {
         private val DiffCallback = object : DiffUtil.ItemCallback<MovieUiModel>() {
@@ -34,6 +36,6 @@ class MovieAdapter : PagingDataAdapter<MovieUiModel, MovieViewHolder>(DiffCallba
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-            )
+            ), onClickMovie
         )
 }

@@ -29,4 +29,10 @@
     <dimen name="extra_small_size">8sp</dimen>
     <dimen name="double_extra_small_size">4sp</dimen>
 
+    <!-- movie detail -->
+    <dimen name="poster_path_top_margin">-64dp</dimen>
+    <dimen name="poster_width">175dp</dimen>
+    <dimen name="poster_height">175dp</dimen>
+    <dimen name="star_size">24dp</dimen>
+
 </resources>

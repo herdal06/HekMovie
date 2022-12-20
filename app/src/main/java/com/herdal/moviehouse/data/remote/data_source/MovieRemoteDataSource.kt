@@ -5,6 +5,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.herdal.moviehouse.common.data_source.MovieDataSource
 import com.herdal.moviehouse.common.enums.MoviesEnum
+import com.herdal.moviehouse.data.remote.model.movie_detail.MovieDetailDto
 import com.herdal.moviehouse.data.remote.model.movies.MovieDto
 import com.herdal.moviehouse.data.remote.paging_source.MoviePagingSource
 import com.herdal.moviehouse.data.remote.service.MovieService
@@ -62,4 +63,7 @@ class MovieRemoteDataSource @Inject constructor(
             ),
             pagingSourceFactory = { MoviePagingSource(movieService, MoviesEnum.NOW_PLAYING_MOVIES) }
         ).flow
+
+    override suspend fun getMovieDetails(id: Int): MovieDetailDto =
+        movieService.getMovieDetails(id)
 }

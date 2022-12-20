@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.herdal.moviehouse.R
 import com.herdal.moviehouse.common.Resource
 import com.herdal.moviehouse.databinding.FragmentHomeBinding
@@ -32,19 +33,19 @@ class HomeFragment : Fragment() {
     }
 
     private val popularMoviesAdapter: MovieAdapter by lazy {
-        MovieAdapter()
+        MovieAdapter(::onClickMovie)
     }
 
     private val topRatedMoviesAdapter: MovieAdapter by lazy {
-        MovieAdapter()
+        MovieAdapter(::onClickMovie)
     }
 
     private val nowPlayingMoviesAdapter: MovieAdapter by lazy {
-        MovieAdapter()
+        MovieAdapter(::onClickMovie)
     }
 
     private val upcomingMoviesAdapter: MovieAdapter by lazy {
-        MovieAdapter()
+        MovieAdapter(::onClickMovie)
     }
 
     override fun onCreateView(
@@ -116,5 +117,10 @@ class HomeFragment : Fragment() {
                 Timber.d("$it")
             }
         }
+    }
+
+    private fun onClickMovie(movieId: Int) {
+        val action = HomeFragmentDirections.actionHomeFragmentToMovieDetailsFragment(movieId)
+        findNavController().navigate(action)
     }
 }

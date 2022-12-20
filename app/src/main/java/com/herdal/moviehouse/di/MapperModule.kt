@@ -1,9 +1,6 @@
 package com.herdal.moviehouse.di
 
-import com.herdal.moviehouse.common.mapper.GenreMapper
-import com.herdal.moviehouse.common.mapper.GenreMapperImpl
-import com.herdal.moviehouse.common.mapper.MovieMapper
-import com.herdal.moviehouse.common.mapper.MovieMapperImpl
+import com.herdal.moviehouse.common.mapper.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,4 +19,17 @@ object MapperModule {
     @Singleton
     fun provideMovieMapper(
     ): MovieMapper = MovieMapperImpl()
+
+    @Provides
+    @Singleton
+    fun provideCompanyMapper(
+    ): CompanyMapper = CompanyMapperImpl()
+
+    @Provides
+    @Singleton
+    fun provideMovieDetailMapper(
+    ): MovieDetailMapper = MovieDetailMapperImpl(
+        provideGenreMapper(),
+        provideCompanyMapper()
+    )
 }
