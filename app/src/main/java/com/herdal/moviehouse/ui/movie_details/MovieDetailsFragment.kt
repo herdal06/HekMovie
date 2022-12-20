@@ -11,6 +11,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.navArgs
 import com.herdal.moviehouse.common.Resource
+import com.herdal.moviehouse.common.downloadImage
+import com.herdal.moviehouse.common.getPlaceHolder
 import com.herdal.moviehouse.databinding.FragmentMovieDetailsBinding
 import com.herdal.moviehouse.domain.uimodel.MovieDetailUiModel
 import com.herdal.moviehouse.utils.extensions.hide
@@ -36,7 +38,7 @@ class MovieDetailsFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentMovieDetailsBinding.inflate(inflater, container, false)
         val view = binding.root
         collectProductDetailRequest()
@@ -72,6 +74,18 @@ class MovieDetailsFragment : Fragment() {
     }
 
     private fun setupUI(movieDetail: MovieDetailUiModel?) = binding.apply {
-
+        movieDetail?.let {
+            tvTitleDetails.text = movieDetail.title
+            tvVoteDetails.text = movieDetail.vote_average.toString()
+            tvMovieTaglineDetails.text = movieDetail.tagline
+            tvOverViewDetails.text = movieDetail.overview
+            tvReleaseDateDetails.text = movieDetail.release_date
+            ivLogoDetails.downloadImage(movieDetail.poster_path, getPlaceHolder(requireContext()))
+            ivBackdropDetails.downloadImage(
+                movieDetail.backdrop_path,
+                getPlaceHolder(requireContext())
+            )
+            viewStar.show()
+        }
     }
 }
