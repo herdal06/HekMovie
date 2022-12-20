@@ -9,4 +9,5 @@
     <string name="now_playing">Now Playing</string>
     <string name="movie_backdrop">movie backdrop</string>
     <string name="movie_poster">movie poster</string>
+    <string name="similar_movies">Similar Movies</string>
 </resources>

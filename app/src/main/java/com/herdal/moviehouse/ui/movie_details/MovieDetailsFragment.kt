@@ -16,6 +16,7 @@ import com.herdal.moviehouse.common.getPlaceHolder
 import com.herdal.moviehouse.databinding.FragmentMovieDetailsBinding
 import com.herdal.moviehouse.domain.uimodel.MovieDetailUiModel
 import com.herdal.moviehouse.ui.home.adapter.genre.GenreAdapter
+import com.herdal.moviehouse.ui.home.adapter.movie.MovieAdapter
 import com.herdal.moviehouse.utils.extensions.hide
 import com.herdal.moviehouse.utils.extensions.show
 import dagger.hilt.android.AndroidEntryPoint
@@ -39,6 +40,10 @@ class MovieDetailsFragment : Fragment() {
         GenreAdapter()
     }
 
+    private val similarMovieAdapter: MovieAdapter by lazy {
+        MovieAdapter(::onClickMovie)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -53,6 +58,7 @@ class MovieDetailsFragment : Fragment() {
 
     private fun setupRecyclerViews() = binding.apply {
         rvGenresDetails.adapter = genreAdapter
+        rvSimilarMovies.adapter = similarMovieAdapter
     }
 
     private fun collectProductDetailRequest() = binding.apply {
@@ -98,5 +104,9 @@ class MovieDetailsFragment : Fragment() {
             )
             viewStar.show()
         }
+    }
+
+    private fun onClickMovie(movieId: Int) {
+        //todo: on click movie
     }
 }

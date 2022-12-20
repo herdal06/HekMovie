@@ -34,5 +34,6 @@
     <dimen name="poster_width">175dp</dimen>
     <dimen name="poster_height">175dp</dimen>
     <dimen name="star_size">24dp</dimen>
+    <dimen name="rv_height">282dp</dimen>
 
 </resources>
