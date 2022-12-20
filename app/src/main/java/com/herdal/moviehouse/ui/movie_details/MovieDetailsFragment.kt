@@ -15,6 +15,7 @@ import com.herdal.moviehouse.common.downloadImage
 import com.herdal.moviehouse.common.getPlaceHolder
 import com.herdal.moviehouse.databinding.FragmentMovieDetailsBinding
 import com.herdal.moviehouse.domain.uimodel.MovieDetailUiModel
+import com.herdal.moviehouse.ui.home.adapter.genre.GenreAdapter
 import com.herdal.moviehouse.utils.extensions.hide
 import com.herdal.moviehouse.utils.extensions.show
 import dagger.hilt.android.AndroidEntryPoint
@@ -34,6 +35,10 @@ class MovieDetailsFragment : Fragment() {
 
     private fun getArgs() = navigationArgs.movieId
 
+    private val genreAdapter: GenreAdapter by lazy {
+        GenreAdapter()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -42,7 +47,12 @@ class MovieDetailsFragment : Fragment() {
         _binding = FragmentMovieDetailsBinding.inflate(inflater, container, false)
         val view = binding.root
         collectProductDetailRequest()
+        setupRecyclerViews()
         return view
+    }
+
+    private fun setupRecyclerViews() = binding.apply {
+        rvGenresDetails.adapter = genreAdapter
     }
 
     private fun collectProductDetailRequest() = binding.apply {
@@ -56,8 +66,9 @@ class MovieDetailsFragment : Fragment() {
                             tvMovieDetailErrorMessage.hide()
                         }
                         is Resource.Success -> {
-                            resource.data.let {
-                                setupUI(it)
+                            resource.data.let { movieDetail ->
+                                setupUI(movieDetail)
+                                genreAdapter.submitList(movieDetail?.genres)
                             }
                             tvMovieDetailErrorMessage.hide()
                             pbMovieDetail.hide()
