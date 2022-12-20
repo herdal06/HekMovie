@@ -16,11 +16,13 @@ import com.herdal.moviehouse.common.getPlaceHolder
 import com.herdal.moviehouse.databinding.FragmentMovieDetailsBinding
 import com.herdal.moviehouse.domain.uimodel.MovieDetailUiModel
 import com.herdal.moviehouse.ui.home.adapter.genre.GenreAdapter
+import com.herdal.moviehouse.ui.home.adapter.movie.MovieAdapter
 import com.herdal.moviehouse.utils.extensions.hide
 import com.herdal.moviehouse.utils.extensions.show
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @AndroidEntryPoint
 class MovieDetailsFragment : Fragment() {
@@ -39,6 +41,14 @@ class MovieDetailsFragment : Fragment() {
         GenreAdapter()
     }
 
+    private val similarMovieAdapter: MovieAdapter by lazy {
+        MovieAdapter(::onClickMovie)
+    }
+
+    private val recommendedMovieAdapter: MovieAdapter by lazy {
+        MovieAdapter(::onClickMovie)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -46,6 +56,7 @@ class MovieDetailsFragment : Fragment() {
     ): View {
         _binding = FragmentMovieDetailsBinding.inflate(inflater, container, false)
         val view = binding.root
+        observeMovies(getArgs())
         collectProductDetailRequest()
         setupRecyclerViews()
         return view
@@ -53,6 +64,8 @@ class MovieDetailsFragment : Fragment() {
 
     private fun setupRecyclerViews() = binding.apply {
         rvGenresDetails.adapter = genreAdapter
+        rvSimilarMovies.adapter = similarMovieAdapter
+        rvRecommendedMovies.adapter = recommendedMovieAdapter
     }
 
     private fun collectProductDetailRequest() = binding.apply {
@@ -98,5 +111,24 @@ class MovieDetailsFragment : Fragment() {
             )
             viewStar.show()
         }
+    }
+
+    private fun observeMovies(movieId: Int) = lifecycleScope.launch {
+        repeatOnLifecycle(Lifecycle.State.STARTED) {
+            // similar movies
+            viewModel.getSimilarMovies(movieId).observe(viewLifecycleOwner) {
+                similarMovieAdapter.submitData(lifecycle, it)
+                Timber.d("$it")
+            }
+            // recommended movies
+            viewModel.getRecommendedMovies(movieId).observe(viewLifecycleOwner) {
+                recommendedMovieAdapter.submitData(lifecycle, it)
+                Timber.d("$it")
+            }
+        }
+    }
+
+    private fun onClickMovie(movieId: Int) {
+        //todo: on click movie
     }
 }

@@ -1,7 +1,9 @@
 package com.herdal.moviehouse.di
 
 import com.herdal.moviehouse.domain.repository.GenreRepository
+import com.herdal.moviehouse.domain.repository.MovieRepository
 import com.herdal.moviehouse.domain.use_case.genre.GetGenresUseCase
+import com.herdal.moviehouse.domain.use_case.movie.GetSimilarMoviesUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,5 +18,11 @@ object UseCaseModule {
     @Singleton
     fun provideGetGenresUseCase(genreRepository: GenreRepository) = GetGenresUseCase(
         genreRepository = genreRepository
+    )
+
+    @Provides
+    @Singleton
+    fun provideGetSimilarMoviesUseCase(movieRepository: MovieRepository) = GetSimilarMoviesUseCase(
+        movieRepository = movieRepository
     )
 }
