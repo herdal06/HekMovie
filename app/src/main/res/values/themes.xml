@@ -27,6 +27,22 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <!-- movie detail title text -->
+    <style name="MovieDetailTitle" parent="@android:style/TextAppearance">
+        <item name="android:textSize">@dimen/double_extra_large_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- movie detail text -->
+    <style name="MovieDetailText" parent="@android:style/TextAppearance">
+        <item name="android:textSize">@dimen/large_size</item>
+    </style>
+    <!-- movie detail title large text -->
+    <style name="MovieDetailText.XLarge" parent="@android:style/TextAppearance">
+        <item name="android:textSize">@dimen/extra_large_size</item>
+        <item name="android:textStyle">italic|bold</item>
+    </style>
+
     <style name="GenreText" parent="@android:style/TextAppearance">
         <item name="android:textSize">@dimen/extra_large_size</item>
         <item name="android:textStyle">bold</item>
