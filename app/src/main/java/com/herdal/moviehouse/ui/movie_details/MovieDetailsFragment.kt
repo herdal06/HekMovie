@@ -19,7 +19,7 @@ import com.herdal.moviehouse.ui.movie_details.actors.ActorsFragment
 import com.herdal.moviehouse.ui.home.adapter.genre.GenreAdapter
 import com.herdal.moviehouse.ui.home.adapter.movie.MovieAdapter
 import com.herdal.moviehouse.ui.movie_details.about_movie.AboutMovieFragment
-import com.herdal.moviehouse.ui.movie_details.adapter.MovieDetailViewPagerAdapter
+import com.herdal.moviehouse.ui.movie_details.view_pager.MovieDetailViewPagerAdapter
 import com.herdal.moviehouse.ui.movie_details.recommended_movies.RecommendedMoviesFragment
 import com.herdal.moviehouse.ui.movie_details.reviews.MovieReviewsFragment
 import com.herdal.moviehouse.ui.movie_details.similar_movies.SimilarMoviesFragment

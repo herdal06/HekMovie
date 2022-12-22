@@ -1,4 +1,4 @@
-package com.herdal.moviehouse.ui.movie_details.adapter
+package com.herdal.moviehouse.ui.movie_details.view_pager
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
