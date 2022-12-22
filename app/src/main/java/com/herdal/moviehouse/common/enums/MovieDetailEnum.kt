@@ -2,5 +2,5 @@ package com.herdal.moviehouse.common.enums
 
 enum class MovieDetailEnum {
     SIMILAR(),
-    RECOMMENDATIONS()
+    MovieDetail()
 }

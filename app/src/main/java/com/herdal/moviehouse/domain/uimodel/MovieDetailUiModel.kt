@@ -15,7 +15,7 @@ data class MovieDetailUiModel(
     val poster_path: String?,
     val production_companies: List<CompanyUiModel>,
     val release_date: String,
-    val revenue: Int,
+    val revenue: Double,
     val runtime: Int,
     val status: String,
     val tagline: String,
