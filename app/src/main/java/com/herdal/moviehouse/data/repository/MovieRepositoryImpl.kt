@@ -3,8 +3,8 @@ package com.herdal.moviehouse.data.repository
 import androidx.paging.PagingData
 import androidx.paging.map
 import com.herdal.moviehouse.common.data_source.MovieDataSource
-import com.herdal.moviehouse.common.mapper.MovieDetailMapper
-import com.herdal.moviehouse.common.mapper.MovieMapper
+import com.herdal.moviehouse.common.mapper.movie.MovieDetailMapper
+import com.herdal.moviehouse.common.mapper.movie.MovieMapper
 import com.herdal.moviehouse.domain.repository.MovieRepository
 import com.herdal.moviehouse.domain.uimodel.MovieDetailUiModel
 import com.herdal.moviehouse.domain.uimodel.MovieUiModel
