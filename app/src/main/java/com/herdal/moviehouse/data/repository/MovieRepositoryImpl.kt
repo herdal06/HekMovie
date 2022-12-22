@@ -3,8 +3,8 @@ package com.herdal.moviehouse.data.repository
 import androidx.paging.PagingData
 import androidx.paging.map
 import com.herdal.moviehouse.common.data_source.MovieDataSource
-import com.herdal.moviehouse.common.mapper.MovieDetailMapper
-import com.herdal.moviehouse.common.mapper.MovieMapper
+import com.herdal.moviehouse.common.mapper.movie.MovieDetailMapper
+import com.herdal.moviehouse.common.mapper.movie.MovieMapper
 import com.herdal.moviehouse.domain.repository.MovieRepository
 import com.herdal.moviehouse.domain.uimodel.MovieDetailUiModel
 import com.herdal.moviehouse.domain.uimodel.MovieUiModel
@@ -19,43 +19,43 @@ class MovieRepositoryImpl @Inject constructor(
     private val movieDetailMapper: MovieDetailMapper
 ) : MovieRepository {
     override fun getPopularMovies(): Flow<PagingData<MovieUiModel>> {
-        val domainProduct = remote.getPopularMovies().map { pagingData ->
-            pagingData.map { remoteProduct ->
-                movieMapper.toDomain(remoteProduct)
+        val domainPopularMovie = remote.getPopularMovies().map { pagingData ->
+            pagingData.map { domainPopularMovie ->
+                movieMapper.toDomain(domainPopularMovie)
             }
         }
-        Timber.d("popular: $domainProduct")
-        return domainProduct
+        Timber.d("popular: $domainPopularMovie")
+        return domainPopularMovie
     }
 
     override fun getTopRatedMovies(): Flow<PagingData<MovieUiModel>> {
-        val domainProduct = remote.getTopRatedMovies().map { pagingData ->
-            pagingData.map { remoteProduct ->
-                movieMapper.toDomain(remoteProduct)
+        val domainTopRatedMovie = remote.getTopRatedMovies().map { pagingData ->
+            pagingData.map { domainTopRatedMovie ->
+                movieMapper.toDomain(domainTopRatedMovie)
             }
         }
-        Timber.d("top rated: $domainProduct")
-        return domainProduct
+        Timber.d("top rated: $domainTopRatedMovie")
+        return domainTopRatedMovie
     }
 
     override fun getUpcomingMovies(): Flow<PagingData<MovieUiModel>> {
-        val domainProduct = remote.getUpcomingMovies().map { pagingData ->
-            pagingData.map { remoteProduct ->
-                movieMapper.toDomain(remoteProduct)
+        val domainUpcomingMovie = remote.getUpcomingMovies().map { pagingData ->
+            pagingData.map { domainUpcomingMovie ->
+                movieMapper.toDomain(domainUpcomingMovie)
             }
         }
-        Timber.d("upcoming: $domainProduct")
-        return domainProduct
+        Timber.d("upcoming: $domainUpcomingMovie")
+        return domainUpcomingMovie
     }
 
     override fun getNowPlayingMovies(): Flow<PagingData<MovieUiModel>> {
-        val domainProduct = remote.getNowPlayingMovies().map { pagingData ->
-            pagingData.map { remoteProduct ->
-                movieMapper.toDomain(remoteProduct)
+        val domainNowPlayingMovie = remote.getNowPlayingMovies().map { pagingData ->
+            pagingData.map { domainNowPlayingMovie ->
+                movieMapper.toDomain(domainNowPlayingMovie)
             }
         }
-        Timber.d("now playing: $domainProduct")
-        return domainProduct
+        Timber.d("now playing: $domainNowPlayingMovie")
+        return domainNowPlayingMovie
     }
 
     override suspend fun getMovieDetails(id: Int): MovieDetailUiModel {
@@ -64,22 +64,22 @@ class MovieRepositoryImpl @Inject constructor(
     }
 
     override fun getSimilarMovies(movieId: Int): Flow<PagingData<MovieUiModel>> {
-        val domainMovie = remote.getSimilarMovies(movieId).map { pagingData ->
-            pagingData.map { remoteProduct ->
-                movieMapper.toDomain(remoteProduct)
+        val domainSimilarMovie = remote.getSimilarMovies(movieId).map { pagingData ->
+            pagingData.map { domainSimilarMovie ->
+                movieMapper.toDomain(domainSimilarMovie)
             }
         }
-        Timber.d("popular: $domainMovie")
-        return domainMovie
+        Timber.d("popular: $domainSimilarMovie")
+        return domainSimilarMovie
     }
 
     override fun getRecommendedMovies(movieId: Int): Flow<PagingData<MovieUiModel>> {
-        val domainMovie = remote.getRecommendedMovies(movieId).map { pagingData ->
-            pagingData.map { remoteProduct ->
-                movieMapper.toDomain(remoteProduct)
+        val domainRecommendedMovie = remote.getRecommendedMovies(movieId).map { pagingData ->
+            pagingData.map { domainRecommendedMovie ->
+                movieMapper.toDomain(domainRecommendedMovie)
             }
         }
-        Timber.d("popular: $domainMovie")
-        return domainMovie
+        Timber.d("popular: $domainRecommendedMovie")
+        return domainRecommendedMovie
     }
 }

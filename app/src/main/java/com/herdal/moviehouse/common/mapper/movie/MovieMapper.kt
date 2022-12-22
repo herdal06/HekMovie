@@ -1,24 +1,25 @@
-package com.herdal.moviehouse.common.mapper
+package com.herdal.moviehouse.common.mapper.movie
 
+import com.herdal.moviehouse.common.mapper.BaseMapper
 import com.herdal.moviehouse.data.remote.model.movies.MovieDto
 import com.herdal.moviehouse.domain.uimodel.MovieUiModel
 
-class MovieMapperImpl : MovieMapper {
-    override fun toDomain(t: MovieDto): MovieUiModel = MovieUiModel(
-        adult = t.adult,
-        backdrop_path = t.backdrop_path,
-        genre_ids = t.genre_ids,
-        id = t.id,
-        original_language = t.original_language,
-        original_title = t.original_title,
-        overview = t.overview,
-        popularity = t.popularity,
-        poster_path = t.poster_path,
-        release_date = t.release_date,
-        title = t.title,
-        video = t.video,
-        vote_average = t.vote_average,
-        vote_count = t.vote_count
+class MovieMapper : BaseMapper<MovieDto, MovieUiModel> {
+    override fun toDomain(response: MovieDto): MovieUiModel = MovieUiModel(
+        adult = response.adult,
+        backdrop_path = response.backdrop_path,
+        genre_ids = response.genre_ids,
+        id = response.id,
+        original_language = response.original_language,
+        original_title = response.original_title,
+        overview = response.overview,
+        popularity = response.popularity,
+        poster_path = response.poster_path,
+        release_date = response.release_date,
+        title = response.title,
+        video = response.video,
+        vote_average = response.vote_average,
+        vote_count = response.vote_count
     )
 
     override fun fromDomain(domainModel: MovieUiModel): MovieDto = MovieDto(

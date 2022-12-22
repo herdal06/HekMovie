@@ -1,8 +1,13 @@
 package com.herdal.moviehouse.di
 
-import com.herdal.moviehouse.common.mapper.*
+import com.herdal.moviehouse.common.mapper.movie.MovieDetailMapper
+import com.herdal.moviehouse.common.mapper.movie.CompanyMapper
+import com.herdal.moviehouse.common.mapper.movie.GenreMapper
+import com.herdal.moviehouse.common.mapper.movie.MovieMapper
 import com.herdal.moviehouse.common.mapper.person.KnownForMapper
 import com.herdal.moviehouse.common.mapper.person.PersonMapper
+import com.herdal.moviehouse.common.mapper.review.AuthorMapper
+import com.herdal.moviehouse.common.mapper.review.ReviewMapper
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,22 +20,22 @@ object MapperModule {
     @Provides
     @Singleton
     fun provideGenreMapper(
-    ): GenreMapper = GenreMapperImpl()
+    ): GenreMapper = GenreMapper()
 
     @Provides
     @Singleton
     fun provideMovieMapper(
-    ): MovieMapper = MovieMapperImpl()
+    ): MovieMapper = MovieMapper()
 
     @Provides
     @Singleton
     fun provideCompanyMapper(
-    ): CompanyMapper = CompanyMapperImpl()
+    ): CompanyMapper = CompanyMapper()
 
     @Provides
     @Singleton
     fun provideMovieDetailMapper(
-    ): MovieDetailMapper = MovieDetailMapperImpl(
+    ): MovieDetailMapper = MovieDetailMapper(
         provideGenreMapper(),
         provideCompanyMapper()
     )
@@ -38,12 +43,12 @@ object MapperModule {
     @Provides
     @Singleton
     fun provideAuthorDetailMapper(
-    ): AuthorMapper = AuthorMapperImpl()
+    ): AuthorMapper = AuthorMapper()
 
     @Provides
     @Singleton
     fun provideReviewMapper(
-    ): ReviewMapper = ReviewMapperImpl(
+    ): ReviewMapper = ReviewMapper(
         provideAuthorDetailMapper()
     )
 

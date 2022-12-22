@@ -1,14 +1,15 @@
-package com.herdal.moviehouse.common.mapper
+package com.herdal.moviehouse.common.mapper.review
 
+import com.herdal.moviehouse.common.mapper.BaseMapper
 import com.herdal.moviehouse.data.remote.model.review.AuthorDetailsDto
 import com.herdal.moviehouse.domain.uimodel.AuthorDetailsUiModel
 
-class AuthorMapperImpl : AuthorMapper {
-    override fun toDomain(t: AuthorDetailsDto): AuthorDetailsUiModel = AuthorDetailsUiModel(
-        avatar_path = t.avatar_path,
-        name = t.name,
-        rating = t.rating,
-        username = t.username
+class AuthorMapper : BaseMapper<AuthorDetailsDto, AuthorDetailsUiModel> {
+    override fun toDomain(response: AuthorDetailsDto): AuthorDetailsUiModel = AuthorDetailsUiModel(
+        avatar_path = response.avatar_path,
+        name = response.name,
+        rating = response.rating,
+        username = response.username
     )
 
     override fun fromDomain(domainModel: AuthorDetailsUiModel): AuthorDetailsDto = AuthorDetailsDto(

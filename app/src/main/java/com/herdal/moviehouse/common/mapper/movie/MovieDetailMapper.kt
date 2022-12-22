@@ -1,42 +1,43 @@
-package com.herdal.moviehouse.common.mapper
+package com.herdal.moviehouse.common.mapper.movie
 
+import com.herdal.moviehouse.common.mapper.BaseMapper
 import com.herdal.moviehouse.data.remote.model.movie_detail.MovieDetailDto
 import com.herdal.moviehouse.domain.uimodel.MovieDetailUiModel
 
-class MovieDetailMapperImpl(
+class MovieDetailMapper(
     private val genreMapper: GenreMapper,
     private val companyMapper: CompanyMapper
-) : MovieDetailMapper {
+) : BaseMapper<MovieDetailDto, MovieDetailUiModel> {
 
-    override fun toDomain(t: MovieDetailDto): MovieDetailUiModel {
-        val genres = t.genres.map { genreDto ->
+    override fun toDomain(response: MovieDetailDto): MovieDetailUiModel {
+        val genres = response.genres.map { genreDto ->
             genreMapper.toDomain(genreDto)
         }
-        val companies = t.production_companies.map { companyDto ->
+        val companies = response.production_companies.map { companyDto ->
             companyMapper.toDomain(companyDto)
         }
         return MovieDetailUiModel(
-            adult = t.adult,
-            backdrop_path = t.backdrop_path,
-            budget = t.budget,
+            adult = response.adult,
+            backdrop_path = response.backdrop_path,
+            budget = response.budget,
             genres = genres,
-            homepage = t.homepage,
-            id = t.id,
-            imdb_id = t.imdb_id,
-            original_title = t.original_title,
-            original_language = t.original_language,
-            overview = t.overview,
-            popularity = t.popularity,
-            poster_path = t.poster_path,
+            homepage = response.homepage,
+            id = response.id,
+            imdb_id = response.imdb_id,
+            original_title = response.original_title,
+            original_language = response.original_language,
+            overview = response.overview,
+            popularity = response.popularity,
+            poster_path = response.poster_path,
             production_companies = companies,
-            release_date = t.release_date,
-            revenue = t.revenue,
-            runtime = t.runtime,
-            status = t.status,
-            tagline = t.tagline,
-            title = t.title,
-            vote_average = t.vote_average,
-            vote_count = t.vote_count
+            release_date = response.release_date,
+            revenue = response.revenue,
+            runtime = response.runtime,
+            status = response.status,
+            tagline = response.tagline,
+            title = response.title,
+            vote_average = response.vote_average,
+            vote_count = response.vote_count
         )
     }
 
