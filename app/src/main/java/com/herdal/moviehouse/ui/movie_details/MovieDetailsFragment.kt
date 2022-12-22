@@ -18,9 +18,10 @@ import com.herdal.moviehouse.domain.uimodel.MovieDetailUiModel
 import com.herdal.moviehouse.ui.actors.ActorsFragment
 import com.herdal.moviehouse.ui.home.adapter.genre.GenreAdapter
 import com.herdal.moviehouse.ui.home.adapter.movie.MovieAdapter
+import com.herdal.moviehouse.ui.movie_details.about_movie.AboutMovieFragment
 import com.herdal.moviehouse.ui.movie_details.adapter.MovieDetailViewPagerAdapter
-import com.herdal.moviehouse.ui.recommended_movies.RecommendedMoviesFragment
-import com.herdal.moviehouse.ui.reviews.ReviewsFragment
+import com.herdal.moviehouse.ui.movie_details.recommended_movies.RecommendedMoviesFragment
+import com.herdal.moviehouse.ui.reviews.MovieReviewsFragment
 import com.herdal.moviehouse.ui.movie_details.similar_movies.SimilarMoviesFragment
 import com.herdal.moviehouse.utils.extensions.hide
 import com.herdal.moviehouse.utils.extensions.show
@@ -63,18 +64,16 @@ class MovieDetailsFragment : Fragment() {
         val view = binding.root
         observeMovies(getArgs())
         setupViewPager()
-        collectProductDetailRequest()
+        collectMovieDetailRequest()
         setupRecyclerViews()
         return view
     }
 
     private fun setupRecyclerViews() = binding.apply {
         rvGenresDetails.adapter = genreAdapter
-        rvSimilarMovies.adapter = similarMovieAdapter
-        rvRecommendedMovies.adapter = recommendedMovieAdapter
     }
 
-    private fun collectProductDetailRequest() = binding.apply {
+    private fun collectMovieDetailRequest() = binding.apply {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.getMovieDetails(getArgs())
@@ -136,11 +135,11 @@ class MovieDetailsFragment : Fragment() {
 
     private fun setupViewPager() = binding.apply {
         val viewPagerAdapter = MovieDetailViewPagerAdapter(parentFragmentManager)
+        viewPagerAdapter.addFragment(AboutMovieFragment(), "About Movie")
         viewPagerAdapter.addFragment(ActorsFragment(), "Actors")
-        viewPagerAdapter.addFragment(ReviewsFragment(), "Reviews")
+        viewPagerAdapter.addFragment(MovieReviewsFragment(getArgs()), "Reviews")
         viewPagerAdapter.addFragment(SimilarMoviesFragment(getArgs()), "Similar Movies")
-        viewPagerAdapter.addFragment(RecommendedMoviesFragment(), "Our Recommendations")
-
+        viewPagerAdapter.addFragment(RecommendedMoviesFragment(getArgs()), "Our Recommendations")
         viewPager.adapter = viewPagerAdapter
         tabLayout.setupWithViewPager(viewPager)
     }
