@@ -10,7 +10,7 @@ data class AuthorDetailsDto(
     @Json(name = "name")
     val name: String,
     @Json(name = "rating")
-    val rating: Int,
+    val rating: Int?,
     @Json(name = "username")
     val username: String
 )

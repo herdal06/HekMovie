@@ -9,7 +9,9 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.herdal.moviehouse.databinding.FragmentMovieReviewsBinding
+import com.herdal.moviehouse.ui.reviews.adapter.ItemDecorator
 import com.herdal.moviehouse.ui.reviews.adapter.ReviewAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -44,6 +46,13 @@ class MovieReviewsFragment(private val movieId: Int) : Fragment() {
 
     private fun setupRv() = binding.apply {
         rvReviews.adapter = reviewAdapter
+        rvReviews.addItemDecoration(ItemDecorator(requireContext()))
+        rvReviews.addItemDecoration(
+            DividerItemDecoration(
+                rvReviews.context,
+                DividerItemDecoration.VERTICAL
+            )
+        )
     }
 
     private fun observeReviews(movieId: Int) = lifecycleScope.launch {
