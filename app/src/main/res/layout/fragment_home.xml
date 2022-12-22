@@ -122,6 +122,45 @@
                 android:text="@string/error_message"
                 android:visibility="gone" />
 
+
+            <LinearLayout
+                android:id="@+id/layout_popular_people"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/small_margin"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal"
+                tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck">
+
+                <TextView
+                    android:id="@+id/tvPopularPeopleText"
+                    style="@style/TitleText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/popular_people_on_tmdb"
+                    tools:ignore="TextContrastCheck" />
+
+                <TextView
+                    android:id="@+id/tvPopularPeople"
+                    style="@style/SeeAllText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:text="@string/see_all" />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPopularPeople"
+                android:layout_width="match_parent"
+                android:layout_height="282dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_person" />
+
             <LinearLayout
                 android:id="@+id/layout_top_rated_movies"
                 android:layout_width="match_parent"
