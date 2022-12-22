@@ -15,7 +15,7 @@ class PersonViewHolder(
         }
 
         itemView.setOnClickListener {
-            onClickPerson?.invoke(person.id)
+            person.id?.let { it1 -> onClickPerson?.invoke(it1) }
         }
     }
 }

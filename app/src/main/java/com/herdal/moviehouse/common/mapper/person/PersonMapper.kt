@@ -9,7 +9,7 @@ class PersonMapper(
 ) : BaseMapper<PersonDto, PersonUiModel> {
     override fun toDomain(response: PersonDto): PersonUiModel {
 
-        val knownFor = response.known_for.map { knownForDto ->
+        val knownFor = response.known_for?.map { knownForDto ->
             knownForMapper.toDomain(knownForDto)
         }
 
@@ -25,7 +25,7 @@ class PersonMapper(
     }
 
     override fun fromDomain(domainModel: PersonUiModel): PersonDto {
-        val knownFor = domainModel.known_for.map { knownForUiModel ->
+        val knownFor = domainModel.known_for?.map { knownForUiModel ->
             knownForMapper.fromDomain(knownForUiModel)
         }
 
