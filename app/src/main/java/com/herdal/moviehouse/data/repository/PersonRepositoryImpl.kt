@@ -16,12 +16,12 @@ class PersonRepositoryImpl @Inject constructor(
     private val remote: PersonDataSource.Remote
 ) : PersonRepository {
     override fun getPopularPeople(): Flow<PagingData<PersonUiModel>> {
-        val domainPerson = remote.getPopularPeople().map { pagingData ->
-            pagingData.map { remotePerson ->
-                personMapper.toDomain(remotePerson)
+        val domainPopularPerson = remote.getPopularPeople().map { pagingData ->
+            pagingData.map { domainPopularPerson ->
+                personMapper.toDomain(domainPopularPerson)
             }
         }
-        Timber.d("popular: $domainPerson")
-        return domainPerson
+        Timber.d("popular: $domainPopularPerson")
+        return domainPopularPerson
     }
 }
