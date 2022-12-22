@@ -18,6 +18,7 @@ object ApiConstants {
         const val MOVIE_DETAILS = "3/movie/{id}"
         const val SIMILAR = "3/movie/{id}/similar"
         const val RECOMMENDED = "3/movie/{id}/recommendations"
+        const val REVIEWS = "3/movie/{movie_id}/reviews"
     }
 
     @JvmStatic
