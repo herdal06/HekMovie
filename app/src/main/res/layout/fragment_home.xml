@@ -156,7 +156,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvPopularPeople"
                 android:layout_width="match_parent"
-                android:layout_height="282dp"
+                android:layout_height="192dp"
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/item_person" />
