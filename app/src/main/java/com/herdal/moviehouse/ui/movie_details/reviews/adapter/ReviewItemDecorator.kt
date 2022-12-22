@@ -1,4 +1,4 @@
-package com.herdal.moviehouse.ui.reviews.adapter
+package com.herdal.moviehouse.ui.movie_details.reviews.adapter
 
 import android.content.Context
 import android.graphics.Rect

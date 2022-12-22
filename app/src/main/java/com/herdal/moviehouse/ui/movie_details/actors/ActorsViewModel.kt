@@ -1,4 +1,4 @@
-package com.herdal.moviehouse.ui.actors
+package com.herdal.moviehouse.ui.movie_details.actors
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel

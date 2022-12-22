@@ -1,4 +1,4 @@
-package com.herdal.moviehouse.ui.reviews
+package com.herdal.moviehouse.ui.movie_details.reviews
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,8 +11,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.herdal.moviehouse.databinding.FragmentMovieReviewsBinding
-import com.herdal.moviehouse.ui.reviews.adapter.ReviewAdapter
-import com.herdal.moviehouse.ui.reviews.adapter.ReviewItemDecorator
+import com.herdal.moviehouse.ui.movie_details.reviews.adapter.ReviewAdapter
+import com.herdal.moviehouse.ui.movie_details.reviews.adapter.ReviewItemDecorator
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import timber.log.Timber

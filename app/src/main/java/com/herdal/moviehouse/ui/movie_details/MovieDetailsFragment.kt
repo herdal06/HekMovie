@@ -15,13 +15,13 @@ import com.herdal.moviehouse.common.downloadImage
 import com.herdal.moviehouse.common.getPlaceHolder
 import com.herdal.moviehouse.databinding.FragmentMovieDetailsBinding
 import com.herdal.moviehouse.domain.uimodel.MovieDetailUiModel
-import com.herdal.moviehouse.ui.actors.ActorsFragment
+import com.herdal.moviehouse.ui.movie_details.actors.ActorsFragment
 import com.herdal.moviehouse.ui.home.adapter.genre.GenreAdapter
 import com.herdal.moviehouse.ui.home.adapter.movie.MovieAdapter
 import com.herdal.moviehouse.ui.movie_details.about_movie.AboutMovieFragment
 import com.herdal.moviehouse.ui.movie_details.adapter.MovieDetailViewPagerAdapter
 import com.herdal.moviehouse.ui.movie_details.recommended_movies.RecommendedMoviesFragment
-import com.herdal.moviehouse.ui.reviews.MovieReviewsFragment
+import com.herdal.moviehouse.ui.movie_details.reviews.MovieReviewsFragment
 import com.herdal.moviehouse.ui.movie_details.similar_movies.SimilarMoviesFragment
 import com.herdal.moviehouse.utils.extensions.hide
 import com.herdal.moviehouse.utils.extensions.show
