@@ -6,7 +6,7 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class AuthorDetailsDto(
     @Json(name = "avatar_path")
-    val avatar_path: String,
+    val avatar_path: String?,
     @Json(name = "name")
     val name: String,
     @Json(name = "rating")
