@@ -81,7 +81,7 @@ class MovieRemoteDataSource @Inject constructor(
             pagingSourceFactory = {
                 MovieDetailPagingSource(
                     movieService,
-                    MovieDetailEnum.MovieDetail,
+                    MovieDetailEnum.SIMILAR,
                     id
                 )
             }
@@ -99,7 +99,7 @@ class MovieRemoteDataSource @Inject constructor(
             pagingSourceFactory = {
                 MovieDetailPagingSource(
                     movieService,
-                    MovieDetailEnum.RECOMMENDATIONS,
+                    MovieDetailEnum.MovieDetail,
                     id
                 )
             }
