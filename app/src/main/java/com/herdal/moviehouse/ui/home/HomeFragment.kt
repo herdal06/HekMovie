@@ -16,6 +16,7 @@ import com.herdal.moviehouse.common.Resource
 import com.herdal.moviehouse.databinding.FragmentHomeBinding
 import com.herdal.moviehouse.ui.home.adapter.genre.GenreAdapter
 import com.herdal.moviehouse.ui.home.adapter.movie.MovieAdapter
+import com.herdal.moviehouse.ui.home.adapter.people.PersonAdapter
 import com.herdal.moviehouse.utils.extensions.hide
 import com.herdal.moviehouse.utils.extensions.show
 import dagger.hilt.android.AndroidEntryPoint
@@ -48,6 +49,10 @@ class HomeFragment : Fragment() {
         MovieAdapter(::onClickMovie)
     }
 
+    private val popularPeopleAdapter: PersonAdapter by lazy {
+        PersonAdapter(::onClickPerson)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -56,6 +61,7 @@ class HomeFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         setupRecyclerViews()
         observeMovies()
+        observePeople()
         collectApiRequest()
         return binding.root
     }
@@ -66,6 +72,7 @@ class HomeFragment : Fragment() {
         rvUpcomingMovies.adapter = upcomingMoviesAdapter
         rvNowPlayingMovies.adapter = nowPlayingMoviesAdapter
         rvTopRatedMovies.adapter = topRatedMoviesAdapter
+        rvPopularPeople.adapter = popularPeopleAdapter
     }
 
     private fun collectApiRequest() = binding.apply {
@@ -119,8 +126,21 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun observePeople() = lifecycleScope.launch {
+        repeatOnLifecycle(Lifecycle.State.STARTED) {
+            viewModel.getPopularPeople().observe(viewLifecycleOwner) {
+                popularPeopleAdapter.submitData(lifecycle, it)
+                Timber.d("$it")
+            }
+        }
+    }
+
     private fun onClickMovie(movieId: Int) {
         val action = HomeFragmentDirections.actionHomeFragmentToMovieDetailsFragment(movieId)
         findNavController().navigate(action)
+    }
+
+    private fun onClickPerson(personId: Int) {
+
     }
 }

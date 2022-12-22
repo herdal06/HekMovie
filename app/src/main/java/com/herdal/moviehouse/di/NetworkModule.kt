@@ -4,6 +4,7 @@ import androidx.viewbinding.BuildConfig
 import com.google.gson.Gson
 import com.herdal.moviehouse.data.remote.service.GenreService
 import com.herdal.moviehouse.data.remote.service.MovieService
+import com.herdal.moviehouse.data.remote.service.PersonService
 import com.herdal.moviehouse.data.remote.service.ReviewService
 import com.herdal.moviehouse.utils.ApiConstants.BASE_URL
 import com.squareup.moshi.Moshi
@@ -93,4 +94,9 @@ object NetworkModule {
     @Singleton
     fun provideReviewService(retrofit: Retrofit): ReviewService =
         retrofit.create(ReviewService::class.java)
+
+    @Provides
+    @Singleton
+    fun providePersonService(retrofit: Retrofit): PersonService =
+        retrofit.create(PersonService::class.java)
 }

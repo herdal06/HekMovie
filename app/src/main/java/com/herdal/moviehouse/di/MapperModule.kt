@@ -1,6 +1,8 @@
 package com.herdal.moviehouse.di
 
 import com.herdal.moviehouse.common.mapper.*
+import com.herdal.moviehouse.common.mapper.person.KnownForMapper
+import com.herdal.moviehouse.common.mapper.person.PersonMapper
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -44,4 +46,14 @@ object MapperModule {
     ): ReviewMapper = ReviewMapperImpl(
         provideAuthorDetailMapper()
     )
+
+    @Provides
+    @Singleton
+    fun provideKnownForMapper(
+    ): KnownForMapper = KnownForMapper()
+
+    @Provides
+    @Singleton
+    fun providePersonMapper(
+    ): PersonMapper = PersonMapper(provideKnownForMapper())
 }
