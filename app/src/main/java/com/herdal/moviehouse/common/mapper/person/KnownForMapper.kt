@@ -6,7 +6,6 @@ import com.herdal.moviehouse.domain.uimodel.person.KnowForUiModel
 
 class KnownForMapper : BaseMapper<KnownForDto, KnowForUiModel> {
     override fun toDomain(response: KnownForDto): KnowForUiModel = KnowForUiModel(
-        adult = response.adult,
         backdrop_path = response.backdrop_path,
         first_air_date = response.first_air_date,
         genre_ids = response.genre_ids,
@@ -27,7 +26,6 @@ class KnownForMapper : BaseMapper<KnownForDto, KnowForUiModel> {
     )
 
     override fun fromDomain(domainModel: KnowForUiModel): KnownForDto = KnownForDto(
-        adult = domainModel.adult,
         backdrop_path = domainModel.backdrop_path,
         first_air_date = domainModel.first_air_date,
         genre_ids = domainModel.genre_ids,

@@ -1,7 +1,6 @@
 package com.herdal.moviehouse.domain.uimodel.person
 
 data class PersonUiModel(
-    val adult: Boolean,
     val gender: Int,
     val id: Int,
     val known_for: List<KnowForUiModel>,

@@ -14,7 +14,6 @@ class PersonMapper(
         }
 
         return PersonUiModel(
-            adult = response.adult,
             gender = response.gender,
             id = response.id,
             known_for = knownFor,
@@ -31,7 +30,6 @@ class PersonMapper(
         }
 
         return PersonDto(
-            adult = domainModel.adult,
             gender = domainModel.gender,
             id = domainModel.id,
             known_for = knownFor,

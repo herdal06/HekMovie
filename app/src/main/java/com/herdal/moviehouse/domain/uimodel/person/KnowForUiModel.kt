@@ -1,7 +1,6 @@
 package com.herdal.moviehouse.domain.uimodel.person
 
 data class KnowForUiModel(
-    val adult: Boolean,
     val backdrop_path: String?,
     val first_air_date: String,
     val genre_ids: List<Int>,
