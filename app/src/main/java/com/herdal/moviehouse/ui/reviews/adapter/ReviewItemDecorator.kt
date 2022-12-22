@@ -9,7 +9,7 @@ import com.herdal.moviehouse.utils.extensions.dpToPx
 private const val ITEM_HORIZONTAL_MARGIN = 16
 private const val ITEM_VERTICAL_MARGIN = 4
 
-class ItemDecorator(context: Context) : RecyclerView.ItemDecoration() {
+class ReviewItemDecorator(context: Context) : RecyclerView.ItemDecoration() {
 
     private val marginHorizontal by lazy {
         ITEM_HORIZONTAL_MARGIN.dpToPx(context)
