@@ -23,7 +23,7 @@ class MovieDetailPagingSource(
 
         return try {
             val response = when (movieDetailEnum) {
-                MovieDetailEnum.MovieDetail -> {
+                MovieDetailEnum.SIMILAR -> {
                     movieService.getSimilarMovies(
                         id = movieId,
                         page = nextPage
