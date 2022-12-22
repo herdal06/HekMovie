@@ -2,9 +2,11 @@ package com.herdal.moviehouse.di
 
 import com.herdal.moviehouse.common.data_source.GenreDataSource
 import com.herdal.moviehouse.common.data_source.MovieDataSource
+import com.herdal.moviehouse.common.data_source.PersonDataSource
 import com.herdal.moviehouse.common.data_source.ReviewDataSource
 import com.herdal.moviehouse.data.remote.data_source.GenreRemoteDataSource
 import com.herdal.moviehouse.data.remote.data_source.MovieRemoteDataSource
+import com.herdal.moviehouse.data.remote.data_source.PersonRemoteDataSource
 import com.herdal.moviehouse.data.remote.data_source.ReviewRemoteDataSource
 import dagger.Binds
 import dagger.Module
@@ -22,4 +24,7 @@ abstract class DataSourceModule {
 
     @Binds
     abstract fun bindReviewRemoteDataSource(reviewRemoteDataSource: ReviewRemoteDataSource): ReviewDataSource.Remote
+
+    @Binds
+    abstract fun bindPersonRemoteDataSource(personRemoteDataSource: PersonRemoteDataSource): PersonDataSource.Remote
 }
