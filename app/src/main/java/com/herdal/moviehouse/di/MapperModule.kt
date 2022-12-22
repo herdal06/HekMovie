@@ -32,4 +32,16 @@ object MapperModule {
         provideGenreMapper(),
         provideCompanyMapper()
     )
+
+    @Provides
+    @Singleton
+    fun provideAuthorDetailMapper(
+    ): AuthorMapper = AuthorMapperImpl()
+
+    @Provides
+    @Singleton
+    fun provideReviewMapper(
+    ): ReviewMapper = ReviewMapperImpl(
+        provideAuthorDetailMapper()
+    )
 }

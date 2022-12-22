@@ -8,7 +8,7 @@ data class ReviewDto(
     @Json(name = "author")
     val author: String,
     @Json(name = "author_details")
-    val author_details: AuthorDetails,
+    val author_details: AuthorDetailsDto,
     @Json(name = "content")
     val content: String,
     @Json(name = "created_at")
