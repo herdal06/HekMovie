@@ -3,8 +3,10 @@ package com.herdal.moviehouse.data.repository
 import androidx.paging.PagingData
 import androidx.paging.map
 import com.herdal.moviehouse.common.data_source.PersonDataSource
+import com.herdal.moviehouse.common.mapper.person.PersonDetailMapper
 import com.herdal.moviehouse.common.mapper.person.PersonMapper
 import com.herdal.moviehouse.domain.repository.PersonRepository
+import com.herdal.moviehouse.domain.uimodel.person.PersonDetailUiModel
 import com.herdal.moviehouse.domain.uimodel.person.PersonUiModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -13,6 +15,7 @@ import javax.inject.Inject
 
 class PersonRepositoryImpl @Inject constructor(
     private val personMapper: PersonMapper,
+    private val personDetailMapper: PersonDetailMapper,
     private val remote: PersonDataSource.Remote
 ) : PersonRepository {
     override fun getPopularPeople(): Flow<PagingData<PersonUiModel>> {
@@ -23,5 +26,10 @@ class PersonRepositoryImpl @Inject constructor(
         }
         Timber.d("popular: $domainPopularPerson")
         return domainPopularPerson
+    }
+
+    override suspend fun getPersonDetails(id: Int): PersonDetailUiModel {
+        val personDetailDto = remote.getPersonDetails(id)
+        return personDetailMapper.toDomain(personDetailDto)
     }
 }
