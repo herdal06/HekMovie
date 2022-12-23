@@ -60,7 +60,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tvBiographyText" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/tvAlsoKnownAsText"
             style="@style/PersonText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -78,30 +78,8 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            app:layout_constraintTop_toBottomOf="@+id/tvAlsoKnownAsText"
             tools:listitem="@layout/item_also_known_as" />
-
-        <TextView
-            android:id="@+id/tvMovieCreditsText"
-            style="@style/PersonText.XLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/large_margin"
-            android:text="@string/movie_credits"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvBiography" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvMovieCredits"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/double_extra_small_margin"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvMovieCreditsText"
-            tools:listitem="@layout/item_movie" />
 
         <ProgressBar
             android:id="@+id/pbPersonDetail"

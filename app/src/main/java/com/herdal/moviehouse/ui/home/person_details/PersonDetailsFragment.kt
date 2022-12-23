@@ -15,7 +15,6 @@ import com.herdal.moviehouse.common.downloadImage
 import com.herdal.moviehouse.common.getPlaceHolder
 import com.herdal.moviehouse.databinding.FragmentPersonDetailsBinding
 import com.herdal.moviehouse.domain.uimodel.person.PersonDetailUiModel
-import com.herdal.moviehouse.ui.home.adapter.movie.MovieAdapter
 import com.herdal.moviehouse.ui.home.person_details.adapter.AlsoKnownAsAdapter
 import com.herdal.moviehouse.utils.extensions.hide
 import com.herdal.moviehouse.utils.extensions.show
@@ -42,10 +41,6 @@ class PersonDetailsFragment : Fragment() {
         AlsoKnownAsAdapter()
     }
 
-    private val movieCreditsAdapter: MovieAdapter by lazy {
-        MovieAdapter(::onClickMovie)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -60,7 +55,6 @@ class PersonDetailsFragment : Fragment() {
 
     private fun setupRecyclerViews() = binding.apply {
         rvAlsoKnownAs.adapter = alsoKnownAsAdapter
-        rvMovieCredits.adapter = movieCreditsAdapter
     }
 
     private fun collectPersonDetailRequest() = binding.apply {
@@ -101,10 +95,6 @@ class PersonDetailsFragment : Fragment() {
                 getPlaceHolder(requireContext())
             )
         }
-    }
-
-    private fun onClickMovie(movieId: Int) {
-        //todo: on click movie
     }
 
     override fun onDestroyView() {
