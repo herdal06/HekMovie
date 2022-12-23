@@ -2,10 +2,10 @@ package com.herdal.moviehouse.ui.movie_details.view_pager
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
+import androidx.fragment.app.FragmentStatePagerAdapter
 
 class MovieDetailViewPagerAdapter(manager: FragmentManager) :
-    FragmentPagerAdapter(manager) {
+    FragmentStatePagerAdapter(manager) {
 
     private val fragmentList: MutableList<Fragment> = ArrayList()
     private val titleList: MutableList<String> = ArrayList()
