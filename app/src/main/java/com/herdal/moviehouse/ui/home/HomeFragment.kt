@@ -141,6 +141,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun onClickPerson(personId: Int) {
-
+        val action = HomeFragmentDirections.actionHomeFragmentToPersonDetailsFragment(personId)
+        findNavController().navigate(action)
     }
 }
