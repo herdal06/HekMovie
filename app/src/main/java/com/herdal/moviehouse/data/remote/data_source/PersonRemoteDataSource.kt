@@ -5,6 +5,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.herdal.moviehouse.common.data_source.PersonDataSource
 import com.herdal.moviehouse.data.remote.model.person.PersonDto
+import com.herdal.moviehouse.data.remote.model.person_detail.PersonDetailDto
 import com.herdal.moviehouse.data.remote.paging_source.PersonPagingSource
 import com.herdal.moviehouse.data.remote.service.PersonService
 import com.herdal.moviehouse.utils.ApiConstants
@@ -25,4 +26,7 @@ class PersonRemoteDataSource @Inject constructor(
             ),
             pagingSourceFactory = { PersonPagingSource(personService) }
         ).flow
+
+    override suspend fun getPersonDetails(id: Int): PersonDetailDto =
+        personService.getPersonDetails(id)
 }

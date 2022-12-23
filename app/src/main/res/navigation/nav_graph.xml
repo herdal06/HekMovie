@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_homeFragment_to_movieDetailsFragment"
             app:destination="@id/movieDetailsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_personDetailsFragment"
+            app:destination="@id/personDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/movieDetailsFragment"
@@ -21,6 +24,15 @@
         tools:layout="@layout/fragment_movie_details" >
         <argument
             android:name="movieId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/personDetailsFragment"
+        android:name="com.herdal.moviehouse.ui.home.person_details.PersonDetailsFragment"
+        android:label="fragment_person_details"
+        tools:layout="@layout/fragment_person_details" >
+        <argument
+            android:name="personId"
             app:argType="integer" />
     </fragment>
 </navigation>
