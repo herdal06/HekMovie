@@ -1,13 +1,7 @@
 package com.herdal.moviehouse.di
 
-import com.herdal.moviehouse.common.data_source.GenreDataSource
-import com.herdal.moviehouse.common.data_source.MovieDataSource
-import com.herdal.moviehouse.common.data_source.PersonDataSource
-import com.herdal.moviehouse.common.data_source.ReviewDataSource
-import com.herdal.moviehouse.data.remote.data_source.GenreRemoteDataSource
-import com.herdal.moviehouse.data.remote.data_source.MovieRemoteDataSource
-import com.herdal.moviehouse.data.remote.data_source.PersonRemoteDataSource
-import com.herdal.moviehouse.data.remote.data_source.ReviewRemoteDataSource
+import com.herdal.moviehouse.common.data_source.*
+import com.herdal.moviehouse.data.remote.data_source.*
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -27,4 +21,7 @@ abstract class DataSourceModule {
 
     @Binds
     abstract fun bindPersonRemoteDataSource(personRemoteDataSource: PersonRemoteDataSource): PersonDataSource.Remote
+
+    @Binds
+    abstract fun bindVideoRemoteDataSource(videoRemoteDataSource: VideoRemoteDataSource): VideoDataSource.Remote
 }
