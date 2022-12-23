@@ -13,4 +13,24 @@
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_review" />
+
+    <TextView
+        android:id="@+id/tvReviewEmpty"
+        style="@style/PersonText.XLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/double_extra_large_margin"
+        android:text="@string/there_is_no_reviews_yet"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/ivReviewNoData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/double_extra_large_margin"
+        android:contentDescription="@string/no_data"
+        android:src="@drawable/ic_cancel"
+        android:visibility="gone" />
 </FrameLayout>

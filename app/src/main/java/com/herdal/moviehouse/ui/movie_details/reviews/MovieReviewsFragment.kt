@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import com.herdal.moviehouse.databinding.FragmentMovieReviewsBinding
 import com.herdal.moviehouse.ui.movie_details.reviews.adapter.ReviewAdapter
 import com.herdal.moviehouse.ui.movie_details.reviews.adapter.ReviewItemDecorator
+import com.herdal.moviehouse.utils.extensions.hide
+import com.herdal.moviehouse.utils.extensions.show
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -41,6 +43,7 @@ class MovieReviewsFragment(private val movieId: Int) : Fragment() {
         val view = binding.root
         setupRv()
         observeReviews(movieId)
+        checkIfAdapterEmpty()
         return view
     }
 
@@ -60,6 +63,22 @@ class MovieReviewsFragment(private val movieId: Int) : Fragment() {
             viewModel.getReviews(movieId).observe(viewLifecycleOwner) {
                 reviewAdapter.submitData(lifecycle, it)
                 Timber.d("$it")
+            }
+        }
+    }
+
+    private fun checkIfAdapterEmpty() = binding.apply {
+        reviewAdapter.addLoadStateListener {
+            if (it.append.endOfPaginationReached) {
+                if (reviewAdapter.itemCount < 1) {
+                    tvReviewEmpty.show()
+                    rvReviews.hide()
+                    ivReviewNoData.show()
+                } else {
+                    rvReviews.show()
+                    tvReviewEmpty.hide()
+                    ivReviewNoData.hide()
+                }
             }
         }
     }

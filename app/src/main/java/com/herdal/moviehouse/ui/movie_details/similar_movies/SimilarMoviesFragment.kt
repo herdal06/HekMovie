@@ -11,6 +11,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.herdal.moviehouse.databinding.FragmentSimilarMoviesBinding
 import com.herdal.moviehouse.ui.home.adapter.movie.MovieAdapter
+import com.herdal.moviehouse.utils.extensions.hide
+import com.herdal.moviehouse.utils.extensions.show
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -39,6 +41,7 @@ class SimilarMoviesFragment(private val movieId: Int) : Fragment() {
         val view = binding.root
         setupRv()
         observeSimilarMovies(movieId)
+        checkIfAdapterEmpty()
         return view
     }
 
@@ -51,6 +54,22 @@ class SimilarMoviesFragment(private val movieId: Int) : Fragment() {
             viewModel.getSimilarMovies(movieId).observe(viewLifecycleOwner) {
                 similarMoviesAdapter.submitData(lifecycle, it)
                 Timber.d("$it")
+            }
+        }
+    }
+
+    private fun checkIfAdapterEmpty() = binding.apply {
+        similarMoviesAdapter.addLoadStateListener {
+            if (it.append.endOfPaginationReached) {
+                if (similarMoviesAdapter.itemCount < 1) {
+                    tvSimilarEmpty.show()
+                    rvSimilar.hide()
+                    ivSimilarNoData.show()
+                } else {
+                    rvSimilar.show()
+                    rvSimilar.hide()
+                    ivSimilarNoData.hide()
+                }
             }
         }
     }

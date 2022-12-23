@@ -17,4 +17,6 @@
     <string name="also_known_as">Also Known As</string>
     <string name="movie_credits">Movie Credits</string>
     <string name="biography">Biography</string>
+    <string name="there_is_no_reviews_yet">There is no reviews yet.</string>
+    <string name="no_data">no data</string>
 </resources>
