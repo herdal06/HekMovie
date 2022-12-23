@@ -52,6 +52,10 @@
         <item name="android:textSize">@dimen/large_size</item>
     </style>
 
+    <style name="PersonText.XLarge" parent="@android:style/TextAppearance">
+        <item name="android:textSize">@dimen/extra_large_size</item>
+    </style>
+
     <style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">
         <item name="tabTextAppearance">@style/MyCustomTextAppearance</item>
     </style>
