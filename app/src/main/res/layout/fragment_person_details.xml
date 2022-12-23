@@ -25,7 +25,6 @@
                 android:id="@+id/ivPerson"
                 android:layout_width="175dp"
                 android:layout_height="175dp"
-
                 android:scaleType="fitXY"
                 tools:srcCompat="@tools:sample/avatars" />
         </com.google.android.material.card.MaterialCardView>
@@ -35,7 +34,7 @@
             style="@style/PersonText.XLarge"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/double_extra_large_margin"
+            android:layout_marginTop="@dimen/large_margin"
             android:gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,10 +45,10 @@
             style="@style/PersonText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/biography"
             android:layout_marginTop="@dimen/large_margin"
+            android:text="@string/biography"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvPersonDetailsName" />
+            app:layout_constraintTop_toBottomOf="@+id/rvAlsoKnownAs" />
 
         <TextView
             android:id="@+id/tvBiography"
@@ -65,10 +64,10 @@
             style="@style/PersonText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/medium_margin"
+            android:layout_marginTop="@dimen/large_margin"
             android:text="@string/also_known_as"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvBiography" />
+            app:layout_constraintTop_toBottomOf="@+id/tvPersonDetailsName" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvAlsoKnownAs"
@@ -87,10 +86,10 @@
             style="@style/PersonText.XLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/medium_margin"
+            android:layout_marginTop="@dimen/large_margin"
             android:text="@string/movie_credits"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rvAlsoKnownAs" />
+            app:layout_constraintTop_toBottomOf="@+id/tvBiography" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvMovieCredits"
