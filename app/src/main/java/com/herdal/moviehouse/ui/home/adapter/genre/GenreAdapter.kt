@@ -2,25 +2,20 @@ package com.herdal.moviehouse.ui.home.adapter.genre
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
+import com.herdal.moviehouse.common.base.BaseListAdapter
 import com.herdal.moviehouse.databinding.ItemGenreBinding
 import com.herdal.moviehouse.domain.uimodel.GenreUiModel
 
-class GenreAdapter : ListAdapter<GenreUiModel, GenreViewHolder>(DiffCallBack) {
-
-    companion object {
-        val DiffCallBack = object : DiffUtil.ItemCallback<GenreUiModel>() {
-            override fun areItemsTheSame(oldItem: GenreUiModel, newItem: GenreUiModel): Boolean =
-                oldItem.id == newItem.id
-
-            override fun areContentsTheSame(oldItem: GenreUiModel, newItem: GenreUiModel): Boolean =
-                oldItem == newItem
-
-        }
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GenreViewHolder =
+class GenreAdapter : BaseListAdapter<GenreUiModel>(
+    itemsSame = { old, new -> old.id == new.id },
+    contentsSame = { old, new -> old == new }
+) {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        inflater: LayoutInflater,
+        viewType: Int
+    ): RecyclerView.ViewHolder =
         GenreViewHolder(
             ItemGenreBinding.inflate(
                 LayoutInflater.from(parent.context),
@@ -29,10 +24,11 @@ class GenreAdapter : ListAdapter<GenreUiModel, GenreViewHolder>(DiffCallBack) {
             )
         )
 
-    override fun onBindViewHolder(holder: GenreViewHolder, position: Int) {
-        val currentGenre = getItem(position)
-        currentGenre?.let {
-            holder.bind(currentGenre)
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (holder) {
+            is GenreViewHolder -> {
+                getItem(position)?.let { genre -> holder.bind(genre) }
+            }
         }
     }
 }

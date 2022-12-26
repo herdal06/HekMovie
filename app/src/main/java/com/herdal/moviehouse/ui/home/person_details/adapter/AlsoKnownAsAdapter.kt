@@ -2,23 +2,19 @@ package com.herdal.moviehouse.ui.home.person_details.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
+import com.herdal.moviehouse.common.base.BaseListAdapter
 import com.herdal.moviehouse.databinding.ItemAlsoKnownAsBinding
 
-class AlsoKnownAsAdapter : ListAdapter<String, AlsoKnownAsViewHolder>(DiffCallBack) {
-
-    companion object {
-        val DiffCallBack = object : DiffUtil.ItemCallback<String>() {
-            override fun areItemsTheSame(oldItem: String, newItem: String): Boolean =
-                oldItem == newItem
-
-            override fun areContentsTheSame(oldItem: String, newItem: String): Boolean =
-                oldItem == newItem
-        }
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlsoKnownAsViewHolder =
+class AlsoKnownAsAdapter : BaseListAdapter<String>(
+    itemsSame = { old, new -> old == new },
+    contentsSame = { old, new -> old == new }
+) {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        inflater: LayoutInflater,
+        viewType: Int
+    ): RecyclerView.ViewHolder =
         AlsoKnownAsViewHolder(
             ItemAlsoKnownAsBinding.inflate(
                 LayoutInflater.from(parent.context),
@@ -27,10 +23,11 @@ class AlsoKnownAsAdapter : ListAdapter<String, AlsoKnownAsViewHolder>(DiffCallBa
             )
         )
 
-    override fun onBindViewHolder(holder: AlsoKnownAsViewHolder, position: Int) {
-        val currentItem = getItem(position)
-        currentItem?.let {
-            holder.bind(currentItem)
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (holder) {
+            is AlsoKnownAsViewHolder -> {
+                getItem(position)?.let { alsoKnownAs -> holder.bind(alsoKnownAs) }
+            }
         }
     }
 }
