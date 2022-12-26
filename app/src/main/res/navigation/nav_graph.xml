@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_homeFragment_to_personDetailsFragment"
             app:destination="@id/personDetailsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_seeAllFragment"
+            app:destination="@id/seeAllFragment" />
     </fragment>
     <fragment
         android:id="@+id/movieDetailsFragment"
@@ -34,5 +37,14 @@
         <argument
             android:name="personId"
             app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/seeAllFragment"
+        android:name="com.herdal.moviehouse.ui.home.see_all.SeeAllFragment"
+        android:label="fragment_see_all"
+        tools:layout="@layout/fragment_see_all" >
+        <argument
+            android:name="type"
+            app:argType="string" />
     </fragment>
 </navigation>
