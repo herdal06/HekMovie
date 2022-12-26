@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -63,6 +64,7 @@ class HomeFragment : Fragment() {
         observeMovies()
         observePeople()
         collectApiRequest()
+        onClickSeeAllTexts()
         return binding.root
     }
 
@@ -142,6 +144,23 @@ class HomeFragment : Fragment() {
 
     private fun onClickPerson(personId: Int) {
         val action = HomeFragmentDirections.actionHomeFragmentToPersonDetailsFragment(personId)
+        findNavController().navigate(action)
+    }
+
+    private fun clickTextView(textView: TextView, type: String) = textView.setOnClickListener {
+        navigateToSeeAll(type)
+    }
+
+    private fun onClickSeeAllTexts() = binding.apply {
+        clickTextView(tvShowPopularMovies, "Popular")
+        clickTextView(tvShowUpcomingMovies, "Upcoming")
+        clickTextView(tvTopRatedMovies, "Top Rated")
+        clickTextView(tvShowNowPlayingMovies, "Now Playing")
+        clickTextView(tvPopularPeople, "Popular People")
+    }
+
+    private fun navigateToSeeAll(type: String) {
+        val action = HomeFragmentDirections.actionHomeFragmentToSeeAllFragment(type)
         findNavController().navigate(action)
     }
 }
