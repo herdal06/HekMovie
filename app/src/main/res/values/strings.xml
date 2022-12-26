@@ -3,10 +3,13 @@
     <string name="genres">Genres</string>
     <string name="see_all">See All</string>
     <string name="error_message">Error While Loading Data.</string>
-    <string name="popular">Popular</string>
+    <string name="popular_movies">Popular Movies</string>
     <string name="upcoming">Upcoming</string>
     <string name="top_rated">Top Rated</string>
     <string name="now_playing">Now Playing</string>
+    <string name="upcoming_movies">Upcoming Movies</string>
+    <string name="top_rated_movies">Top Rated Movies</string>
+    <string name="now_playing_movies">Now Playing Movies</string>
     <string name="movie_backdrop">movie backdrop</string>
     <string name="movie_poster">movie poster</string>
     <string name="similar_movies">Similar Movies</string>
@@ -20,4 +23,5 @@
     <string name="there_is_no_reviews_yet">There is no reviews yet.</string>
     <string name="no_data">no data</string>
     <string name="popular_people">Popular People</string>
+    <string name="popular">Popular</string>
 </resources>

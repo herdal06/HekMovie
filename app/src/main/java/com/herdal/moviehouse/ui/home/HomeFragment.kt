@@ -152,11 +152,11 @@ class HomeFragment : Fragment() {
     }
 
     private fun onClickSeeAllTexts() = binding.apply {
-        clickTextView(tvShowPopularMovies, getString(R.string.popular))
-        clickTextView(tvShowUpcomingMovies, getString(R.string.upcoming))
-        clickTextView(tvTopRatedMovies, getString(R.string.top_rated))
-        clickTextView(tvShowNowPlayingMovies, getString(R.string.now_playing))
-        clickTextView(tvPopularPeople, getString(R.string.popular))
+        clickTextView(tvShowPopularMovies, getString(R.string.popular_movies))
+        clickTextView(tvShowUpcomingMovies, getString(R.string.upcoming_movies))
+        clickTextView(tvTopRatedMovies, getString(R.string.top_rated_movies))
+        clickTextView(tvShowNowPlayingMovies, getString(R.string.now_playing_movies))
+        clickTextView(tvPopularPeople, getString(R.string.popular_people))
     }
 
     private fun navigateToSeeAll(type: String) {

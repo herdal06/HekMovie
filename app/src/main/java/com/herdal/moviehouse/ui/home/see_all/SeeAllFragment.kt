@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -60,37 +61,37 @@ class SeeAllFragment : Fragment() {
         rvSeeAll.adapter = peopleAdapter
     }
 
-    private fun changeToolBarTitle(text: String) = binding.apply {
-        toolbar.title = text
+    private fun changeToolBarTitle(text: String) {
+        (activity as AppCompatActivity).supportActionBar?.title = text
     }
 
     private fun observeData(type: String) = lifecycleScope.launch {
         when (type) {
-            getString(R.string.popular) -> {
+            getString(R.string.popular_movies) -> {
                 viewModel.getPopularMovies().observeOnce(viewLifecycleOwner) {
                     setupRvMovie()
                     movieAdapter.submitData(lifecycle, it)
                 }
             }
-            getString(R.string.upcoming) -> {
+            getString(R.string.upcoming_movies) -> {
                 viewModel.getUpcomingMovies().observeOnce(viewLifecycleOwner) {
                     setupRvMovie()
                     movieAdapter.submitData(lifecycle, it)
                 }
             }
-            getString(R.string.top_rated) -> {
+            getString(R.string.top_rated_movies) -> {
                 viewModel.getTopRatedMovies().observeOnce(viewLifecycleOwner) {
                     setupRvMovie()
                     movieAdapter.submitData(lifecycle, it)
                 }
             }
-            getString(R.string.now_playing) -> {
+            getString(R.string.now_playing_movies) -> {
                 viewModel.getNowPlayingMovies().observeOnce(viewLifecycleOwner) {
                     setupRvMovie()
                     movieAdapter.submitData(lifecycle, it)
                 }
             }
-            getString(R.string.popular) -> {
+            getString(R.string.popular_people) -> {
                 viewModel.getPopularPeople().observeOnce(viewLifecycleOwner) {
                     setupRvPeople()
                     peopleAdapter.submitData(lifecycle, it)
