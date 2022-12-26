@@ -11,6 +11,7 @@ import androidx.navigation.fragment.navArgs
 import com.herdal.moviehouse.databinding.FragmentSeeAllBinding
 import com.herdal.moviehouse.ui.home.HomeViewModel
 import com.herdal.moviehouse.ui.home.adapter.movie.MovieAdapter
+import com.herdal.moviehouse.ui.home.adapter.people.PersonAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -33,6 +34,9 @@ class SeeAllFragment : Fragment() {
         MovieAdapter(::onClickMovie)
     }
 
+    private val peopleAdapter: PersonAdapter by lazy {
+        PersonAdapter(::onClickPerson)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,14 +45,17 @@ class SeeAllFragment : Fragment() {
     ): View? {
         _binding = FragmentSeeAllBinding.inflate(inflater, container, false)
         val view = binding.root
-        setupRecyclerView()
         observeData(getArgs())
         changeToolBarTitle(getArgs())
         return view
     }
 
-    private fun setupRecyclerView() = binding.apply {
+    private fun setupRvMovie() = binding.apply {
         rvSeeAll.adapter = movieAdapter
+    }
+
+    private fun setupRvPeople() = binding.apply {
+        rvSeeAll.adapter = peopleAdapter
     }
 
     private fun changeToolBarTitle(text: String) = binding.apply {
@@ -59,28 +66,43 @@ class SeeAllFragment : Fragment() {
         when (type) {
             "Popular" -> {
                 viewModel.getPopularMovies().observe(viewLifecycleOwner) {
+                    setupRvMovie()
                     movieAdapter.submitData(lifecycle, it)
                 }
             }
             "Upcoming" -> {
                 viewModel.getUpcomingMovies().observe(viewLifecycleOwner) {
+                    setupRvMovie()
                     movieAdapter.submitData(lifecycle, it)
                 }
             }
             "Top Rated" -> {
                 viewModel.getTopRatedMovies().observe(viewLifecycleOwner) {
+                    setupRvMovie()
                     movieAdapter.submitData(lifecycle, it)
                 }
             }
             "Now Playing" -> {
+                setupRvMovie()
                 viewModel.getNowPlayingMovies().observe(viewLifecycleOwner) {
                     movieAdapter.submitData(lifecycle, it)
+                }
+            }
+
+            "Popular People" -> {
+                setupRvPeople()
+                viewModel.getPopularPeople().observe(viewLifecycleOwner) {
+                    peopleAdapter.submitData(lifecycle, it)
                 }
             }
         }
     }
 
     private fun onClickMovie(movieId: Int) {
+
+    }
+
+    private fun onClickPerson(personId: Int) {
 
     }
 
