@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.herdal.moviehouse.R
 import com.herdal.moviehouse.databinding.FragmentSeeAllBinding
@@ -101,7 +102,9 @@ class SeeAllFragment : Fragment() {
     }
 
     private fun onClickMovie(movieId: Int) {
-
+        val action =
+            SeeAllFragmentDirections.actionSeeAllFragmentToMovieDetailsFragment(movieId = movieId)
+        findNavController().navigate(action)
     }
 
     private fun onClickPerson(personId: Int) {
