@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
+import com.herdal.moviehouse.R
 import com.herdal.moviehouse.databinding.FragmentSeeAllBinding
 import com.herdal.moviehouse.ui.home.HomeViewModel
 import com.herdal.moviehouse.ui.home.adapter.movie.MovieAdapter
@@ -65,31 +66,31 @@ class SeeAllFragment : Fragment() {
 
     private fun observeData(type: String) = lifecycleScope.launch {
         when (type) {
-            "Popular" -> {
+            getString(R.string.popular) -> {
                 viewModel.getPopularMovies().observeOnce(viewLifecycleOwner) {
                     setupRvMovie()
                     movieAdapter.submitData(lifecycle, it)
                 }
             }
-            "Upcoming" -> {
+            getString(R.string.upcoming) -> {
                 viewModel.getUpcomingMovies().observeOnce(viewLifecycleOwner) {
                     setupRvMovie()
                     movieAdapter.submitData(lifecycle, it)
                 }
             }
-            "Top Rated" -> {
+            getString(R.string.top_rated) -> {
                 viewModel.getTopRatedMovies().observeOnce(viewLifecycleOwner) {
                     setupRvMovie()
                     movieAdapter.submitData(lifecycle, it)
                 }
             }
-            "Now Playing" -> {
+            getString(R.string.now_playing) -> {
                 viewModel.getNowPlayingMovies().observeOnce(viewLifecycleOwner) {
                     setupRvMovie()
                     movieAdapter.submitData(lifecycle, it)
                 }
             }
-            "Popular People" -> {
+            getString(R.string.popular) -> {
                 viewModel.getPopularPeople().observeOnce(viewLifecycleOwner) {
                     setupRvPeople()
                     peopleAdapter.submitData(lifecycle, it)
