@@ -12,6 +12,7 @@ import com.herdal.moviehouse.databinding.FragmentSeeAllBinding
 import com.herdal.moviehouse.ui.home.HomeViewModel
 import com.herdal.moviehouse.ui.home.adapter.movie.MovieAdapter
 import com.herdal.moviehouse.ui.home.adapter.people.PersonAdapter
+import com.herdal.moviehouse.utils.extensions.observeOnce
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -65,33 +66,32 @@ class SeeAllFragment : Fragment() {
     private fun observeData(type: String) = lifecycleScope.launch {
         when (type) {
             "Popular" -> {
-                viewModel.getPopularMovies().observe(viewLifecycleOwner) {
+                viewModel.getPopularMovies().observeOnce(viewLifecycleOwner) {
                     setupRvMovie()
                     movieAdapter.submitData(lifecycle, it)
                 }
             }
             "Upcoming" -> {
-                viewModel.getUpcomingMovies().observe(viewLifecycleOwner) {
+                viewModel.getUpcomingMovies().observeOnce(viewLifecycleOwner) {
                     setupRvMovie()
                     movieAdapter.submitData(lifecycle, it)
                 }
             }
             "Top Rated" -> {
-                viewModel.getTopRatedMovies().observe(viewLifecycleOwner) {
+                viewModel.getTopRatedMovies().observeOnce(viewLifecycleOwner) {
                     setupRvMovie()
                     movieAdapter.submitData(lifecycle, it)
                 }
             }
             "Now Playing" -> {
-                setupRvMovie()
-                viewModel.getNowPlayingMovies().observe(viewLifecycleOwner) {
+                viewModel.getNowPlayingMovies().observeOnce(viewLifecycleOwner) {
+                    setupRvMovie()
                     movieAdapter.submitData(lifecycle, it)
                 }
             }
-
             "Popular People" -> {
-                setupRvPeople()
-                viewModel.getPopularPeople().observe(viewLifecycleOwner) {
+                viewModel.getPopularPeople().observeOnce(viewLifecycleOwner) {
+                    setupRvPeople()
                     peopleAdapter.submitData(lifecycle, it)
                 }
             }
