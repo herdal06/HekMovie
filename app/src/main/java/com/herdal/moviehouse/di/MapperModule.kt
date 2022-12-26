@@ -9,6 +9,9 @@ import com.herdal.moviehouse.common.mapper.person.PersonDetailMapper
 import com.herdal.moviehouse.common.mapper.person.PersonMapper
 import com.herdal.moviehouse.common.mapper.review.AuthorMapper
 import com.herdal.moviehouse.common.mapper.review.ReviewMapper
+import com.herdal.moviehouse.common.mapper.watch_providers.BuyMapper
+import com.herdal.moviehouse.common.mapper.watch_providers.USMapper
+import com.herdal.moviehouse.common.mapper.watch_providers.WatchProvidersMapper
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -67,4 +70,23 @@ object MapperModule {
     @Singleton
     fun providePersonDetailMapper(
     ): PersonDetailMapper = PersonDetailMapper()
+
+    @Provides
+    @Singleton
+    fun provideBuyMapper(
+    ): BuyMapper = BuyMapper()
+
+    @Provides
+    @Singleton
+    fun provideUSMapper(
+    ): USMapper = USMapper(
+        provideBuyMapper()
+    )
+
+    @Provides
+    @Singleton
+    fun provideWatchProvidersMapper(
+    ): WatchProvidersMapper = WatchProvidersMapper(
+        provideUSMapper()
+    )
 }
