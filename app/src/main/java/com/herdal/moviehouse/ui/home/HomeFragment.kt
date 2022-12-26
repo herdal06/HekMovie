@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -63,6 +64,7 @@ class HomeFragment : Fragment() {
         setupRecyclerViews()
         observeMovies()
         observePeople()
+        setToolBarTitle()
         collectApiRequest()
         onClickSeeAllTexts()
         return binding.root
@@ -162,5 +164,9 @@ class HomeFragment : Fragment() {
     private fun navigateToSeeAll(type: String) {
         val action = HomeFragmentDirections.actionHomeFragmentToSeeAllFragment(type)
         findNavController().navigate(action)
+    }
+
+    private fun setToolBarTitle() {
+        (activity as AppCompatActivity).supportActionBar?.title = "Home"
     }
 }
