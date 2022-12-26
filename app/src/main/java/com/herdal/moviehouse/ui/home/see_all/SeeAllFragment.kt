@@ -108,7 +108,9 @@ class SeeAllFragment : Fragment() {
     }
 
     private fun onClickPerson(personId: Int) {
-
+        val action =
+            SeeAllFragmentDirections.actionSeeAllFragmentToPersonDetailsFragment(personId = personId)
+        findNavController().navigate(action)
     }
 
     override fun onDestroyView() {

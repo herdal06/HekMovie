@@ -49,5 +49,8 @@
         <action
             android:id="@+id/action_seeAllFragment_to_movieDetailsFragment"
             app:destination="@id/movieDetailsFragment" />
+        <action
+            android:id="@+id/action_seeAllFragment_to_personDetailsFragment"
+            app:destination="@id/personDetailsFragment" />
     </fragment>
 </navigation>
