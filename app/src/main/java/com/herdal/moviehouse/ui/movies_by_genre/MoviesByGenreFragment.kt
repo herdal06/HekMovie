@@ -12,7 +12,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.paging.map
 import com.herdal.moviehouse.databinding.FragmentMoviesByGenreBinding
 import com.herdal.moviehouse.domain.uimodel.GenreUiModel
 import com.herdal.moviehouse.ui.home.adapter.movie.MovieAdapter
@@ -47,6 +46,7 @@ class MoviesByGenreFragment : Fragment() {
         _binding = FragmentMoviesByGenreBinding.inflate(inflater, container, false)
         val view = binding.root
         setupRecyclerView()
+        setToolBarTitle(getArgs().name)
         observeMovies(getArgs())
         return view
     }
@@ -59,12 +59,13 @@ class MoviesByGenreFragment : Fragment() {
         repeatOnLifecycle(Lifecycle.State.STARTED) {
             viewModel.getMoviesByGenre(genre.id).observe(viewLifecycleOwner) {
                 moviesByGenreAdapter.submitData(lifecycle, it)
-                it.map {
-                    (activity as AppCompatActivity).supportActionBar?.title = genre.name
-                }
                 Timber.d("$it")
             }
         }
+    }
+
+    private fun setToolBarTitle(genreName: String) {
+        (activity as AppCompatActivity).supportActionBar?.title = genreName
     }
 
     private fun onClickMovie(movieId: Int) {
