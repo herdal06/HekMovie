@@ -22,6 +22,7 @@ object ApiConstants {
         const val POPULAR_PEOPLE = "3/person/popular"
         const val PERSON_DETAILS = "3/person/{person_id}"
         const val MOVIE_CREDITS = "3/movie/{movie_id}/credits"
+        const val MOVIES_BY_GENRE = "3/discover/movie"
     }
 
     @JvmStatic
