@@ -9,10 +9,10 @@ class MovieCreditsMapper(
     private val crewMapper: CrewMapper
 ) : BaseMapper<MovieCreditsResponse, MovieCreditsUiModel> {
     override fun toDomain(response: MovieCreditsResponse): MovieCreditsUiModel {
-        val castsUiModel = response.cast.map { castDto ->
+        val castsUiModel = response.cast?.map { castDto ->
             castMapper.toDomain(castDto)
         }
-        val crewsUiModel = response.crew.map { crewDto ->
+        val crewsUiModel = response.crew?.map { crewDto ->
             crewMapper.toDomain(crewDto)
         }
         return MovieCreditsUiModel(
@@ -23,10 +23,10 @@ class MovieCreditsMapper(
     }
 
     override fun fromDomain(domainModel: MovieCreditsUiModel): MovieCreditsResponse {
-        val castsResponse = domainModel.cast.map { castUiModel ->
+        val castsResponse = domainModel.cast?.map { castUiModel ->
             castMapper.fromDomain(castUiModel)
         }
-        val crewsResponse = domainModel.crew.map { crewUiModel ->
+        val crewsResponse = domainModel.crew?.map { crewUiModel ->
             crewMapper.fromDomain(crewUiModel)
         }
         return MovieCreditsResponse(

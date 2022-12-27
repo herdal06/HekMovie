@@ -6,25 +6,25 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class CrewDto(
     @Json(name ="adult")
-    val adult: Boolean,
+    val adult: Boolean?,
     @Json(name ="credit_id")
-    val credit_id: String,
+    val credit_id: String?,
     @Json(name ="department")
-    val department: String,
+    val department: String?,
     @Json(name ="gender")
-    val gender: Int,
+    val gender: Int?,
     @Json(name ="id")
-    val id: Int,
+    val id: Int?,
     @Json(name ="job")
-    val job: String,
+    val job: String?,
     @Json(name ="known_for_department")
-    val known_for_department: String,
+    val known_for_department: String?,
     @Json(name ="name")
-    val name: String,
+    val name: String?,
     @Json(name ="original_name")
-    val original_name: String,
+    val original_name: String?,
     @Json(name ="popularity")
-    val popularity: Double,
+    val popularity: Double?,
     @Json(name ="profile_path")
-    val profile_path: String
+    val profile_path: String?
 )
