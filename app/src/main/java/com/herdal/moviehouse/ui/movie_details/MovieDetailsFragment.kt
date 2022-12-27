@@ -15,6 +15,7 @@ import com.herdal.moviehouse.common.Resource
 import com.herdal.moviehouse.common.downloadImage
 import com.herdal.moviehouse.common.getPlaceHolder
 import com.herdal.moviehouse.databinding.FragmentMovieDetailsBinding
+import com.herdal.moviehouse.domain.uimodel.GenreUiModel
 import com.herdal.moviehouse.domain.uimodel.MovieDetailUiModel
 import com.herdal.moviehouse.ui.home.adapter.genre.GenreAdapter
 import com.herdal.moviehouse.ui.home.adapter.movie.MovieAdapter
@@ -44,7 +45,7 @@ class MovieDetailsFragment : Fragment() {
     private fun getArgs() = navigationArgs.movieId
 
     private val genreAdapter: GenreAdapter by lazy {
-        GenreAdapter()
+        GenreAdapter(::onClickGenre)
     }
 
     private val similarMovieAdapter: MovieAdapter by lazy {
@@ -146,6 +147,10 @@ class MovieDetailsFragment : Fragment() {
     }
 
     private fun onClickMovie(movieId: Int) {
+        //todo: on click movie
+    }
+
+    private fun onClickGenre(genre: GenreUiModel) {
         //todo: on click movie
     }
 }

@@ -16,6 +16,7 @@ import androidx.navigation.fragment.findNavController
 import com.herdal.moviehouse.R
 import com.herdal.moviehouse.common.Resource
 import com.herdal.moviehouse.databinding.FragmentHomeBinding
+import com.herdal.moviehouse.domain.uimodel.GenreUiModel
 import com.herdal.moviehouse.ui.home.adapter.genre.GenreAdapter
 import com.herdal.moviehouse.ui.home.adapter.movie.MovieAdapter
 import com.herdal.moviehouse.ui.home.adapter.people.PersonAdapter
@@ -32,7 +33,7 @@ class HomeFragment : Fragment() {
     private val viewModel: HomeViewModel by viewModels()
 
     private val genreAdapter: GenreAdapter by lazy {
-        GenreAdapter()
+        GenreAdapter(::onClickGenre)
     }
 
     private val popularMoviesAdapter: MovieAdapter by lazy {
@@ -164,6 +165,15 @@ class HomeFragment : Fragment() {
     private fun navigateToSeeAll(type: String) {
         val action = HomeFragmentDirections.actionHomeFragmentToSeeAllFragment(type)
         findNavController().navigate(action)
+    }
+
+    private fun navigateToMoviesByGenreScreen(genre: GenreUiModel) {
+        val action = HomeFragmentDirections.actionHomeFragmentToMoviesByGenreFragment(genre)
+        findNavController().navigate(action)
+    }
+
+    private fun onClickGenre(genre: GenreUiModel) {
+        navigateToMoviesByGenreScreen(genre)
     }
 
     private fun setToolBarTitle() {
