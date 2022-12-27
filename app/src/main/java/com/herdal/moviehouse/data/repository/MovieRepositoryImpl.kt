@@ -5,6 +5,8 @@ import androidx.paging.map
 import com.herdal.moviehouse.common.data_source.MovieDataSource
 import com.herdal.moviehouse.common.mapper.movie.MovieDetailMapper
 import com.herdal.moviehouse.common.mapper.movie.MovieMapper
+import com.herdal.moviehouse.common.mapper.movie_credits.MovieCreditsMapper
+import com.herdal.moviehouse.data.remote.model.movie_credits.MovieCreditsResponse
 import com.herdal.moviehouse.domain.repository.MovieRepository
 import com.herdal.moviehouse.domain.uimodel.MovieDetailUiModel
 import com.herdal.moviehouse.domain.uimodel.MovieUiModel
@@ -16,7 +18,8 @@ import javax.inject.Inject
 class MovieRepositoryImpl @Inject constructor(
     private val movieMapper: MovieMapper,
     private val remote: MovieDataSource.Remote,
-    private val movieDetailMapper: MovieDetailMapper
+    private val movieDetailMapper: MovieDetailMapper,
+    private val movieCreditsMapper: MovieCreditsMapper
 ) : MovieRepository {
     override fun getPopularMovies(): Flow<PagingData<MovieUiModel>> {
         val domainPopularMovie = remote.getPopularMovies().map { pagingData ->
@@ -81,5 +84,9 @@ class MovieRepositoryImpl @Inject constructor(
         }
         Timber.d("popular: $domainRecommendedMovie")
         return domainRecommendedMovie
+    }
+
+    override suspend fun getMovieCredits(movieId: Int): MovieCreditsResponse {
+        return remote.getMovieCredits(movieId = movieId)
     }
 }

@@ -6,6 +6,7 @@ import androidx.paging.PagingData
 import com.herdal.moviehouse.common.data_source.MovieDataSource
 import com.herdal.moviehouse.common.enums.MoviesEnum
 import com.herdal.moviehouse.common.enums.MovieDetailEnum
+import com.herdal.moviehouse.data.remote.model.movie_credits.MovieCreditsResponse
 import com.herdal.moviehouse.data.remote.model.movie_detail.MovieDetailDto
 import com.herdal.moviehouse.data.remote.model.movies.MovieDto
 import com.herdal.moviehouse.data.remote.paging_source.MoviePagingSource
@@ -104,4 +105,7 @@ class MovieRemoteDataSource @Inject constructor(
                 )
             }
         ).flow
+
+    override suspend fun getMovieCredits(movieId: Int): MovieCreditsResponse =
+        movieService.getMovieCredits(movieId = movieId)
 }
