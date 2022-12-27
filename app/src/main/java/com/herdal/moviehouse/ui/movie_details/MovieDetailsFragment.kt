@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.herdal.moviehouse.common.Resource
 import com.herdal.moviehouse.common.downloadImage
@@ -151,6 +152,8 @@ class MovieDetailsFragment : Fragment() {
     }
 
     private fun onClickGenre(genre: GenreUiModel) {
-        //todo: on click movie
+        val action =
+            MovieDetailsFragmentDirections.actionMovieDetailsFragmentToMoviesByGenreFragment(genre)
+        findNavController().navigate(action)
     }
 }
