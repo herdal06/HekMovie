@@ -3,7 +3,7 @@ package com.herdal.moviehouse.ui.movie_details.movie_credits
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.herdal.moviehouse.common.Resource
-import com.herdal.moviehouse.data.remote.model.movie_credits.MovieCreditsResponse
+import com.herdal.moviehouse.domain.uimodel.movie_credits.MovieCreditsUiModel
 import com.herdal.moviehouse.domain.use_case.movie.GetMovieCreditsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -18,8 +18,8 @@ class MovieCreditsViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _movieCredits =
-        MutableStateFlow<Resource<MovieCreditsResponse>>(Resource.Loading())
-    val movieCredits: StateFlow<Resource<MovieCreditsResponse>> = _movieCredits
+        MutableStateFlow<Resource<MovieCreditsUiModel>>(Resource.Loading())
+    val movieCredits: StateFlow<Resource<MovieCreditsUiModel>> = _movieCredits
 
     fun getMovieCredits(movieId: Int) {
         getMovieCreditsUseCase.invoke(movieId)

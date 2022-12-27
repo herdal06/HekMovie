@@ -7,7 +7,7 @@
 
         <variable
             name="cast"
-            type="com.herdal.moviehouse.data.remote.model.movie_credits.CastDto" />
+            type="com.herdal.moviehouse.domain.uimodel.movie_credits.CastUiModel" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -54,9 +54,9 @@
 
             <TextView
                 android:id="@+id/tvCastCharacter"
+                style="@style/PersonText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/PersonText"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="@{cast.character}"

@@ -4,10 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.herdal.moviehouse.common.base.BaseListAdapter
-import com.herdal.moviehouse.data.remote.model.movie_credits.CastDto
 import com.herdal.moviehouse.databinding.ItemCastBinding
+import com.herdal.moviehouse.domain.uimodel.movie_credits.CastUiModel
 
-class CastAdapter : BaseListAdapter<CastDto>(
+class CastAdapter : BaseListAdapter<CastUiModel>(
     itemsSame = { old, new -> old.id == new.id },
     contentsSame = { old, new -> old == new }
 ) {
