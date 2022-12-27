@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_homeFragment_to_seeAllFragment"
             app:destination="@id/seeAllFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_moviesByGenreFragment"
+            app:destination="@id/moviesByGenreFragment" />
     </fragment>
     <fragment
         android:id="@+id/movieDetailsFragment"
@@ -52,5 +55,17 @@
         <action
             android:id="@+id/action_seeAllFragment_to_personDetailsFragment"
             app:destination="@id/personDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/moviesByGenreFragment"
+        android:name="com.herdal.moviehouse.ui.movies_by_genre.MoviesByGenreFragment"
+        android:label="fragment_movies_by_genre"
+        tools:layout="@layout/fragment_movies_by_genre" >
+        <action
+            android:id="@+id/action_moviesByGenreFragment_to_movieDetailsFragment"
+            app:destination="@id/movieDetailsFragment" />
+        <argument
+            android:name="genre"
+            app:argType="com.herdal.moviehouse.domain.uimodel.GenreUiModel" />
     </fragment>
 </navigation>

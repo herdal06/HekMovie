@@ -89,4 +89,14 @@ class MovieRepositoryImpl @Inject constructor(
     override suspend fun getMovieCredits(movieId: Int): MovieCreditsResponse {
         return remote.getMovieCredits(movieId = movieId)
     }
+
+    override fun getMoviesByGenre(genreId: Int): Flow<PagingData<MovieUiModel>> {
+        val domainMovies = remote.getMoviesByGenre(genreId).map { pagingData ->
+            pagingData.map { domainTopRatedMovie ->
+                movieMapper.toDomain(domainTopRatedMovie)
+            }
+        }
+        Timber.d("top rated: $domainMovies")
+        return domainMovies
+    }
 }

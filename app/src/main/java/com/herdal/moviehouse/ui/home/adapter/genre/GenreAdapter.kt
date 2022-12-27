@@ -7,7 +7,9 @@ import com.herdal.moviehouse.common.base.BaseListAdapter
 import com.herdal.moviehouse.databinding.ItemGenreBinding
 import com.herdal.moviehouse.domain.uimodel.GenreUiModel
 
-class GenreAdapter : BaseListAdapter<GenreUiModel>(
+class GenreAdapter(
+    private val onClickGenre: ((genre:GenreUiModel) -> Unit)?
+) : BaseListAdapter<GenreUiModel>(
     itemsSame = { old, new -> old.id == new.id },
     contentsSame = { old, new -> old == new }
 ) {
@@ -21,7 +23,7 @@ class GenreAdapter : BaseListAdapter<GenreUiModel>(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-            )
+            ), onClickGenre
         )
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {

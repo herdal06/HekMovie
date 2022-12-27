@@ -64,4 +64,11 @@ interface MovieService {
         @Path("movie_id") movieId: Int,
         @Query("api_key") api_key: String = API_KEY,
     ): MovieCreditsResponse
+
+    @GET(ApiConstants.Endpoints.MOVIES_BY_GENRE)
+    suspend fun getMoviesByGenre(
+        @Query("with_genres") genreId: Int,
+        @Query("page") page: Int,
+        @Query("api_key") api_key: String = API_KEY,
+    ): MovieResponse
 }
