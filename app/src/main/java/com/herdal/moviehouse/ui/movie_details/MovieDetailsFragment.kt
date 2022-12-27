@@ -18,6 +18,7 @@ import com.herdal.moviehouse.databinding.FragmentMovieDetailsBinding
 import com.herdal.moviehouse.domain.uimodel.MovieDetailUiModel
 import com.herdal.moviehouse.ui.home.adapter.genre.GenreAdapter
 import com.herdal.moviehouse.ui.home.adapter.movie.MovieAdapter
+import com.herdal.moviehouse.ui.movie_details.movie_credits.MovieCreditsFragment
 import com.herdal.moviehouse.ui.movie_details.view_pager.MovieDetailViewPagerAdapter
 import com.herdal.moviehouse.ui.movie_details.recommended_movies.RecommendedMoviesFragment
 import com.herdal.moviehouse.ui.movie_details.reviews.MovieReviewsFragment
@@ -139,6 +140,7 @@ class MovieDetailsFragment : Fragment() {
         viewPagerAdapter.addFragment(MovieReviewsFragment(getArgs()), "Reviews")
         viewPagerAdapter.addFragment(SimilarMoviesFragment(getArgs()), "Similar Movies")
         viewPagerAdapter.addFragment(RecommendedMoviesFragment(getArgs()), "Our Recommendations")
+        viewPagerAdapter.addFragment(MovieCreditsFragment(getArgs()), "Movie Cast")
         viewPager.adapter = viewPagerAdapter
         tabLayout.setupWithViewPager(viewPager)
     }

@@ -1,6 +1,7 @@
 package com.herdal.moviehouse.data.remote.service
 
 import com.herdal.moviehouse.BuildConfig.API_KEY
+import com.herdal.moviehouse.data.remote.model.movie_credits.MovieCreditsResponse
 import com.herdal.moviehouse.data.remote.model.movie_detail.MovieDetailDto
 import com.herdal.moviehouse.data.remote.model.movies.MovieResponse
 import com.herdal.moviehouse.utils.ApiConstants
@@ -57,4 +58,10 @@ interface MovieService {
         @Query("page") page: Int,
         @Query("api_key") api_key: String = API_KEY
     ): MovieResponse
+
+    @GET(ApiConstants.Endpoints.MOVIE_CREDITS)
+    suspend fun getMovieCredits(
+        @Path("movie_id") movieId: Int,
+        @Query("api_key") api_key: String = API_KEY,
+    ): MovieCreditsResponse
 }
