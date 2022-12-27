@@ -4,6 +4,9 @@ import com.herdal.moviehouse.common.mapper.movie.MovieDetailMapper
 import com.herdal.moviehouse.common.mapper.movie.CompanyMapper
 import com.herdal.moviehouse.common.mapper.movie.GenreMapper
 import com.herdal.moviehouse.common.mapper.movie.MovieMapper
+import com.herdal.moviehouse.common.mapper.movie_credits.CastMapper
+import com.herdal.moviehouse.common.mapper.movie_credits.CrewMapper
+import com.herdal.moviehouse.common.mapper.movie_credits.MovieCreditsMapper
 import com.herdal.moviehouse.common.mapper.person.KnownForMapper
 import com.herdal.moviehouse.common.mapper.person.PersonDetailMapper
 import com.herdal.moviehouse.common.mapper.person.PersonMapper
@@ -67,4 +70,22 @@ object MapperModule {
     @Singleton
     fun providePersonDetailMapper(
     ): PersonDetailMapper = PersonDetailMapper()
+
+    @Provides
+    @Singleton
+    fun provideCastMapper(
+    ): CastMapper = CastMapper()
+
+    @Provides
+    @Singleton
+    fun provideCrewMapper(
+    ): CrewMapper = CrewMapper()
+
+    @Provides
+    @Singleton
+    fun provideMovieCreditsMapper(
+    ): MovieCreditsMapper = MovieCreditsMapper(
+        provideCastMapper(),
+        provideCrewMapper()
+    )
 }
