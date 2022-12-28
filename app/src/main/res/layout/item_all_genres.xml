@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/triple_extra_large_margin"
-        android:layout_marginVertical="@dimen/small_margin"
+        android:layout_marginVertical="@dimen/extra_small_margin"
         android:clickable="true"
         android:focusable="true"
         tools:ignore="TouchTargetSizeCheck">
