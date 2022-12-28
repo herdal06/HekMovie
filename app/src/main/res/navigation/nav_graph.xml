@@ -71,4 +71,13 @@
             android:name="genre"
             app:argType="com.herdal.moviehouse.domain.uimodel.GenreUiModel" />
     </fragment>
+    <fragment
+        android:id="@+id/genresFragment"
+        android:name="com.herdal.moviehouse.ui.genres.GenresFragment"
+        android:label="fragment_genres"
+        tools:layout="@layout/fragment_genres" >
+        <action
+            android:id="@+id/action_genresFragment_to_moviesByGenreFragment"
+            app:destination="@id/moviesByGenreFragment" />
+    </fragment>
 </navigation>
