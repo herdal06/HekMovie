@@ -184,6 +184,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun setToolBarTitle() {
-        (activity as AppCompatActivity).supportActionBar?.title = "Home"
+        (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.home)
     }
 }
