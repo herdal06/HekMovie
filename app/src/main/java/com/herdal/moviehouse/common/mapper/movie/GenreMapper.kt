@@ -1,10 +1,10 @@
 package com.herdal.moviehouse.common.mapper.movie
 
-import com.herdal.moviehouse.common.mapper.BaseMapper
+import com.herdal.moviehouse.common.mapper.DtoMapper
 import com.herdal.moviehouse.data.remote.model.genre.GenreDto
 import com.herdal.moviehouse.domain.uimodel.GenreUiModel
 
-class GenreMapper : BaseMapper<GenreDto, GenreUiModel> {
+class GenreMapper : DtoMapper<GenreDto, GenreUiModel> {
     override fun toDomain(response: GenreDto): GenreUiModel = GenreUiModel(
         id = response.id,
         name = response.name

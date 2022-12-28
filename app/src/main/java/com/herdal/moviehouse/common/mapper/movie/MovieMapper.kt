@@ -1,10 +1,10 @@
 package com.herdal.moviehouse.common.mapper.movie
 
-import com.herdal.moviehouse.common.mapper.BaseMapper
+import com.herdal.moviehouse.common.mapper.DtoMapper
 import com.herdal.moviehouse.data.remote.model.movies.MovieDto
 import com.herdal.moviehouse.domain.uimodel.MovieUiModel
 
-class MovieMapper : BaseMapper<MovieDto, MovieUiModel> {
+class MovieMapper : DtoMapper<MovieDto, MovieUiModel> {
     override fun toDomain(response: MovieDto): MovieUiModel = MovieUiModel(
         adult = response.adult,
         backdrop_path = response.backdrop_path,

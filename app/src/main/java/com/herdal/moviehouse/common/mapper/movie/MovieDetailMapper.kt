@@ -1,13 +1,13 @@
 package com.herdal.moviehouse.common.mapper.movie
 
-import com.herdal.moviehouse.common.mapper.BaseMapper
+import com.herdal.moviehouse.common.mapper.DtoMapper
 import com.herdal.moviehouse.data.remote.model.movie_detail.MovieDetailDto
 import com.herdal.moviehouse.domain.uimodel.MovieDetailUiModel
 
 class MovieDetailMapper(
     private val genreMapper: GenreMapper,
     private val companyMapper: CompanyMapper
-) : BaseMapper<MovieDetailDto, MovieDetailUiModel> {
+) : DtoMapper<MovieDetailDto, MovieDetailUiModel> {
 
     override fun toDomain(response: MovieDetailDto): MovieDetailUiModel {
         val genres = response.genres.map { genreDto ->

@@ -1,12 +1,12 @@
 package com.herdal.moviehouse.common.mapper.review
 
-import com.herdal.moviehouse.common.mapper.BaseMapper
+import com.herdal.moviehouse.common.mapper.DtoMapper
 import com.herdal.moviehouse.data.remote.model.review.ReviewDto
 import com.herdal.moviehouse.domain.uimodel.ReviewUiModel
 
 class ReviewMapper(
     private val authorMapper: AuthorMapper
-) : BaseMapper<ReviewDto, ReviewUiModel> {
+) : DtoMapper<ReviewDto, ReviewUiModel> {
     override fun toDomain(response: ReviewDto): ReviewUiModel {
 
         val authorDetails = authorMapper.toDomain(response.author_details)

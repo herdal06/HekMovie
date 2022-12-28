@@ -1,10 +1,10 @@
 package com.herdal.moviehouse.common.mapper.person
 
-import com.herdal.moviehouse.common.mapper.BaseMapper
+import com.herdal.moviehouse.common.mapper.DtoMapper
 import com.herdal.moviehouse.data.remote.model.person.KnownForDto
 import com.herdal.moviehouse.domain.uimodel.person.KnowForUiModel
 
-class KnownForMapper : BaseMapper<KnownForDto, KnowForUiModel> {
+class KnownForMapper : DtoMapper<KnownForDto, KnowForUiModel> {
     override fun toDomain(response: KnownForDto): KnowForUiModel = KnowForUiModel(
         backdrop_path = response.backdrop_path,
         first_air_date = response.first_air_date,

@@ -1,13 +1,13 @@
 package com.herdal.moviehouse.common.mapper.movie_credits
 
-import com.herdal.moviehouse.common.mapper.BaseMapper
+import com.herdal.moviehouse.common.mapper.DtoMapper
 import com.herdal.moviehouse.data.remote.model.movie_credits.MovieCreditsResponse
 import com.herdal.moviehouse.domain.uimodel.movie_credits.MovieCreditsUiModel
 
 class MovieCreditsMapper(
     private val castMapper: CastMapper,
     private val crewMapper: CrewMapper
-) : BaseMapper<MovieCreditsResponse, MovieCreditsUiModel> {
+) : DtoMapper<MovieCreditsResponse, MovieCreditsUiModel> {
     override fun toDomain(response: MovieCreditsResponse): MovieCreditsUiModel {
         val castsUiModel = response.cast?.map { castDto ->
             castMapper.toDomain(castDto)

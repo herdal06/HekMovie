@@ -1,10 +1,10 @@
 package com.herdal.moviehouse.common.mapper.person
 
-import com.herdal.moviehouse.common.mapper.BaseMapper
+import com.herdal.moviehouse.common.mapper.DtoMapper
 import com.herdal.moviehouse.data.remote.model.person_detail.PersonDetailDto
 import com.herdal.moviehouse.domain.uimodel.person.PersonDetailUiModel
 
-class PersonDetailMapper : BaseMapper<PersonDetailDto, PersonDetailUiModel> {
+class PersonDetailMapper : DtoMapper<PersonDetailDto, PersonDetailUiModel> {
     override fun toDomain(response: PersonDetailDto): PersonDetailUiModel = PersonDetailUiModel(
         adult = response.adult,
         also_known_as = response.also_known_as,

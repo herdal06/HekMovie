@@ -1,10 +1,10 @@
 package com.herdal.moviehouse.common.mapper.movie
 
-import com.herdal.moviehouse.common.mapper.BaseMapper
+import com.herdal.moviehouse.common.mapper.DtoMapper
 import com.herdal.moviehouse.data.remote.model.movie_detail.CompanyDto
 import com.herdal.moviehouse.domain.uimodel.CompanyUiModel
 
-class CompanyMapper : BaseMapper<CompanyDto, CompanyUiModel> {
+class CompanyMapper : DtoMapper<CompanyDto, CompanyUiModel> {
     override fun toDomain(response: CompanyDto): CompanyUiModel = CompanyUiModel(
         id = response.id,
         logo_path = response.logo_path,

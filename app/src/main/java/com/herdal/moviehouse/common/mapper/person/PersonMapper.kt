@@ -1,12 +1,12 @@
 package com.herdal.moviehouse.common.mapper.person
 
-import com.herdal.moviehouse.common.mapper.BaseMapper
+import com.herdal.moviehouse.common.mapper.DtoMapper
 import com.herdal.moviehouse.data.remote.model.person.PersonDto
 import com.herdal.moviehouse.domain.uimodel.person.PersonUiModel
 
 class PersonMapper(
     private val knownForMapper: KnownForMapper
-) : BaseMapper<PersonDto, PersonUiModel> {
+) : DtoMapper<PersonDto, PersonUiModel> {
     override fun toDomain(response: PersonDto): PersonUiModel {
 
         val knownFor = response.known_for?.map { knownForDto ->

@@ -1,10 +1,10 @@
 package com.herdal.moviehouse.common.mapper.movie_credits
 
-import com.herdal.moviehouse.common.mapper.BaseMapper
+import com.herdal.moviehouse.common.mapper.DtoMapper
 import com.herdal.moviehouse.data.remote.model.movie_credits.CastDto
 import com.herdal.moviehouse.domain.uimodel.movie_credits.CastUiModel
 
-class CastMapper : BaseMapper<CastDto, CastUiModel> {
+class CastMapper : DtoMapper<CastDto, CastUiModel> {
     override fun toDomain(response: CastDto): CastUiModel = CastUiModel(
         adult = response.adult,
         cast_id = response.cast_id,
