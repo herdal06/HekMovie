@@ -67,6 +67,7 @@ class HomeFragment : Fragment() {
         observePeople()
         setToolBarTitle()
         collectApiRequest()
+        onClickShowGenresTextView()
         onClickSeeAllTexts()
         return binding.root
     }
@@ -160,6 +161,12 @@ class HomeFragment : Fragment() {
         clickTextView(tvTopRatedMovies, getString(R.string.top_rated_movies))
         clickTextView(tvShowNowPlayingMovies, getString(R.string.now_playing_movies))
         clickTextView(tvPopularPeople, getString(R.string.popular_people))
+    }
+
+    private fun onClickShowGenresTextView() = binding.apply {
+        tvShowGenres.setOnClickListener {
+            findNavController().navigate(R.id.genresFragment)
+        }
     }
 
     private fun navigateToSeeAll(type: String) {
