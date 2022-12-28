@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.GridLayoutManager
 import com.herdal.moviehouse.R
 import com.herdal.moviehouse.databinding.FragmentSeeAllBinding
 import com.herdal.moviehouse.ui.home.HomeViewModel
@@ -60,6 +61,7 @@ class SeeAllFragment : Fragment() {
 
     private fun setupRvPeople() = binding.apply {
         rvSeeAll.adapter = peopleAdapter
+        rvSeeAll.layoutManager = GridLayoutManager(requireContext(), 2)
     }
 
     private fun changeToolBarTitle(text: String) {
