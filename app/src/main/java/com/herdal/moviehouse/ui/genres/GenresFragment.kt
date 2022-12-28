@@ -13,7 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.herdal.moviehouse.common.Resource
 import com.herdal.moviehouse.databinding.FragmentGenresBinding
 import com.herdal.moviehouse.domain.uimodel.GenreUiModel
-import com.herdal.moviehouse.ui.home.adapter.genre.GenreAdapter
+import com.herdal.moviehouse.ui.genres.adapter.GenresAdapter
 import com.herdal.moviehouse.utils.extensions.hide
 import com.herdal.moviehouse.utils.extensions.show
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,8 +28,8 @@ class GenresFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
-    private val genreAdapter: GenreAdapter by lazy {
-        GenreAdapter(::onClickGenre)
+    private val genreAdapter: GenresAdapter by lazy {
+        GenresAdapter(::onClickGenre)
     }
 
     private val viewModel: GenresViewModel by viewModels()
