@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import com.herdal.moviehouse.R
 import com.herdal.moviehouse.common.Resource
 import com.herdal.moviehouse.databinding.FragmentGenresBinding
 import com.herdal.moviehouse.domain.uimodel.GenreUiModel
@@ -43,6 +45,7 @@ class GenresFragment : Fragment() {
         val view = binding.root
         setupRecyclerView()
         collectGenres()
+        setToolBarTitle()
         return view
     }
 
@@ -82,6 +85,10 @@ class GenresFragment : Fragment() {
     private fun onClickGenre(genre: GenreUiModel) {
         val action = GenresFragmentDirections.actionGenresFragmentToMoviesByGenreFragment(genre)
         findNavController().navigate(action)
+    }
+
+    private fun setToolBarTitle() {
+        (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.genres)
     }
 
     override fun onDestroyView() {
