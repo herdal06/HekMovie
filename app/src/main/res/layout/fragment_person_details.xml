@@ -31,7 +31,7 @@
 
         <TextView
             android:id="@+id/tvPersonDetailsName"
-            style="@style/PersonText.XLarge"
+            style="@style/PersonText.XXLarge.Bold"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/large_margin"
@@ -42,7 +42,7 @@
 
         <TextView
             android:id="@+id/tvBiographyText"
-            style="@style/PersonText"
+            style="@style/PersonText.XLarge.Bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/large_margin"
@@ -61,7 +61,7 @@
 
         <TextView
             android:id="@+id/tvAlsoKnownAsText"
-            style="@style/PersonText"
+            style="@style/PersonText.XLarge.Bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/large_margin"

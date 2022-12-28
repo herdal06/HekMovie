@@ -56,6 +56,15 @@
         <item name="android:textSize">@dimen/extra_large_size</item>
     </style>
 
+    <style name="PersonText.XLarge.Bold" parent="@android:style/TextAppearance">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="PersonText.XXLarge.Bold" parent="@android:style/TextAppearance">
+        <item name="android:textSize">@dimen/double_extra_large_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">
         <item name="tabTextAppearance">@style/MyCustomTextAppearance</item>
     </style>
