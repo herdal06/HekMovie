@@ -8,8 +8,8 @@ import com.herdal.moviehouse.common.mapper.movie.MovieMapper
 import com.herdal.moviehouse.common.mapper.movie_credits.MovieCreditsMapper
 import com.herdal.moviehouse.data.remote.model.movie_credits.MovieCreditsResponse
 import com.herdal.moviehouse.domain.repository.MovieRepository
-import com.herdal.moviehouse.domain.uimodel.MovieDetailUiModel
-import com.herdal.moviehouse.domain.uimodel.MovieUiModel
+import com.herdal.moviehouse.domain.uimodel.movie_detail.MovieDetailUiModel
+import com.herdal.moviehouse.domain.uimodel.movie.MovieUiModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import timber.log.Timber

@@ -2,7 +2,7 @@ package com.herdal.moviehouse.common.mapper.movie
 
 import com.herdal.moviehouse.common.mapper.DtoMapper
 import com.herdal.moviehouse.data.remote.model.movie_detail.MovieDetailDto
-import com.herdal.moviehouse.domain.uimodel.MovieDetailUiModel
+import com.herdal.moviehouse.domain.uimodel.movie_detail.MovieDetailUiModel
 
 class MovieDetailMapper(
     private val genreMapper: GenreMapper,

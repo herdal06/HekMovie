@@ -7,7 +7,7 @@ import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.herdal.moviehouse.domain.uimodel.MovieUiModel
+import com.herdal.moviehouse.domain.uimodel.movie.MovieUiModel
 import com.herdal.moviehouse.domain.use_case.movie.GetMoviesByGenreUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import timber.log.Timber

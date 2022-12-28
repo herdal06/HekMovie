@@ -2,7 +2,7 @@ package com.herdal.moviehouse.common.mapper.review
 
 import com.herdal.moviehouse.common.mapper.DtoMapper
 import com.herdal.moviehouse.data.remote.model.review.ReviewDto
-import com.herdal.moviehouse.domain.uimodel.ReviewUiModel
+import com.herdal.moviehouse.domain.uimodel.review.ReviewUiModel
 
 class ReviewMapper(
     private val authorMapper: AuthorMapper

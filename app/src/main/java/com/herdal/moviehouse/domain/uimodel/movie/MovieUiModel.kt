@@ -1,4 +1,4 @@
-package com.herdal.moviehouse.domain.uimodel
+package com.herdal.moviehouse.domain.uimodel.movie
 
 data class MovieUiModel(
     val adult: Boolean,

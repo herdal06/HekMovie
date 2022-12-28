@@ -2,8 +2,8 @@ package com.herdal.moviehouse.domain.repository
 
 import androidx.paging.PagingData
 import com.herdal.moviehouse.data.remote.model.movie_credits.MovieCreditsResponse
-import com.herdal.moviehouse.domain.uimodel.MovieDetailUiModel
-import com.herdal.moviehouse.domain.uimodel.MovieUiModel
+import com.herdal.moviehouse.domain.uimodel.movie_detail.MovieDetailUiModel
+import com.herdal.moviehouse.domain.uimodel.movie.MovieUiModel
 import kotlinx.coroutines.flow.Flow
 
 interface MovieRepository {

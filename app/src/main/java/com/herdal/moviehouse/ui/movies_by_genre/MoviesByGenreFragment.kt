@@ -13,7 +13,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.herdal.moviehouse.databinding.FragmentMoviesByGenreBinding
-import com.herdal.moviehouse.domain.uimodel.GenreUiModel
+import com.herdal.moviehouse.domain.uimodel.genre.GenreUiModel
 import com.herdal.moviehouse.ui.home.adapter.movie.MovieAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

@@ -1,4 +1,4 @@
-package com.herdal.moviehouse.domain.uimodel
+package com.herdal.moviehouse.domain.uimodel.movie_detail
 
 data class CompanyUiModel(
     val id: Int,

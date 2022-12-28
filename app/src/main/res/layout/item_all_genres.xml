@@ -6,7 +6,7 @@
 
         <variable
             name="genre"
-            type="com.herdal.moviehouse.domain.uimodel.GenreUiModel" />
+            type="com.herdal.moviehouse.domain.uimodel.genre.GenreUiModel" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

@@ -14,7 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.herdal.moviehouse.R
 import com.herdal.moviehouse.common.Resource
 import com.herdal.moviehouse.databinding.FragmentGenresBinding
-import com.herdal.moviehouse.domain.uimodel.GenreUiModel
+import com.herdal.moviehouse.domain.uimodel.genre.GenreUiModel
 import com.herdal.moviehouse.ui.genres.adapter.GenresAdapter
 import com.herdal.moviehouse.utils.extensions.hide
 import com.herdal.moviehouse.utils.extensions.show

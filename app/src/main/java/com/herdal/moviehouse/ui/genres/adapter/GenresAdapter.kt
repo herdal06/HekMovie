@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.herdal.moviehouse.common.base.BaseListAdapter
 import com.herdal.moviehouse.databinding.ItemAllGenresBinding
-import com.herdal.moviehouse.domain.uimodel.GenreUiModel
+import com.herdal.moviehouse.domain.uimodel.genre.GenreUiModel
 
 
 class GenresAdapter(

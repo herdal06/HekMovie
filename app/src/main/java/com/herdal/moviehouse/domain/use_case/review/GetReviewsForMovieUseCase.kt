@@ -2,7 +2,7 @@ package com.herdal.moviehouse.domain.use_case.review
 
 import androidx.paging.PagingData
 import com.herdal.moviehouse.domain.repository.ReviewRepository
-import com.herdal.moviehouse.domain.uimodel.ReviewUiModel
+import com.herdal.moviehouse.domain.uimodel.review.ReviewUiModel
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

@@ -4,8 +4,8 @@ import androidx.lifecycle.*
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.herdal.moviehouse.common.Resource
-import com.herdal.moviehouse.domain.uimodel.GenreUiModel
-import com.herdal.moviehouse.domain.uimodel.MovieUiModel
+import com.herdal.moviehouse.domain.uimodel.genre.GenreUiModel
+import com.herdal.moviehouse.domain.uimodel.movie.MovieUiModel
 import com.herdal.moviehouse.domain.uimodel.person.PersonUiModel
 import com.herdal.moviehouse.domain.use_case.genre.GetGenresUseCase
 import com.herdal.moviehouse.domain.use_case.movie.GetNowPlayingMoviesUseCase

@@ -1,4 +1,4 @@
-package com.herdal.moviehouse.domain.uimodel
+package com.herdal.moviehouse.domain.uimodel.review
 
 data class ReviewUiModel(
     val author: String,

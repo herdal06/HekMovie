@@ -2,7 +2,7 @@ package com.herdal.moviehouse.ui.genres.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import com.herdal.moviehouse.databinding.ItemAllGenresBinding
-import com.herdal.moviehouse.domain.uimodel.GenreUiModel
+import com.herdal.moviehouse.domain.uimodel.genre.GenreUiModel
 import com.herdal.moviehouse.utils.extensions.executeWithAction
 
 class GenresViewHolder(

@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.herdal.moviehouse.common.base.BasePagingAdapter
 import com.herdal.moviehouse.databinding.ItemMovieBinding
-import com.herdal.moviehouse.domain.uimodel.MovieUiModel
+import com.herdal.moviehouse.domain.uimodel.movie.MovieUiModel
 
 class MovieAdapter(
     private val onClickMovie: ((movieId: Int) -> Unit)?

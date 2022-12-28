@@ -2,7 +2,7 @@ package com.herdal.moviehouse.domain.use_case.genre
 
 import com.herdal.moviehouse.common.Resource
 import com.herdal.moviehouse.domain.repository.GenreRepository
-import com.herdal.moviehouse.domain.uimodel.GenreUiModel
+import com.herdal.moviehouse.domain.uimodel.genre.GenreUiModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import okio.IOException

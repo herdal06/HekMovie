@@ -1,4 +1,6 @@
-package com.herdal.moviehouse.domain.uimodel
+package com.herdal.moviehouse.domain.uimodel.movie_detail
+
+import com.herdal.moviehouse.domain.uimodel.genre.GenreUiModel
 
 data class MovieDetailUiModel(
     val adult: Boolean,

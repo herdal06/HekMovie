@@ -3,7 +3,7 @@ package com.herdal.moviehouse.ui.genres
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.herdal.moviehouse.common.Resource
-import com.herdal.moviehouse.domain.uimodel.GenreUiModel
+import com.herdal.moviehouse.domain.uimodel.genre.GenreUiModel
 import com.herdal.moviehouse.domain.use_case.genre.GetGenresUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

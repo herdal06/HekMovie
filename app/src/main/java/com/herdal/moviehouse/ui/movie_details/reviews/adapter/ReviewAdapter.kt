@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.herdal.moviehouse.common.base.BasePagingAdapter
 import com.herdal.moviehouse.databinding.ItemReviewBinding
-import com.herdal.moviehouse.domain.uimodel.ReviewUiModel
+import com.herdal.moviehouse.domain.uimodel.review.ReviewUiModel
 
 class ReviewAdapter : BasePagingAdapter<ReviewUiModel>(
     itemsSame = { old, new -> old.id == new.id },

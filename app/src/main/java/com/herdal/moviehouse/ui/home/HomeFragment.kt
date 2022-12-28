@@ -16,7 +16,7 @@ import androidx.navigation.fragment.findNavController
 import com.herdal.moviehouse.R
 import com.herdal.moviehouse.common.Resource
 import com.herdal.moviehouse.databinding.FragmentHomeBinding
-import com.herdal.moviehouse.domain.uimodel.GenreUiModel
+import com.herdal.moviehouse.domain.uimodel.genre.GenreUiModel
 import com.herdal.moviehouse.ui.home.adapter.genre.GenreAdapter
 import com.herdal.moviehouse.ui.home.adapter.movie.MovieAdapter
 import com.herdal.moviehouse.ui.home.adapter.people.PersonAdapter

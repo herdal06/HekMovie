@@ -1,4 +1,4 @@
-package com.herdal.moviehouse.domain.uimodel
+package com.herdal.moviehouse.domain.uimodel.genre
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

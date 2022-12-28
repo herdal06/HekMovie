@@ -2,7 +2,7 @@ package com.herdal.moviehouse.domain.use_case.movie
 
 import com.herdal.moviehouse.common.Resource
 import com.herdal.moviehouse.domain.repository.MovieRepository
-import com.herdal.moviehouse.domain.uimodel.MovieDetailUiModel
+import com.herdal.moviehouse.domain.uimodel.movie_detail.MovieDetailUiModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import okio.IOException

@@ -2,7 +2,7 @@ package com.herdal.moviehouse.common.mapper.review
 
 import com.herdal.moviehouse.common.mapper.DtoMapper
 import com.herdal.moviehouse.data.remote.model.review.AuthorDetailsDto
-import com.herdal.moviehouse.domain.uimodel.AuthorDetailsUiModel
+import com.herdal.moviehouse.domain.uimodel.review.AuthorDetailsUiModel
 
 class AuthorMapper : DtoMapper<AuthorDetailsDto, AuthorDetailsUiModel> {
     override fun toDomain(response: AuthorDetailsDto): AuthorDetailsUiModel = AuthorDetailsUiModel(

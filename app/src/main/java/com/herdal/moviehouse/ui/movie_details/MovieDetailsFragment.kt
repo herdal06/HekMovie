@@ -16,8 +16,8 @@ import com.herdal.moviehouse.common.Resource
 import com.herdal.moviehouse.common.downloadImage
 import com.herdal.moviehouse.common.getPlaceHolder
 import com.herdal.moviehouse.databinding.FragmentMovieDetailsBinding
-import com.herdal.moviehouse.domain.uimodel.GenreUiModel
-import com.herdal.moviehouse.domain.uimodel.MovieDetailUiModel
+import com.herdal.moviehouse.domain.uimodel.genre.GenreUiModel
+import com.herdal.moviehouse.domain.uimodel.movie_detail.MovieDetailUiModel
 import com.herdal.moviehouse.ui.home.adapter.genre.GenreAdapter
 import com.herdal.moviehouse.ui.home.adapter.movie.MovieAdapter
 import com.herdal.moviehouse.ui.movie_details.movie_credits.MovieCreditsFragment

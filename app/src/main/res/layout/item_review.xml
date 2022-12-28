@@ -7,7 +7,7 @@
 
         <variable
             name="review"
-            type="com.herdal.moviehouse.domain.uimodel.ReviewUiModel" />
+            type="com.herdal.moviehouse.domain.uimodel.review.ReviewUiModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
