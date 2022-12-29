@@ -15,8 +15,8 @@ class GetPersonDetailsUseCase @Inject constructor(
     operator fun invoke(id: Int): Flow<Resource<PersonDetailUiModel>> = flow {
         try {
             emit(Resource.Loading())
-            val movieDetail = personRepository.getPersonDetails(id)
-            emit(Resource.Success(data = movieDetail))
+            val personDetail = personRepository.getPersonDetails(id)
+            emit(Resource.Success(data = personDetail))
         } catch (e: HttpException) {
             emit(Resource.Error(message = e.message))
         } catch (e: IOException) {

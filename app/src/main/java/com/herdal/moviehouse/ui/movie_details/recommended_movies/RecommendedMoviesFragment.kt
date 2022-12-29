@@ -38,7 +38,7 @@ class RecommendedMoviesFragment(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentRecommendedMoviesBinding.inflate(inflater, container, false)
         val view = binding.root
         setupRv()

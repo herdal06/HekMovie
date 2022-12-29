@@ -47,7 +47,7 @@ class SeeAllFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentSeeAllBinding.inflate(inflater, container, false)
         val view = binding.root
         observeData(getArgs())

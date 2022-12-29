@@ -36,7 +36,7 @@ class SimilarMoviesFragment(private val movieId: Int) : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentSimilarMoviesBinding.inflate(inflater, container, false)
         val view = binding.root
         setupRv()

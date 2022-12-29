@@ -46,7 +46,7 @@ class PersonDetailsFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentPersonDetailsBinding.inflate(inflater, container, false)
         val view = binding.root
         collectPersonDetailRequest()
