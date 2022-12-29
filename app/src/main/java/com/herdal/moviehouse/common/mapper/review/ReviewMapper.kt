@@ -9,7 +9,7 @@ class ReviewMapper(
 ) : DtoMapper<ReviewDto, ReviewUiModel> {
     override fun toDomain(response: ReviewDto): ReviewUiModel {
 
-        val authorDetails = authorMapper.toDomain(response.author_details)
+        val authorDetails = response.author_details.let { authorMapper.toDomain(it) }
 
         return ReviewUiModel(
             author = response.author,
@@ -24,7 +24,7 @@ class ReviewMapper(
 
     override fun fromDomain(domainModel: ReviewUiModel): ReviewDto {
 
-        val authorDetails = authorMapper.fromDomain(domainModel.author_details)
+        val authorDetails = domainModel.author_details.let { authorMapper.fromDomain(it) }
 
         return ReviewDto(
             author = domainModel.author,

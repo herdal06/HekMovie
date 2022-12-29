@@ -38,7 +38,7 @@ class MovieReviewsFragment(private val movieId: Int) : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentMovieReviewsBinding.inflate(inflater, container, false)
         val view = binding.root
         setupRv()

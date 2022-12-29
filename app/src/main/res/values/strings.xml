@@ -25,4 +25,8 @@
     <string name="popular_people">Popular People</string>
     <string name="popular">Popular</string>
     <string name="home">Home</string>
+    <string name="reviews">Reviews</string>
+    <string name="similar">Similar</string>
+    <string name="recommended">Our Recommendations</string>
+    <string name="movie_cast">Cast</string>
 </resources>

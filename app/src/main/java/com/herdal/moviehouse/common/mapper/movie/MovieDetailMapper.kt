@@ -10,7 +10,7 @@ class MovieDetailMapper(
 ) : DtoMapper<MovieDetailDto, MovieDetailUiModel> {
 
     override fun toDomain(response: MovieDetailDto): MovieDetailUiModel {
-        val genres = response.genres.map { genreDto ->
+        val genres = response.genres?.map { genreDto ->
             genreMapper.toDomain(genreDto)
         }
         val companies = response.production_companies.map { companyDto ->
@@ -42,7 +42,7 @@ class MovieDetailMapper(
     }
 
     override fun fromDomain(domainModel: MovieDetailUiModel): MovieDetailDto {
-        val genres = domainModel.genres.map { genreUiModel ->
+        val genres = domainModel.genres?.map { genreUiModel ->
             genreMapper.fromDomain(genreUiModel)
         }
         val companies = domainModel.production_companies.map { companyUiModel ->

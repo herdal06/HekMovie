@@ -155,10 +155,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvOverViewDetails" />
 
-        <androidx.viewpager.widget.ViewPager
+        <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewPager"
             android:layout_width="0dp"
             android:layout_height="650dp"
+            android:layoutDirection="ltr"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"

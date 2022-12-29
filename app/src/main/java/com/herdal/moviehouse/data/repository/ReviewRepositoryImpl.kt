@@ -21,7 +21,7 @@ class ReviewRepositoryImpl @Inject constructor(
                 reviewMapper.toDomain(remoteReview)
             }
         }
-        Timber.d("popular: $domainReview")
+        Timber.d("review: $domainReview")
         return domainReview
     }
 }

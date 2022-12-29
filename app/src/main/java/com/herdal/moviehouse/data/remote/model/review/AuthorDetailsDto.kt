@@ -8,9 +8,9 @@ data class AuthorDetailsDto(
     @Json(name = "avatar_path")
     val avatar_path: String?,
     @Json(name = "name")
-    val name: String,
+    val name: String?,
     @Json(name = "rating")
     val rating: Double?,
     @Json(name = "username")
-    val username: String
+    val username: String?
 )
