@@ -12,6 +12,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.tabs.TabLayoutMediator
+import com.herdal.moviehouse.R
 import com.herdal.moviehouse.common.Resource
 import com.herdal.moviehouse.common.downloadImage
 import com.herdal.moviehouse.common.getPlaceHolder
@@ -20,11 +22,7 @@ import com.herdal.moviehouse.domain.uimodel.genre.GenreUiModel
 import com.herdal.moviehouse.domain.uimodel.movie_detail.MovieDetailUiModel
 import com.herdal.moviehouse.ui.home.adapter.genre.GenreAdapter
 import com.herdal.moviehouse.ui.home.adapter.movie.MovieAdapter
-import com.herdal.moviehouse.ui.movie_details.movie_credits.MovieCreditsFragment
-import com.herdal.moviehouse.ui.movie_details.view_pager.MovieDetailViewPagerAdapter
-import com.herdal.moviehouse.ui.movie_details.recommended_movies.RecommendedMoviesFragment
-import com.herdal.moviehouse.ui.movie_details.reviews.MovieReviewsFragment
-import com.herdal.moviehouse.ui.movie_details.similar_movies.SimilarMoviesFragment
+import com.herdal.moviehouse.ui.movie_details.view_pager.MovieDetailsSlidePagerAdapter
 import com.herdal.moviehouse.utils.extensions.hide
 import com.herdal.moviehouse.utils.extensions.show
 import dagger.hilt.android.AndroidEntryPoint
@@ -65,10 +63,14 @@ class MovieDetailsFragment : Fragment() {
         _binding = FragmentMovieDetailsBinding.inflate(inflater, container, false)
         val view = binding.root
         observeMovies(getArgs())
-        setupViewPager()
         collectMovieDetailRequest()
         setupRecyclerViews()
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupViewPager()
     }
 
     private fun setupRecyclerViews() = binding.apply {
@@ -138,14 +140,27 @@ class MovieDetailsFragment : Fragment() {
     }
 
     private fun setupViewPager() = binding.apply {
-        val viewPagerAdapter = MovieDetailViewPagerAdapter(parentFragmentManager)
-        viewPagerAdapter.addFragment(MovieReviewsFragment(getArgs()), "Reviews")
-        viewPagerAdapter.addFragment(SimilarMoviesFragment(getArgs()), "Similar Movies")
-        viewPagerAdapter.addFragment(RecommendedMoviesFragment(getArgs()), "Our Recommendations")
-        viewPagerAdapter.addFragment(MovieCreditsFragment(getArgs()), "Movie Cast")
-        viewPager.adapter = viewPagerAdapter
-        tabLayout.setupWithViewPager(viewPager)
+        binding.viewPager.adapter =
+            MovieDetailsSlidePagerAdapter(fa = requireActivity(), movieId = getArgs())
+
+        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
+            when (position) {
+                0 -> {
+                    tab.text = getString(R.string.reviews)
+                }
+                1 -> {
+                    tab.text = getString(R.string.similar)
+                }
+                2 -> {
+                    tab.text = getString(R.string.recommended)
+                }
+                3 -> {
+                    tab.text = getString(R.string.movie_cast)
+                }
+            }
+        }.attach()
     }
+
 
     private fun onClickMovie(movieId: Int) {
         //todo: on click movie
