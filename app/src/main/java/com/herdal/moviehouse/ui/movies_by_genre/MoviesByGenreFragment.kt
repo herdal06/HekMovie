@@ -42,11 +42,11 @@ class MoviesByGenreFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentMoviesByGenreBinding.inflate(inflater, container, false)
         val view = binding.root
         setupRecyclerView()
-        setToolBarTitle(getArgs().name)
+        getArgs().name?.let { setToolBarTitle(it) }
         observeMovies(getArgs())
         return view
     }
@@ -57,9 +57,11 @@ class MoviesByGenreFragment : Fragment() {
 
     private fun observeMovies(genre: GenreUiModel) = lifecycleScope.launch {
         repeatOnLifecycle(Lifecycle.State.STARTED) {
-            viewModel.getMoviesByGenre(genre.id).observe(viewLifecycleOwner) {
-                moviesByGenreAdapter.submitData(lifecycle, it)
-                Timber.d("$it")
+            genre.id?.let {
+                viewModel.getMoviesByGenre(it).observe(viewLifecycleOwner) {
+                    moviesByGenreAdapter.submitData(lifecycle, it)
+                    Timber.d("$it")
+                }
             }
         }
     }

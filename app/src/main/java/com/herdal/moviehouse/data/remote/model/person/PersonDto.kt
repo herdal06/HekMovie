@@ -10,7 +10,7 @@ data class PersonDto(
     @Json(name ="id")
     val id: Int?,
     @Json(name ="known_for")
-    val known_for: List<KnownForDto>?,
+    val known_for: List<KnownForDto>,
     @Json(name ="known_for_department")
     val known_for_department: String?,
     @Json(name ="name")

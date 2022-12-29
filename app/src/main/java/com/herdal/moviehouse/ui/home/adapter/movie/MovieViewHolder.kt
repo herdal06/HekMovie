@@ -15,7 +15,7 @@ class MovieViewHolder(
         }
 
         itemView.setOnClickListener {
-            onClickMovie?.invoke(movie.id)
+            movie.id?.let { it1 -> onClickMovie?.invoke(it1) }
         }
     }
 }

@@ -29,8 +29,8 @@ class ReviewPagingSource(
             LoadResult.Page(
                 data = response.results,
                 prevKey = if (nextPage == 1) null else nextPage - 1,
-                nextKey = if (nextPage < response.total_pages)
-                    response.page.plus(1) else null
+                nextKey = if (nextPage < response.total_pages!!)
+                    response.page?.plus(1) else null
             )
         } catch (e: IOException) {
             LoadResult.Error(throwable = e)
