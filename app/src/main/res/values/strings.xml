@@ -2,7 +2,7 @@
     <string name="app_name">MovieHouse</string>
     <string name="genres">Genres</string>
     <string name="see_all">See All</string>
-    <string name="error_message">Error While Loading Data.</string>
+    <string name="error_message">An Error Occurred While Loading Data</string>
     <string name="popular_movies">Popular Movies</string>
     <string name="upcoming">Upcoming</string>
     <string name="top_rated">Top Rated</string>
@@ -20,7 +20,7 @@
     <string name="also_known_as">Also Known As</string>
     <string name="movie_credits">Movie Credits</string>
     <string name="biography">Biography</string>
-    <string name="there_is_no_reviews_yet">There is no reviews yet.</string>
+    <string name="there_is_no_reviews_yet">No reviews yet.</string>
     <string name="no_data">no data</string>
     <string name="popular_people">Popular People</string>
     <string name="popular">Popular</string>
