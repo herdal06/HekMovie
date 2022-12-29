@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.movie_details.recommended_movies.RecommendedMoviesFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvRecommended"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="3"
+        tools:listitem="@layout/item_movie" />
+
+    <TextView
+        android:id="@+id/tvRecommendedEmpty"
+        style="@style/PersonText.XLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/double_extra_large_margin"
+        android:text="@string/there_is_no_reviews_yet"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/ivRecommendedNoData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/double_extra_large_margin"
+        android:contentDescription="@string/no_data"
+        android:src="@drawable/ic_cancel"
+        android:visibility="gone" />
+</FrameLayout>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Padding -->
+    <dimen name="double_extra_large_padding">20dp</dimen>
+    <dimen name="extra_large_padding">18dp</dimen>
+    <dimen name="large_padding">16dp</dimen>
+    <dimen name="medium_padding">10dp</dimen>
+    <dimen name="small_padding">8dp</dimen>
+    <dimen name="extra_small_padding">6dp</dimen>
+    <dimen name="double_extra_small_padding">4dp</dimen>
+
+    <!-- Margin -->
+    <dimen name="triple_extra_large_margin">32dp</dimen>
+    <dimen name="double_extra_large_margin">26dp</dimen>
+    <dimen name="extra_large_margin">18dp</dimen>
+    <dimen name="large_margin">16dp</dimen>
+    <dimen name="medium_margin">12dp</dimen>
+    <dimen name="small_margin">10dp</dimen>
+    <dimen name="extra_small_margin">8dp</dimen>
+    <dimen name="double_extra_small_margin">6dp</dimen>
+    <dimen name="triple_extra_small_margin">4dp</dimen>
+
+    <!-- Size -->
+    <dimen name="double_extra_large_size">22sp</dimen>
+    <dimen name="extra_large_size">18sp</dimen>
+    <dimen name="large_size">16sp</dimen>
+    <dimen name="medium_size">12sp</dimen>
+    <dimen name="small_size">10sp</dimen>
+    <dimen name="extra_small_size">8sp</dimen>
+    <dimen name="double_extra_small_size">4sp</dimen>
+
+    <!-- movie detail -->
+    <dimen name="poster_path_top_margin">-64dp</dimen>
+    <dimen name="poster_width">175dp</dimen>
+    <dimen name="poster_height">175dp</dimen>
+    <dimen name="star_size">24dp</dimen>
+    <dimen name="rv_height">282dp</dimen>
+
+</resources>

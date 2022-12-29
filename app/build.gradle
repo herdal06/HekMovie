@@ -1,20 +1,32 @@
+import com.herdal.moviehouse.Libs
+
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-parcelize'
 }
 
 android {
-    namespace 'com.herdal.moviehouse'
-    compileSdk 32
+    compileSdk Config.compileSdk
+    namespace Config.applicationId
 
     defaultConfig {
-        applicationId "com.herdal.moviehouse"
-        minSdk 26
-        targetSdk 32
-        versionCode 1
-        versionName "1.0"
+        applicationId Config.applicationId
+        minSdk Config.minSdk
+        targetSdk Config.targetSdk
+        versionCode Config.versionCode
+        versionName Config.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // read from local.properties
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file("local.properties").newDataInputStream())
+
+        buildConfigField "String", "API_KEY", "\"${properties.getProperty("API_KEY")}\""
     }
 
     buildTypes {
@@ -30,15 +42,78 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+    }
 }
 
 dependencies {
+    implementation Libs.AndroidX.core
+    implementation Libs.AndroidX.appCompat
+    implementation Libs.Google.material
+    implementation Libs.AndroidX.constraintLayout
+    implementation Libs.Google.gson
+    implementation Libs.AndroidX.swipe_refresh_layout
 
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'com.google.android.material:material:1.7.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+    // Test
+    testImplementation Libs.Test.junit
+    androidTestImplementation Libs.Test.testExt
+    androidTestImplementation Libs.Test.espresso
+
+    // Navigation
+    implementation Libs.AndroidX.navigation
+    implementation Libs.AndroidX.navigationUI
+
+    // Lifecycle
+    implementation Libs.AndroidX.extensions
+    implementation Libs.AndroidX.runtime
+    implementation Libs.AndroidX.vmLifeCycle
+    implementation Libs.AndroidX.livedata
+
+    // Retrofit
+    implementation Libs.Network.retrofit
+    implementation Libs.Network.moshiConverter
+    implementation Libs.Network.gsonConverter
+    implementation Libs.Network.okhttp
+    implementation Libs.Network.interceptor
+
+    // Room
+    implementation Libs.Room.ktx
+    implementation Libs.Room.runtime
+    kapt Libs.Room.compiler
+
+    // Hilt
+    implementation Libs.Hilt.android
+    kapt Libs.Hilt.compiler
+
+    // Glide
+    implementation Libs.Image.glide
+    annotationProcessor Libs.Image.compiler
+
+    // Paging
+    implementation Libs.Pagination.paging
+
+    // ViewPager
+    implementation Libs.Image.indicator
+    implementation Libs.Image.viewPager
+
+    // Moshi
+    implementation Libs.Network.moshi
+    kapt Libs.Network.codegen
+
+    // Timber
+    implementation Libs.Log.timber
+
+    // Logger
+    implementation Libs.Log.logger
+
+    // TransformationLayout
+    implementation Libs.SkyDoves.transformationLayout
+
+    // Balloon
+    implementation Libs.SkyDoves.balloon
+
+    // Lottie
+    implementation Libs.View.lottie
 }

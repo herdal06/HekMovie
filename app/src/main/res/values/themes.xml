@@ -1,16 +1,77 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.MovieHouse" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">@color/yellow</item>
+        <item name="colorPrimaryVariant">@color/dark_yellow</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondary">@color/yellow</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <!-- Disable default opening screen -->
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <!-- home see all text -->
+    <style name="SeeAllText" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/showAllTextColor</item>
+        <item name="android:textSize">@dimen/extra_large_size</item>
+    </style>
+
+    <!-- home title text -->
+    <style name="TitleText" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/yellow</item>
+        <item name="android:textSize">@dimen/double_extra_large_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- movie detail title text -->
+    <style name="MovieDetailTitle" parent="@android:style/TextAppearance">
+        <item name="android:textSize">@dimen/double_extra_large_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- movie detail text -->
+    <style name="MovieDetailText" parent="@android:style/TextAppearance">
+        <item name="android:textSize">@dimen/large_size</item>
+    </style>
+    <!-- movie detail title large text -->
+    <style name="MovieDetailText.XLarge" parent="@android:style/TextAppearance">
+        <item name="android:textSize">@dimen/extra_large_size</item>
+        <item name="android:textStyle">italic|bold</item>
+    </style>
+
+    <style name="GenreText" parent="@android:style/TextAppearance">
+        <item name="android:textSize">@dimen/extra_large_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="PersonText" parent="@android:style/TextAppearance">
+        <item name="android:textSize">@dimen/large_size</item>
+    </style>
+
+    <style name="PersonText.XLarge" parent="@android:style/TextAppearance">
+        <item name="android:textSize">@dimen/extra_large_size</item>
+    </style>
+
+    <style name="PersonText.XLarge.Bold" parent="@android:style/TextAppearance">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="PersonText.XXLarge.Bold" parent="@android:style/TextAppearance">
+        <item name="android:textSize">@dimen/double_extra_large_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabTextAppearance">@style/MyCustomTextAppearance</item>
+    </style>
+
+    <style name="MyCustomTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
     </style>
 </resources>

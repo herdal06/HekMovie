@@ -1,3 +1,32 @@
 <resources>
     <string name="app_name">MovieHouse</string>
+    <string name="genres">Genres</string>
+    <string name="see_all">See All</string>
+    <string name="error_message">An Error Occurred While Loading Data</string>
+    <string name="popular_movies">Popular Movies</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="top_rated">Top Rated</string>
+    <string name="now_playing">Now Playing</string>
+    <string name="upcoming_movies">Upcoming Movies</string>
+    <string name="top_rated_movies">Top Rated Movies</string>
+    <string name="now_playing_movies">Now Playing Movies</string>
+    <string name="movie_backdrop">movie backdrop</string>
+    <string name="movie_poster">movie poster</string>
+    <string name="similar_movies">Similar Movies</string>
+    <string name="our_recommendations">Our Recommendations</string>
+    <string name="hello_blank_fragment">Blank</string>
+    <string name="movie_detail_tab_layout">Movie detail tab layout</string>
+    <string name="popular_people_on_tmdb">Popular People on TMDB</string>
+    <string name="also_known_as">Also Known As</string>
+    <string name="movie_credits">Movie Credits</string>
+    <string name="biography">Biography</string>
+    <string name="there_is_no_reviews_yet">No reviews yet.</string>
+    <string name="no_data">no data</string>
+    <string name="popular_people">Popular People</string>
+    <string name="popular">Popular</string>
+    <string name="home">Home</string>
+    <string name="reviews">Reviews</string>
+    <string name="similar">Similar</string>
+    <string name="recommended">Our Recommendations</string>
+    <string name="movie_cast">Cast</string>
 </resources>
