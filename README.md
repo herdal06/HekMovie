@@ -18,9 +18,9 @@
 
 ## App Gifs
 
-| home screen | movie detail |
+| movie detail | home screen |
 |:-:|:-:|
-| <img src="https://github.com/herdal06/HekMovie/blob/master/arts/1.gif?raw=true"  width="250"/> | <img src="https://github.com/herdal06/HekMovie/blob/master/arts/2.gif?raw=true"  width="250"/> |
+| <img src="https://github.com/herdal06/HekMovie/blob/master/arts/2.gif?raw=true"  width="250"/> | <img src="https://github.com/herdal06/HekMovie/blob/master/arts/1.gif?raw=true"  width="250"/> |
 
 
 ## How to build on your environment
