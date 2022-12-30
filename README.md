@@ -2,7 +2,7 @@
  <img src="https://github.com/herdal06/HekMovie/blob/master/app/src/main/res/drawable/hekmovie.png?raw=true"  alt="drawing" />
 </p>
 <p align="center">  
-🎬 HekMovie is a sample Android project using TMBD API based on MVVM architecture
+🎬 HekMovie is a sample Android project using TMDB API based on MVVM architecture
 <br/>
 <p align="center">For API Documentation: <a href="https://developers.themoviedb.org/3">Click here</a></p>
 </p>
