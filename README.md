@@ -7,6 +7,9 @@
 <p align="center">For API Documentation: <a href="https://developers.themoviedb.org/3">Click here</a></p>
 </p>
 
+<p align="center">
+<a href='https://play.google.com/store/apps/details?id=com.herdal.moviehouse'><img width="200px" alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/></a>
+</p>
 
 ### App Screenshots
 
@@ -21,7 +24,6 @@
 | movie detail | home screen |
 |:-:|:-:|
 | <img src="https://github.com/herdal06/HekMovie/blob/master/arts/2.gif?raw=true"  width="250"/> | <img src="https://github.com/herdal06/HekMovie/blob/master/arts/1.gif?raw=true"  width="250"/> |
-
 
 ## How to build on your environment
 Add your [The Movie DB](https://www.themoviedb.org/)'s API key in local.properties file.
