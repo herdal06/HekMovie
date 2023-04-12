@@ -1,4 +1,4 @@
-package com.herdal.moviehouse.common.data_source
+package com.herdal.moviehouse.data.data_source
 
 import com.herdal.moviehouse.data.remote.model.genre.GenreResponse
 

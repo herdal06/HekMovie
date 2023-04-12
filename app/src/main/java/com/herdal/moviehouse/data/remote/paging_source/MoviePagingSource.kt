@@ -2,7 +2,7 @@ package com.herdal.moviehouse.data.remote.paging_source
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.herdal.moviehouse.common.enums.MoviesEnum
+import com.herdal.moviehouse.common.enums.MovieListType
 import com.herdal.moviehouse.data.remote.model.movies.MovieDto
 import com.herdal.moviehouse.data.remote.service.MovieService
 import com.herdal.moviehouse.utils.ApiConstants.STARTING_PAGE
@@ -11,7 +11,9 @@ import retrofit2.HttpException
 
 class MoviePagingSource(
     private val movieService: MovieService,
-    private val moviesEnum: MoviesEnum
+    private val movieListType: MovieListType,
+    private val genreId: Int? = null,
+    private val movieId: Int? = null
 ) : PagingSource<Int, MovieDto>() {
     override fun getRefreshKey(state: PagingState<Int, MovieDto>): Int? {
         return state.anchorPosition
@@ -21,26 +23,45 @@ class MoviePagingSource(
         val nextPage = params.key ?: STARTING_PAGE
 
         return try {
-            val response = when (moviesEnum) {
-                MoviesEnum.POPULAR_MOVIES -> {
-                    movieService.getPopularMovies(
-                        page = nextPage
-                    )
+            val response = when (movieListType) {
+                MovieListType.POPULAR -> {
+                    movieService.getPopularMovies(page = nextPage)
                 }
-                MoviesEnum.NOW_PLAYING_MOVIES -> {
+                MovieListType.NOW_PLAYING -> {
                     movieService.getNowPlayingMovies(
                         page = nextPage
                     )
                 }
-                MoviesEnum.TOP_RATED_MOVIES -> {
+                MovieListType.TOP_RATED -> {
                     movieService.getTopRatedMovies(
                         page = nextPage
                     )
                 }
-                MoviesEnum.UPCOMING -> {
+                MovieListType.UPCOMING -> {
                     movieService.getUpcomingMovies(
                         page = nextPage
                     )
+                }
+                MovieListType.RECOMMENDED -> {
+                    movieService.getRecommendedMovies(
+                        id = movieId!!,
+                        page = nextPage
+                    )
+                }
+                MovieListType.SIMILAR -> {
+                    movieService.getSimilarMovies(
+                        id = movieId!!,
+                        page = nextPage
+                    )
+                }
+                MovieListType.BY_GENRE -> {
+                    movieService.getMoviesByGenre(
+                        genreId = genreId!!,
+                        page = nextPage
+                    )
+                }
+                else -> {
+                    throw IllegalArgumentException("Invalid movie list type: $movieListType")
                 }
             }
             LoadResult.Page(

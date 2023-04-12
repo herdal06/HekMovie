@@ -1,6 +1,6 @@
 package com.herdal.moviehouse.data.repository
 
-import com.herdal.moviehouse.common.data_source.GenreDataSource
+import com.herdal.moviehouse.data.data_source.GenreDataSource
 import com.herdal.moviehouse.common.mapper.movie.GenreMapper
 import com.herdal.moviehouse.domain.repository.GenreRepository
 import com.herdal.moviehouse.domain.uimodel.genre.GenreUiModel

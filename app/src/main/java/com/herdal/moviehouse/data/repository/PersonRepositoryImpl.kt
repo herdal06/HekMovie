@@ -2,7 +2,7 @@ package com.herdal.moviehouse.data.repository
 
 import androidx.paging.PagingData
 import androidx.paging.map
-import com.herdal.moviehouse.common.data_source.PersonDataSource
+import com.herdal.moviehouse.data.data_source.PersonDataSource
 import com.herdal.moviehouse.common.mapper.person.PersonDetailMapper
 import com.herdal.moviehouse.common.mapper.person.PersonMapper
 import com.herdal.moviehouse.domain.repository.PersonRepository

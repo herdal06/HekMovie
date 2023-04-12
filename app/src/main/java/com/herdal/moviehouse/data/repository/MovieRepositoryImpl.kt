@@ -2,7 +2,7 @@ package com.herdal.moviehouse.data.repository
 
 import androidx.paging.PagingData
 import androidx.paging.map
-import com.herdal.moviehouse.common.data_source.MovieDataSource
+import com.herdal.moviehouse.data.data_source.MovieDataSource
 import com.herdal.moviehouse.common.mapper.movie.MovieDetailMapper
 import com.herdal.moviehouse.common.mapper.movie.MovieMapper
 import com.herdal.moviehouse.data.remote.model.movie_credits.MovieCreditsResponse
