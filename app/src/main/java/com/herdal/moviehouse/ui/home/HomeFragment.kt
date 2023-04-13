@@ -18,8 +18,11 @@ import com.herdal.moviehouse.common.Resource
 import com.herdal.moviehouse.databinding.FragmentHomeBinding
 import com.herdal.moviehouse.domain.uimodel.genre.GenreUiModel
 import com.herdal.moviehouse.ui.home.adapter.genre.GenreAdapter
+import com.herdal.moviehouse.ui.home.adapter.genre.OnClickGenreListener
 import com.herdal.moviehouse.ui.home.adapter.movie.MovieAdapter
 import com.herdal.moviehouse.ui.home.adapter.people.PersonAdapter
+import com.herdal.moviehouse.ui.home.adapter.movie.OnClickMovieListener
+import com.herdal.moviehouse.ui.home.adapter.people.OnClickPersonListener
 import com.herdal.moviehouse.utils.extensions.hide
 import com.herdal.moviehouse.utils.extensions.show
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,29 +35,12 @@ class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private val viewModel: HomeViewModel by viewModels()
 
-    private val genreAdapter: GenreAdapter by lazy {
-        GenreAdapter(::onClickGenre)
-    }
-
-    private val popularMoviesAdapter: MovieAdapter by lazy {
-        MovieAdapter(::onClickMovie)
-    }
-
-    private val topRatedMoviesAdapter: MovieAdapter by lazy {
-        MovieAdapter(::onClickMovie)
-    }
-
-    private val nowPlayingMoviesAdapter: MovieAdapter by lazy {
-        MovieAdapter(::onClickMovie)
-    }
-
-    private val upcomingMoviesAdapter: MovieAdapter by lazy {
-        MovieAdapter(::onClickMovie)
-    }
-
-    private val popularPeopleAdapter: PersonAdapter by lazy {
-        PersonAdapter(::onClickPerson)
-    }
+    private lateinit var popularMoviesAdapter: MovieAdapter
+    private lateinit var topRatedMoviesAdapter: MovieAdapter
+    private lateinit var nowPlayingMoviesAdapter: MovieAdapter
+    private lateinit var upcomingMoviesAdapter: MovieAdapter
+    private lateinit var popularPeopleAdapter: PersonAdapter
+    private lateinit var genreAdapter: GenreAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -62,14 +48,52 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
-        setupRecyclerViews()
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initRecyclerViewAdapters()
         observeMovies()
         observePeople()
         setToolBarTitle()
         collectApiRequest()
         onClickShowGenresTextView()
         onClickSeeAllTexts()
-        return binding.root
+    }
+
+    private fun initRecyclerViewAdapters() {
+        popularMoviesAdapter = MovieAdapter(object : OnClickMovieListener {
+            override fun onClick(movieId: Int) {
+                onClickMovie(movieId)
+            }
+        })
+        topRatedMoviesAdapter = MovieAdapter(object : OnClickMovieListener {
+            override fun onClick(movieId: Int) {
+                onClickMovie(movieId)
+            }
+        })
+        nowPlayingMoviesAdapter = MovieAdapter(object : OnClickMovieListener {
+            override fun onClick(movieId: Int) {
+                onClickMovie(movieId)
+            }
+        })
+        upcomingMoviesAdapter = MovieAdapter(object : OnClickMovieListener {
+            override fun onClick(movieId: Int) {
+                onClickMovie(movieId)
+            }
+        })
+        popularPeopleAdapter = PersonAdapter(object : OnClickPersonListener {
+            override fun onClick(personId: Int) {
+                onClickPerson(personId)
+            }
+        })
+        genreAdapter = GenreAdapter(object : OnClickGenreListener {
+            override fun onClick(genre: GenreUiModel) {
+                onClickGenre(genre)
+            }
+        })
+        setupRecyclerViews()
     }
 
     private fun setupRecyclerViews() = binding.apply {

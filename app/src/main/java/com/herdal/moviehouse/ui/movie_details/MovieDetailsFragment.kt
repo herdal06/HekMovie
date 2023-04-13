@@ -21,7 +21,9 @@ import com.herdal.moviehouse.databinding.FragmentMovieDetailsBinding
 import com.herdal.moviehouse.domain.uimodel.genre.GenreUiModel
 import com.herdal.moviehouse.domain.uimodel.movie_detail.MovieDetailUiModel
 import com.herdal.moviehouse.ui.home.adapter.genre.GenreAdapter
+import com.herdal.moviehouse.ui.home.adapter.genre.OnClickGenreListener
 import com.herdal.moviehouse.ui.home.adapter.movie.MovieAdapter
+import com.herdal.moviehouse.ui.home.adapter.movie.OnClickMovieListener
 import com.herdal.moviehouse.ui.movie_details.view_pager.MovieDetailsSlidePagerAdapter
 import com.herdal.moviehouse.utils.extensions.hide
 import com.herdal.moviehouse.utils.extensions.show
@@ -43,17 +45,9 @@ class MovieDetailsFragment : Fragment() {
 
     private fun getArgs() = navigationArgs.movieId
 
-    private val genreAdapter: GenreAdapter by lazy {
-        GenreAdapter(::onClickGenre)
-    }
-
-    private val similarMovieAdapter: MovieAdapter by lazy {
-        MovieAdapter(::onClickMovie)
-    }
-
-    private val recommendedMovieAdapter: MovieAdapter by lazy {
-        MovieAdapter(::onClickMovie)
-    }
+    private lateinit var genreAdapter: GenreAdapter
+    private lateinit var similarMovieAdapter: MovieAdapter
+    private lateinit var recommendedMovieAdapter: MovieAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -61,16 +55,34 @@ class MovieDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentMovieDetailsBinding.inflate(inflater, container, false)
-        val view = binding.root
-        observeMovies(getArgs())
-        collectMovieDetailRequest()
-        setupRecyclerViews()
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupViewPager()
+        initRecyclerViewAdapters()
+        observeMovies(getArgs())
+        collectMovieDetailRequest()
+    }
+
+    private fun initRecyclerViewAdapters() {
+        similarMovieAdapter = MovieAdapter(object : OnClickMovieListener {
+            override fun onClick(movieId: Int) {
+                onClickMovie(movieId)
+            }
+        })
+        recommendedMovieAdapter = MovieAdapter(object : OnClickMovieListener {
+            override fun onClick(movieId: Int) {
+                onClickMovie(movieId)
+            }
+        })
+        genreAdapter = GenreAdapter(object : OnClickGenreListener {
+            override fun onClick(genre: GenreUiModel) {
+                onClickGenre(genre)
+            }
+        })
+        setupRecyclerViews()
     }
 
     private fun setupRecyclerViews() = binding.apply {
@@ -163,7 +175,7 @@ class MovieDetailsFragment : Fragment() {
 
 
     private fun onClickMovie(movieId: Int) {
-        //todo: on click movie
+        // todo: on click movie
     }
 
     private fun onClickGenre(genre: GenreUiModel) {

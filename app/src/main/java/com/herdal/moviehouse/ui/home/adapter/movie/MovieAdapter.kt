@@ -8,7 +8,7 @@ import com.herdal.moviehouse.databinding.ItemMovieBinding
 import com.herdal.moviehouse.domain.uimodel.movie.MovieUiModel
 
 class MovieAdapter(
-    private val onClickMovie: ((movieId: Int) -> Unit)?
+    private val onClickMovieListener: OnClickMovieListener?
 ) : BasePagingAdapter<MovieUiModel>(
     itemsSame = { old, new -> old.id == new.id },
     contentsSame = { old, new -> old == new }
@@ -23,7 +23,7 @@ class MovieAdapter(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-            ), onClickMovie
+            ), onClickMovieListener
         )
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {

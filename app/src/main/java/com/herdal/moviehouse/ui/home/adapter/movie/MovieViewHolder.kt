@@ -7,15 +7,17 @@ import com.herdal.moviehouse.utils.extensions.executeWithAction
 
 class MovieViewHolder(
     private val binding: ItemMovieBinding,
-    private val onClickMovie: ((movieId: Int) -> Unit)?
+    private val onClickMovieListener: OnClickMovieListener?
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(movie: MovieUiModel) = binding.apply {
         binding.executeWithAction {
             this.movie = movie
         }
 
-        itemView.setOnClickListener {
-            movie.id?.let { it1 -> onClickMovie?.invoke(it1) }
+        root.setOnClickListener {
+            movie.id?.let {
+                onClickMovieListener?.onClick(it)
+            }
         }
     }
 }

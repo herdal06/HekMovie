@@ -16,6 +16,8 @@ import com.herdal.moviehouse.databinding.FragmentSeeAllBinding
 import com.herdal.moviehouse.ui.home.HomeViewModel
 import com.herdal.moviehouse.ui.home.adapter.movie.MovieAdapter
 import com.herdal.moviehouse.ui.home.adapter.people.PersonAdapter
+import com.herdal.moviehouse.ui.home.adapter.movie.OnClickMovieListener
+import com.herdal.moviehouse.ui.home.adapter.people.OnClickPersonListener
 import com.herdal.moviehouse.utils.extensions.observeOnce
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -35,13 +37,9 @@ class SeeAllFragment : Fragment() {
 
     private fun getArgs() = navigationArgs.type
 
-    private val movieAdapter: MovieAdapter by lazy {
-        MovieAdapter(::onClickMovie)
-    }
+    private lateinit var movieAdapter: MovieAdapter
 
-    private val peopleAdapter: PersonAdapter by lazy {
-        PersonAdapter(::onClickPerson)
-    }
+    private lateinit var personAdapter: PersonAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -55,12 +53,30 @@ class SeeAllFragment : Fragment() {
         return view
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initRecyclerViewAdapters()
+    }
+
+    private fun initRecyclerViewAdapters() {
+        movieAdapter = MovieAdapter(object : OnClickMovieListener {
+            override fun onClick(movieId: Int) {
+                onClickMovie(movieId)
+            }
+        })
+        personAdapter = PersonAdapter(object : OnClickPersonListener {
+            override fun onClick(personId: Int) {
+                onClickPerson(personId)
+            }
+        })
+    }
+
     private fun setupRvMovie() = binding.apply {
         rvSeeAll.adapter = movieAdapter
     }
 
     private fun setupRvPeople() = binding.apply {
-        rvSeeAll.adapter = peopleAdapter
+        rvSeeAll.adapter = personAdapter
         rvSeeAll.layoutManager = GridLayoutManager(requireContext(), 2)
     }
 
@@ -97,7 +113,7 @@ class SeeAllFragment : Fragment() {
             getString(R.string.popular_people) -> {
                 viewModel.getPopularPeople().observeOnce(viewLifecycleOwner) {
                     setupRvPeople()
-                    peopleAdapter.submitData(lifecycle, it)
+                    personAdapter.submitData(lifecycle, it)
                 }
             }
         }

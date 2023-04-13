@@ -17,6 +17,15 @@ class MovieCreditsViewModel @Inject constructor(
     private val getMovieCreditsUseCase: GetMovieCreditsUseCase
 ) : ViewModel() {
 
+    private val _uiState = MutableStateFlow(MovieCreditsUiState())
+    val uiState: StateFlow<MovieCreditsUiState> = _uiState
+
+    fun onEvent(event: MovieCreditsUiEvent) {
+        when (event) {
+            is MovieCreditsUiEvent.GetMovieCredits -> getMovieCredits(event.movieId)
+        }
+    }
+
     private val _movieCredits =
         MutableStateFlow<Resource<MovieCreditsUiModel>>(Resource.Loading())
     val movieCredits: StateFlow<Resource<MovieCreditsUiModel>> = _movieCredits

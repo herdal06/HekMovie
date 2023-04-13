@@ -7,7 +7,6 @@ import com.herdal.moviehouse.common.base.BaseListAdapter
 import com.herdal.moviehouse.databinding.ItemAllGenresBinding
 import com.herdal.moviehouse.domain.uimodel.genre.GenreUiModel
 
-
 class GenresAdapter(
     private val onClickGenre: ((genre: GenreUiModel) -> Unit)?
 ) : BaseListAdapter<GenreUiModel>(

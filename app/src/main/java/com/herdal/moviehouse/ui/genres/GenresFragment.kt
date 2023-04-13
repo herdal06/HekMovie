@@ -7,19 +7,15 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.herdal.moviehouse.R
-import com.herdal.moviehouse.common.Resource
 import com.herdal.moviehouse.databinding.FragmentGenresBinding
 import com.herdal.moviehouse.domain.uimodel.genre.GenreUiModel
 import com.herdal.moviehouse.ui.genres.adapter.GenresAdapter
+import com.herdal.moviehouse.utils.extensions.collectLatestLifecycleFlow
 import com.herdal.moviehouse.utils.extensions.hide
 import com.herdal.moviehouse.utils.extensions.show
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class GenresFragment : Fragment() {
@@ -42,38 +38,35 @@ class GenresFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentGenresBinding.inflate(inflater, container, false)
-        val view = binding.root
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
         collectGenres()
         setToolBarTitle()
-        return view
     }
 
     private fun collectGenres() = binding.apply {
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                launch {
-                    viewModel.getAllGenres()
-                    viewModel.genres.collect { res ->
-                        when (res) {
-                            is Resource.Loading -> {
-                                tvGenresErrorMessage.hide()
-                                rvAllGenre.hide()
-                            }
-                            is Resource.Success -> {
-                                tvGenresErrorMessage.hide()
-                                pbGenre.hide()
-                                rvAllGenre.show()
-                                genreAdapter.submitList(res.data)
-                            }
-                            is Resource.Error -> {
-                                tvGenresErrorMessage.show()
-                                pbGenre.hide()
-                                rvAllGenre.hide()
-                            }
-                        }
-                    }
+        viewModel.onEvent(GenresUiEvent.GetAllGenres)
+        collectLatestLifecycleFlow(viewModel.uiState) { state ->
+            state.error.let {
+                tvGenresErrorMessage.show()
+                pbGenre.hide()
+                rvAllGenre.hide()
+            }
+            state.loading.let { isLoading ->
+                if (isLoading == true) {
+                    tvGenresErrorMessage.hide()
+                    rvAllGenre.hide()
                 }
+            }
+            state.genres?.let {
+                tvGenresErrorMessage.hide()
+                pbGenre.hide()
+                rvAllGenre.show()
+                genreAdapter.submitList(it)
             }
         }
     }

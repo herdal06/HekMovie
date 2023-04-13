@@ -7,15 +7,17 @@ import com.herdal.moviehouse.utils.extensions.executeWithAction
 
 class PersonViewHolder(
     private val binding: ItemPersonBinding,
-    private val onClickPerson: ((personId: Int) -> Unit)?
+    private val onClickPersonListener: OnClickPersonListener?
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(person: PersonUiModel) = binding.apply {
         binding.executeWithAction {
             this.person = person
         }
 
-        itemView.setOnClickListener {
-            person.id?.let { it1 -> onClickPerson?.invoke(it1) }
+        root.setOnClickListener {
+            person.id?.let {
+                onClickPersonListener?.onClick(it)
+            }
         }
     }
 }

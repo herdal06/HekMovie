@@ -10,6 +10,8 @@ import androidx.paging.cachedIn
 import com.herdal.moviehouse.domain.uimodel.movie.MovieUiModel
 import com.herdal.moviehouse.domain.use_case.movie.GetMoviesByGenreUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -17,6 +19,15 @@ import javax.inject.Inject
 class MoviesByGenreViewModel @Inject constructor(
     private val getMoviesByGenreUseCase: GetMoviesByGenreUseCase
 ) : ViewModel() {
+
+    private val _uiState = MutableStateFlow(MoviesByGenreUiState())
+    val uiState: StateFlow<MoviesByGenreUiState> = _uiState
+
+    fun onEvent(event: MoviesByGenreUiEvent) {
+        when (event) {
+            is MoviesByGenreUiEvent.GetMoviesByGenre -> getMoviesByGenre(event.genreId)
+        }
+    }
 
     private val _movies =
         MutableLiveData<PagingData<MovieUiModel>>()

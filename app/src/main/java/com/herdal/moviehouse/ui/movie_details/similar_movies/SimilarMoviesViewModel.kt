@@ -6,6 +6,8 @@ import androidx.paging.cachedIn
 import com.herdal.moviehouse.domain.uimodel.movie.MovieUiModel
 import com.herdal.moviehouse.domain.use_case.movie.GetSimilarMoviesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -13,6 +15,15 @@ import javax.inject.Inject
 class SimilarMoviesViewModel @Inject constructor(
     private val getSimilarMoviesUseCase: GetSimilarMoviesUseCase
 ) : ViewModel() {
+
+    private val _uiState = MutableStateFlow(SimilarMoviesUiState())
+    val uiState: StateFlow<SimilarMoviesUiState> = _uiState
+
+    fun onEvent(event: SimilarMoviesUiEvent) {
+        when (event) {
+            is SimilarMoviesUiEvent.GetSimilarMovies -> getSimilarMovies(event.movieId)
+        }
+    }
 
     private val _similarMovies =
         MutableLiveData<PagingData<MovieUiModel>>()

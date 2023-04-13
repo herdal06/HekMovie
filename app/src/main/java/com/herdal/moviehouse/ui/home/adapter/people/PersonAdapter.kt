@@ -8,7 +8,7 @@ import com.herdal.moviehouse.databinding.ItemPersonBinding
 import com.herdal.moviehouse.domain.uimodel.person.PersonUiModel
 
 class PersonAdapter(
-    private val onClickPerson: ((personId: Int) -> Unit)?
+    private val onClickPersonListener: OnClickPersonListener?
 ) : BasePagingAdapter<PersonUiModel>(
     itemsSame = { old, new -> old.id == new.id },
     contentsSame = { old, new -> old == new }
@@ -23,7 +23,7 @@ class PersonAdapter(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-            ), onClickPerson
+            ), onClickPersonListener
         )
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {

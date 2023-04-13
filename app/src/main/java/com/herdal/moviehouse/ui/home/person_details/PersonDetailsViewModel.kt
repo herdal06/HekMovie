@@ -17,6 +17,15 @@ class PersonDetailsViewModel @Inject constructor(
     private val getPersonDetailsUseCase: GetPersonDetailsUseCase
 ) : ViewModel() {
 
+    private val _uiState = MutableStateFlow(PersonDetailsUiState())
+    val uiState: StateFlow<PersonDetailsUiState> = _uiState
+
+    fun onEvent(event: PersonDetailsUiEvent) {
+        when (event) {
+            is PersonDetailsUiEvent.GetPersonDetails -> getPersonDetails(event.id)
+        }
+    }
+
     private val _personDetail =
         MutableStateFlow<Resource<PersonDetailUiModel>>(Resource.Loading())
     val personDetail: StateFlow<Resource<PersonDetailUiModel>> = _personDetail

@@ -30,6 +30,21 @@ class HomeViewModel @Inject constructor(
     private val getNowPlayingMoviesUseCase: GetNowPlayingMoviesUseCase,
     private val getPopularPeopleUseCase: GetPopularPeopleUseCase
 ) : ViewModel() {
+
+    private val _uiState = MutableStateFlow(HomeUiState())
+    val uiState: StateFlow<HomeUiState> = _uiState
+
+    fun onEvent(event: HomeUiEvent) {
+        when (event) {
+            HomeUiEvent.GetGenres -> getAllGenres()
+            HomeUiEvent.GetNowPlayingMovies -> getNowPlayingMovies()
+            HomeUiEvent.GetPopularMovies -> getPopularMovies()
+            HomeUiEvent.GetPopularPeople -> getPopularPeople()
+            HomeUiEvent.GetTopRatedMovies -> getTopRatedMovies()
+            HomeUiEvent.GetUpcomingMovies -> getUpcomingMovies()
+        }
+    }
+
     private val _genres =
         MutableStateFlow<Resource<List<GenreUiModel>>>(Resource.Loading())
     val genres: StateFlow<Resource<List<GenreUiModel>>> = _genres

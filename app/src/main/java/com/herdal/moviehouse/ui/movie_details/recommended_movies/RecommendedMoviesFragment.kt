@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.herdal.moviehouse.databinding.FragmentRecommendedMoviesBinding
 import com.herdal.moviehouse.ui.home.adapter.movie.MovieAdapter
+import com.herdal.moviehouse.ui.home.adapter.movie.OnClickMovieListener
 import com.herdal.moviehouse.utils.extensions.hide
 import com.herdal.moviehouse.utils.extensions.show
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,9 +31,7 @@ class RecommendedMoviesFragment(
 
     private val viewModel: RecommendedMoviesViewModel by viewModels()
 
-    private val recommendedMoviesAdapter: MovieAdapter by lazy {
-        MovieAdapter(::onClickMovie)
-    }
+    private lateinit var recommendedMoviesAdapter: MovieAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,11 +39,23 @@ class RecommendedMoviesFragment(
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentRecommendedMoviesBinding.inflate(inflater, container, false)
-        val view = binding.root
-        setupRv()
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initRecyclerViewAdapters()
         observeSimilarMovies(movieId)
         checkIfAdapterEmpty()
-        return view
+    }
+
+    private fun initRecyclerViewAdapters() {
+        recommendedMoviesAdapter = MovieAdapter(object : OnClickMovieListener {
+            override fun onClick(movieId: Int) {
+                onClickMovie(movieId)
+            }
+        })
+        setupRv()
     }
 
     private fun setupRv() = binding.apply {

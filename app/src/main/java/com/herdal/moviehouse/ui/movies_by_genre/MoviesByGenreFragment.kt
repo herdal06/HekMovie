@@ -15,6 +15,7 @@ import androidx.navigation.fragment.navArgs
 import com.herdal.moviehouse.databinding.FragmentMoviesByGenreBinding
 import com.herdal.moviehouse.domain.uimodel.genre.GenreUiModel
 import com.herdal.moviehouse.ui.home.adapter.movie.MovieAdapter
+import com.herdal.moviehouse.ui.home.adapter.movie.OnClickMovieListener
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -30,9 +31,7 @@ class MoviesByGenreFragment : Fragment() {
 
     private val viewModel: MoviesByGenreViewModel by viewModels()
 
-    private val moviesByGenreAdapter: MovieAdapter by lazy {
-        MovieAdapter(::onClickMovie)
-    }
+    private lateinit var moviesByGenreAdapter: MovieAdapter
 
     private val navigationArgs: MoviesByGenreFragmentArgs by navArgs()
 
@@ -44,11 +43,23 @@ class MoviesByGenreFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentMoviesByGenreBinding.inflate(inflater, container, false)
-        val view = binding.root
-        setupRecyclerView()
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initRecyclerViewAdapters()
         getArgs().name?.let { setToolBarTitle(it) }
         observeMovies(getArgs())
-        return view
+    }
+
+    private fun initRecyclerViewAdapters() {
+        moviesByGenreAdapter = MovieAdapter(object : OnClickMovieListener {
+            override fun onClick(movieId: Int) {
+                onClickMovie(movieId)
+            }
+        })
+        setupRecyclerView()
     }
 
     private fun setupRecyclerView() = binding.apply {
