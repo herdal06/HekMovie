@@ -29,4 +29,6 @@
     <string name="similar">Similar</string>
     <string name="recommended">Our Recommendations</string>
     <string name="movie_cast">Cast</string>
+    <string name="search">Search</string>
+    <string name="profile">Profile</string>
 </resources>
