@@ -97,4 +97,13 @@ class MovieRepositoryImpl @Inject constructor(
         Timber.d("top rated: $domainMovies")
         return domainMovies
     }
+
+    override fun searchMovies(query: String): Flow<PagingData<MovieUiModel>> {
+        val domainMovies = remote.searchMovies(query = query).map { pagingData ->
+            pagingData.map { searchedMovies ->
+                movieMapper.toDomain(searchedMovies)
+            }
+        }
+        return domainMovies
+    }
 }

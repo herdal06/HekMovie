@@ -12,6 +12,7 @@ import com.herdal.moviehouse.data.remote.model.movies.MovieDto
 import com.herdal.moviehouse.data.remote.paging_source.MoviePagingSource
 import com.herdal.moviehouse.data.remote.paging_source.MovieDetailPagingSource
 import com.herdal.moviehouse.data.remote.paging_source.MoviesByGenrePagingSource
+import com.herdal.moviehouse.data.remote.paging_source.SearchMoviePagingSource
 import com.herdal.moviehouse.data.remote.service.MovieService
 import com.herdal.moviehouse.utils.ApiConstants.NETWORK_PAGE_SIZE
 import kotlinx.coroutines.flow.Flow
@@ -126,4 +127,20 @@ class MovieRemoteDataSource @Inject constructor(
                 )
             }
         ).flow
+
+    override fun searchMovies(query: String): Flow<PagingData<MovieDto>> = Pager(
+        config = PagingConfig(
+            pageSize = NETWORK_PAGE_SIZE,
+            prefetchDistance = 2,
+            maxSize = PagingConfig.MAX_SIZE_UNBOUNDED,
+            jumpThreshold = Int.MIN_VALUE,
+            enablePlaceholders = true
+        ),
+        pagingSourceFactory = {
+            SearchMoviePagingSource(
+                movieService,
+                searchQuery = query
+            )
+        }
+    ).flow
 }

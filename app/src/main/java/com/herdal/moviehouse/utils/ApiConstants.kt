@@ -23,6 +23,9 @@ object ApiConstants {
         const val PERSON_DETAILS = "3/person/{person_id}"
         const val MOVIE_CREDITS = "3/movie/{movie_id}/credits"
         const val MOVIES_BY_GENRE = "3/discover/movie"
+        const val SEARCH_MOVIE = "3/search/movie"
+        const val SEARCH_TV_SERIES = "3/search/tv"
+        const val SEARCH_PEOPLE = "3/search/person"
     }
 
     @JvmStatic
