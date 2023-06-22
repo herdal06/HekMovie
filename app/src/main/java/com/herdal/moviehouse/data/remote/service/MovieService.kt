@@ -79,14 +79,4 @@ interface MovieService {
         @Query("api_key") api_key: String = API_KEY,
         @Query("include_adult") includeAdult: Boolean = true,
     ): MovieResponse
-
-    @GET(ApiConstants.Endpoints.SEARCH_TV_SERIES)
-    suspend fun searchTvSeries(
-        @Query("query") query: String,
-        @Query("page") page: Int,
-        @Query("api_key") api_key: String = API_KEY,
-        @Query("include_adult") includeAdult: Boolean = true,
-    ): MovieResponse
-
-
 }

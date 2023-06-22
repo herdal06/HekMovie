@@ -1,4 +1,4 @@
-package com.herdal.moviehouse.domain.use_case.movie
+package com.herdal.moviehouse.domain.use_case.person
 
 import com.bumptech.glide.load.HttpException
 import com.herdal.moviehouse.common.Resource
