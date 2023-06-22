@@ -31,10 +31,13 @@
 
             <TextView
                 android:id="@+id/tvName"
-                android:layout_width="wrap_content"
+                style="@style/TvSeriesText"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
                 android:layout_marginTop="6dp"
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:text="@{tvSeries.name}"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -54,7 +57,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginBottom="6dp"
                 android:text="@{tvSeries.voteAverage}"
                 app:layout_constraintBottom_toBottomOf="@+id/ic_star"
                 app:layout_constraintStart_toEndOf="@+id/ic_star"
@@ -64,8 +66,8 @@
                 android:id="@+id/tvFirstAirDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="6dp"
-                android:layout_marginBottom="6dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
                 android:text="@{tvSeries.firstAirDate}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
