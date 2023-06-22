@@ -2,7 +2,7 @@ package com.herdal.moviehouse.data.repository
 
 import androidx.paging.PagingData
 import androidx.paging.map
-import com.herdal.moviehouse.common.data_source.TvSeriesDataSource
+import com.herdal.moviehouse.data.data_source.TvSeriesDataSource
 import com.herdal.moviehouse.common.mapper.tv_series.TvSeriesMapper
 import com.herdal.moviehouse.domain.repository.TvSeriesRepository
 import com.herdal.moviehouse.domain.uimodel.tv_series.TvSeriesUiModel

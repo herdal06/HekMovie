@@ -3,7 +3,7 @@ package com.herdal.moviehouse.data.remote.data_source
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.herdal.moviehouse.common.data_source.MovieDataSource
+import com.herdal.moviehouse.data.data_source.MovieDataSource
 import com.herdal.moviehouse.common.enums.MoviesEnum
 import com.herdal.moviehouse.common.enums.MovieDetailEnum
 import com.herdal.moviehouse.data.remote.model.movie_credits.MovieCreditsResponse

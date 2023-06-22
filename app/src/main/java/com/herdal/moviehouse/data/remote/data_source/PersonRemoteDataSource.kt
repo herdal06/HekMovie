@@ -3,7 +3,7 @@ package com.herdal.moviehouse.data.remote.data_source
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.herdal.moviehouse.common.data_source.PersonDataSource
+import com.herdal.moviehouse.data.data_source.PersonDataSource
 import com.herdal.moviehouse.data.remote.model.person.PersonDto
 import com.herdal.moviehouse.data.remote.model.person_detail.PersonDetailDto
 import com.herdal.moviehouse.data.remote.paging_source.PersonPagingSource

@@ -1,10 +1,10 @@
 package com.herdal.moviehouse.di
 
-import com.herdal.moviehouse.common.data_source.GenreDataSource
-import com.herdal.moviehouse.common.data_source.MovieDataSource
-import com.herdal.moviehouse.common.data_source.PersonDataSource
-import com.herdal.moviehouse.common.data_source.ReviewDataSource
-import com.herdal.moviehouse.common.data_source.TvSeriesDataSource
+import com.herdal.moviehouse.data.data_source.GenreDataSource
+import com.herdal.moviehouse.data.data_source.MovieDataSource
+import com.herdal.moviehouse.data.data_source.PersonDataSource
+import com.herdal.moviehouse.data.data_source.ReviewDataSource
+import com.herdal.moviehouse.data.data_source.TvSeriesDataSource
 import com.herdal.moviehouse.data.remote.data_source.GenreRemoteDataSource
 import com.herdal.moviehouse.data.remote.data_source.MovieRemoteDataSource
 import com.herdal.moviehouse.data.remote.data_source.PersonRemoteDataSource
