@@ -34,11 +34,12 @@ class SearchViewModel @Inject constructor(
 
     private fun searchMovies(query: String) = viewModelScope.launch {
         if (query.isNotEmpty()) {
+            _uiState.update { it.copy(loading = true) }
             searchMoviesUseCase(query).collect { res ->
                 when (res) {
-                    is Resource.Error -> _uiState.update { it.copy(error = res.message) }
+                    is Resource.Error -> _uiState.update { it.copy(error = res.message, loading = false) }
                     is Resource.Loading -> _uiState.update { it.copy(loading = true) }
-                    is Resource.Success -> _uiState.update { it.copy(movies = res.data) }
+                    is Resource.Success -> _uiState.update { it.copy(movies = res.data, loading = false) }
                 }
             }
         }
@@ -46,11 +47,12 @@ class SearchViewModel @Inject constructor(
 
     private fun searchPeople(query: String) = viewModelScope.launch {
         if (query.isNotEmpty()) {
+            _uiState.update { it.copy(loading = true) }
             searchPeopleUseCase(query).collect { res ->
                 when (res) {
-                    is Resource.Error -> _uiState.update { it.copy(error = res.message) }
+                    is Resource.Error -> _uiState.update { it.copy(error = res.message, loading = false) }
                     is Resource.Loading -> _uiState.update { it.copy(loading = true) }
-                    is Resource.Success -> _uiState.update { it.copy(people = res.data) }
+                    is Resource.Success -> _uiState.update { it.copy(people = res.data, loading = false) }
                 }
             }
         }
@@ -58,11 +60,12 @@ class SearchViewModel @Inject constructor(
 
     private fun searchTvSeries(query: String) = viewModelScope.launch {
         if (query.isNotEmpty()) {
+            _uiState.update { it.copy(loading = true) }
             searchTvSeriesUseCase(query).collect { res ->
                 when (res) {
-                    is Resource.Error -> _uiState.update { it.copy(error = res.message) }
+                    is Resource.Error -> _uiState.update { it.copy(error = res.message, loading = false) }
                     is Resource.Loading -> _uiState.update { it.copy(loading = true) }
-                    is Resource.Success -> _uiState.update { it.copy(tvSeries = res.data) }
+                    is Resource.Success -> _uiState.update { it.copy(tvSeries = res.data, loading = false) }
                 }
             }
         }
