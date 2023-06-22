@@ -32,4 +32,13 @@ class PersonRepositoryImpl @Inject constructor(
         val personDetailDto = remote.getPersonDetails(id)
         return personDetailMapper.toDomain(personDetailDto)
     }
+
+    override fun searchPeople(query: String): Flow<PagingData<PersonUiModel>> {
+        val domainPeople = remote.searchPeople(query = query).map { pagingData ->
+            pagingData.map { searchedMovies ->
+                personMapper.toDomain(searchedMovies)
+            }
+        }
+        return domainPeople
+    }
 }
