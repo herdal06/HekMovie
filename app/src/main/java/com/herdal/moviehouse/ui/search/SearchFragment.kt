@@ -8,9 +8,12 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.herdal.moviehouse.databinding.FragmentSearchBinding
 import com.herdal.moviehouse.ui.home.adapter.movie.MovieAdapter
 import com.herdal.moviehouse.ui.home.adapter.people.PersonAdapter
+import com.herdal.moviehouse.ui.tv_series.TvSeriesAdapter
 import com.herdal.moviehouse.utils.extensions.collectLatestLifecycleFlow
 import com.herdal.moviehouse.utils.extensions.show
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,6 +27,7 @@ class SearchFragment : Fragment() {
 
     private val searchMovieAdapter: MovieAdapter by lazy { MovieAdapter(::onClickMovie) }
     private val searchPersonAdapter: PersonAdapter by lazy { PersonAdapter(::onClickPerson) }
+    private val searchTvSeriesAdapter: TvSeriesAdapter by lazy { TvSeriesAdapter(::onClickTvSeries) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,6 +54,7 @@ class SearchFragment : Fragment() {
             state.movies?.let { flow ->
                 binding.rvSearch.show()
                 binding.rvSearch.adapter = searchMovieAdapter
+                binding.rvSearch.layoutManager = GridLayoutManager(requireContext(), 2)
                 flow.collect { searchedMovies ->
                     searchMovieAdapter.submitData(searchedMovies)
                 }
@@ -63,8 +68,23 @@ class SearchFragment : Fragment() {
             state.people?.let { flow ->
                 binding.rvSearch.show()
                 binding.rvSearch.adapter = searchPersonAdapter
+                binding.rvSearch.layoutManager = GridLayoutManager(requireContext(), 2)
                 flow.collect { searchedPeople ->
                     searchPersonAdapter.submitData(searchedPeople)
+                }
+            }
+        }
+    }
+
+    private fun searchTvSeries(searchText: String) {
+        viewModel.handleEvent(SearchUiEvent.SearchTvSeries(searchText))
+        collectLatestLifecycleFlow(viewModel.uiState) { state ->
+            state.tvSeries?.let { flow ->
+                binding.rvSearch.show()
+                binding.rvSearch.adapter = searchTvSeriesAdapter
+                binding.rvSearch.layoutManager = LinearLayoutManager(requireContext())
+                flow.collect { searchedTvSeries ->
+                    searchTvSeriesAdapter.submitData(searchedTvSeries)
                 }
             }
         }
@@ -77,7 +97,7 @@ class SearchFragment : Fragment() {
                     when {
                         binding.chipMovies.isChecked -> searchMovies(query)
                         binding.chipPeople.isChecked -> searchPeople(query)
-                        //binding.chipTvSeries.isChecked -> searchTvSeries(query)
+                        binding.chipTvSeries.isChecked -> searchTvSeries(query)
                     }
                 }
                 return false
@@ -118,6 +138,10 @@ class SearchFragment : Fragment() {
     private fun onClickPerson(personId: Int) {
         val action = SearchFragmentDirections.actionSearchFragmentToPersonDetailsFragment(personId)
         findNavController().navigate(action)
+    }
+
+    private fun onClickTvSeries(tvSeriesId: Int) {
+
     }
 
     override fun onDestroyView() {
