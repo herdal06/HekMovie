@@ -198,7 +198,7 @@ class SearchFragment : Fragment() {
 
     private fun startProgressBarTimer() {
         Handler(Looper.getMainLooper()).postDelayed({
-            binding.pbSearch.visibility = View.GONE
+            binding.pbSearch.hide()
         }, 1500)
     }
 
