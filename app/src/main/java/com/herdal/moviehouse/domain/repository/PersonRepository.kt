@@ -8,4 +8,5 @@ import kotlinx.coroutines.flow.Flow
 interface PersonRepository {
     fun getPopularPeople(): Flow<PagingData<PersonUiModel>>
     suspend fun getPersonDetails(id: Int): PersonDetailUiModel
+    fun searchPeople(query: String): Flow<PagingData<PersonUiModel>>
 }

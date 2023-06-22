@@ -31,4 +31,7 @@
     <string name="movie_cast">Cast</string>
     <string name="search">Search</string>
     <string name="profile">Profile</string>
+    <string name="movies">Movies</string>
+    <string name="tv_series">Tv Series</string>
+    <string name="people">People</string>
 </resources>

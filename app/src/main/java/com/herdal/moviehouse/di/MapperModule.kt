@@ -12,6 +12,7 @@ import com.herdal.moviehouse.common.mapper.person.PersonDetailMapper
 import com.herdal.moviehouse.common.mapper.person.PersonMapper
 import com.herdal.moviehouse.common.mapper.review.AuthorMapper
 import com.herdal.moviehouse.common.mapper.review.ReviewMapper
+import com.herdal.moviehouse.common.mapper.tv_series.TvSeriesMapper
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -88,4 +89,9 @@ object MapperModule {
         provideCastMapper(),
         provideCrewMapper()
     )
+
+    @Provides
+    @Singleton
+    fun provideTvSeriesMapper(
+    ): TvSeriesMapper = TvSeriesMapper()
 }

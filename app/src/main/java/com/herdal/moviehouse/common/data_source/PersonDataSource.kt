@@ -9,5 +9,6 @@ interface PersonDataSource {
     interface Remote {
         fun getPopularPeople(): Flow<PagingData<PersonDto>>
         suspend fun getPersonDetails(id: Int): PersonDetailDto
+        fun searchPeople(query: String): Flow<PagingData<PersonDto>>
     }
 }

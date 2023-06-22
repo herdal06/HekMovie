@@ -8,7 +8,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="backgroundColor">#F4F4F4</color>
+
     <color name="yellow">#F3C51A</color>
     <color name="dark_yellow">#E1B510</color>
     <color name="showAllTextColor">#0FA1E4</color>
+    <color name="lightTextColor">#AEAEB4</color>
 </resources>

@@ -4,10 +4,12 @@ import com.herdal.moviehouse.data.repository.GenreRepositoryImpl
 import com.herdal.moviehouse.data.repository.MovieRepositoryImpl
 import com.herdal.moviehouse.data.repository.PersonRepositoryImpl
 import com.herdal.moviehouse.data.repository.ReviewRepositoryImpl
+import com.herdal.moviehouse.data.repository.TvSeriesRepositoryImpl
 import com.herdal.moviehouse.domain.repository.GenreRepository
 import com.herdal.moviehouse.domain.repository.MovieRepository
 import com.herdal.moviehouse.domain.repository.PersonRepository
 import com.herdal.moviehouse.domain.repository.ReviewRepository
+import com.herdal.moviehouse.domain.repository.TvSeriesRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -32,7 +34,12 @@ abstract class RepositoryModule {
     ): ReviewRepository
 
     @Binds
-    abstract fun binPersonRepository(
+    abstract fun bindPersonRepository(
         personRepositoryImpl: PersonRepositoryImpl
     ): PersonRepository
+
+    @Binds
+    abstract fun bindTvSeriesRepository(
+        tvSeriesRepositoryImpl: TvSeriesRepositoryImpl
+    ): TvSeriesRepository
 }

@@ -23,4 +23,12 @@ interface PersonService {
         @Query("api_key") api_key: String = BuildConfig.API_KEY,
         @Query("language") language: String = ApiConstants.language
     ): PersonDetailDto
+
+    @GET(ApiConstants.Endpoints.SEARCH_PEOPLE)
+    suspend fun searchPeople(
+        @Query("api_key") api_key: String = BuildConfig.API_KEY,
+        @Query("query") query: String,
+        @Query("page") page: Int,
+        @Query("include_adult") includeAdult: Boolean = true,
+    ): PersonResponse
 }

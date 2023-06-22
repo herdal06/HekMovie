@@ -14,6 +14,7 @@
         <!-- Customize your theme here. -->
         <!-- Disable default opening screen -->
         <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@color/backgroundColor</item>
     </style>
 
     <!-- home see all text -->
@@ -73,5 +74,10 @@
 
     <style name="MyCustomTextAppearance" parent="TextAppearance.Design.Tab">
         <item name="textAllCaps">false</item>
+    </style>
+
+    <style name="TvSeriesText" parent="@android:style/TextAppearance">
+        <item name="android:textSize">@dimen/large_size</item>
+        <item name="android:textStyle">bold</item>
     </style>
 </resources>

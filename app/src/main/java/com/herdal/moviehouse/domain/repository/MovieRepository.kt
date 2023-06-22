@@ -16,4 +16,5 @@ interface MovieRepository {
     fun getRecommendedMovies(movieId: Int): Flow<PagingData<MovieUiModel>>
     suspend fun getMovieCredits(movieId: Int): MovieCreditsResponse
     fun getMoviesByGenre(genreId: Int): Flow<PagingData<MovieUiModel>>
+    fun searchMovies(query: String): Flow<PagingData<MovieUiModel>>
 }
